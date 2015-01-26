@@ -1,0 +1,7 @@
+	OrthographicCamera camera = new OrthographicCamera(1280,720);
+		camera.setToOrtho(false,x,y );
+		FitViewport viewp = new FitViewport(x,y,camera);
+		sb = new SpriteBatch();
+		setStage(new Stage(viewp, sb)); 
+		
+		camera.update();
