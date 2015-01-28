@@ -50,7 +50,7 @@ public class GoalFactory{
 	 */
 	private Station newStation(){ 
 		Station st = stations.get(random.nextInt(stations.size())); //get a random station
-		return st;  
+		return st;
 	} 
 
 	/**
