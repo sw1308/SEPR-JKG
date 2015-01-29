@@ -6,19 +6,14 @@ import java.util.HashMap;
 import com.TeamHEC.LocomotionCommotion.Card.Card;
 import com.TeamHEC.LocomotionCommotion.Goal.Goal;
 import com.TeamHEC.LocomotionCommotion.Map.Station;
-import com.TeamHEC.LocomotionCommotion.Resource.Coal;
-import com.TeamHEC.LocomotionCommotion.Resource.Electric;
-import com.TeamHEC.LocomotionCommotion.Resource.Fuel;
-import com.TeamHEC.LocomotionCommotion.Resource.Gold;
-import com.TeamHEC.LocomotionCommotion.Resource.Nuclear;
-import com.TeamHEC.LocomotionCommotion.Resource.Oil;
+import com.TeamHEC.LocomotionCommotion.Resource.*;
 import com.TeamHEC.LocomotionCommotion.Train.RouteListener;
 import com.TeamHEC.LocomotionCommotion.Train.Train;
 import com.TeamHEC.LocomotionCommotion.UI_Elements.GameScreenUI;
 import com.TeamHEC.LocomotionCommotion.UI_Elements.Game_StartingSequence;
 
 /**
- * @author Matthew Taylor <mjkt500@york.ac.uk>
+ * @author Matthew Taylor <mjkt500@york.ac.uk>f
  * @author Callum Hewitt <ch1194@york.ac.uk>
  * @author Elliot Bray <eb1033@york.ac.uk>
  */
@@ -26,7 +21,7 @@ import com.TeamHEC.LocomotionCommotion.UI_Elements.Game_StartingSequence;
 public class Player implements RouteListener{
 
 	private String name;
-	private int points;
+	private Score score;
 	private Gold gold;
 	private Coal coal;
 	private Oil oil;
@@ -43,10 +38,10 @@ public class Player implements RouteListener{
 
 	public boolean isPlayer1;
 
-	public Player(String name, int points, Gold gold, Coal coal, Electric electric, Nuclear nuclear, Oil oil, ArrayList<Card> cards, ArrayList<Goal> goals, ArrayList<Train> trains)
+	public Player(String name, Score score, Gold gold, Coal coal, Electric electric, Nuclear nuclear, Oil oil, ArrayList<Card> cards, ArrayList<Goal> goals, ArrayList<Train> trains)
 	{
 		this.name = name;
-		this.points = points;
+		this.score = score;
 		this.gold = gold;
 		this.coal = coal;
 		this.oil = oil;
@@ -80,11 +75,18 @@ public class Player implements RouteListener{
 	}
 
 	/**
-	 * @return returns the players points
+	 * @return returns the players score
 	 */
-	public int getPoints()
+	public int getScore()
 	{
-		return points;
+		return score.getValue();
+	}
+	
+	public void addScore(int value)
+	{
+		score.setValue(score.getValue() + value);
+		if(!Game_StartingSequence.inProgress)
+			GameScreenUI.refreshResources();
 	}
 
 	//Shop
@@ -448,7 +450,7 @@ public class Player implements RouteListener{
 			currentStation.setResourceOutMod(((red + blue + green + yellow + purple + black + brown + orange) * (int)(currentStation.getBaseResourceOut() * 0.05)));
 
 			//Rent not currently increased but is increased for later use anyway
-			currentStation.setRentValueMod(((red + blue + green + yellow + purple + black + brown + orange) * (int)(currentStation.getBaseRentValue() * 0.05)));
+			currentStation.setRevenueValueMod(((red + blue + green + yellow + purple + black + brown + orange) * (int)(currentStation.getBaseRevenueValue() * 0.05)));
 			//Increasing value has no affect as stations cannot be currently be sold but if increased for later use anyway
 			currentStation.setValueMod(((red + blue + green + yellow + purple + black + brown + orange) * (int)(currentStation.getValueMod() * 0.05)));
 		}

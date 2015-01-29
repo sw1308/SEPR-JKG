@@ -22,8 +22,8 @@ public class Station extends MapObj{
 	private int baseResourceOut;
 	private int resourceOutMod;
 	private Line[] line = null;//max number of lines on one station is 3, alter if this changes
-	private int rentValue;
-	private int rentValueMod;
+	private int revenueValue;
+	private int revenueValueMod;
 	public double mindistance = Double.POSITIVE_INFINITY;
 	
 	protected ArrayList<StationListener> listeners = new ArrayList<StationListener>();
@@ -36,12 +36,12 @@ public class Station extends MapObj{
 	 * @param resourceType The type of resource the station produces
 	 * @param baseFuelOut The amount of resource the station produces each turn, without up line bonuses
 	 * @param line Array of lines the station belongs to
-	 * @param rentValue How much it costs to rent
+	 * @param revenueValue How much revenue the player makes each turn for this station
 	 * @param x Coordinate of position x on map
 	 * @param y Coordinate of position y on map 
 	 */
 	
-	public Station(String name, int baseValue, Resource resourceType, int baseFuelOut, Line[] line, int rentValue, float x, float y)
+	public Station(String name, int baseValue, Resource resourceType, int baseFuelOut, Line[] line, int revenueValue, float x, float y)
 	{
 		super(x, y, name);
 		
@@ -57,8 +57,8 @@ public class Station extends MapObj{
 		this.baseResourceOut = baseFuelOut;
 		this.resourceOutMod = 0;
 		this.line = line;
-		this.rentValue = rentValue;
-		this.rentValueMod = 0;
+		this.revenueValue = revenueValue;
+		this.revenueValueMod = 0;
 	}
 	
 	/**
@@ -170,35 +170,35 @@ public class Station extends MapObj{
 	/**
 	 * @return the base amount of rent a player will be charged for using an opponents station
 	 */
-	public int getBaseRentValue() //Not currently implemented but is ready if needed later
+	public int getBaseRevenueValue() //Not currently implemented but is ready if needed later
 	{
-		return rentValue;
+		return revenueValue;
 	}
 	/**
 	 * @return the amount the base rent value is increased by
 	 */
-	public int getRentValueMod() //Not currently implemented but is ready if needed later
+	public int getRevenueValueMod() //Not currently implemented but is ready if needed later
 	{
-		return rentValueMod;
+		return revenueValueMod;
 	}	
-	public void setRentValueMod(int value) //Not currently implemented but is ready if needed later
+	public void setRevenueValueMod(int value) //Not currently implemented but is ready if needed later
 	{
-		rentValueMod = value;
+		revenueValueMod = value;
 	}
-	public void addRentValueMod(int add) //Not currently implemented but is ready if needed later
+	public void addRevenueValueMod(int add) //Not currently implemented but is ready if needed later
 	{
-		rentValueMod += add;
+		revenueValueMod += add;
 	}	
-	public void subRentValueMod(int sub) //Not currently implemented but is ready if needed later
+	public void subRevenueValueMod(int sub) //Not currently implemented but is ready if needed later
 	{
-		rentValueMod-= sub;
+		revenueValueMod-= sub;
 	}
 	/**
-	 * @return the total rent value of the station with bonuses
+	 * @return the total Revenue value of the station with bonuses
 	 */
-	public int getTotalRent() //Not currently implemented but is ready if needed later
+	public int getTotalRevenue() //Not currently implemented but is ready if needed later
 	{
-		return rentValue + rentValueMod ;
+		return revenueValue + revenueValueMod ;
 	}
 	
 	/**
