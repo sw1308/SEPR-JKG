@@ -21,12 +21,15 @@ public class Goal implements RouteListener{
 	protected boolean special;
 	private int reward;
 	private String startDate;
+	private int startTurn;
+	private int turnLimit;
 
 	// Variables used to track Goal completion:
 	private Train train;	
 	private boolean startStationPassed;
 	private boolean stationViaPassed;
 	private boolean finalStationPassed;
+	private boolean withinTurnLimit;
 	
 	public static GoalActor goalActor;
 	
@@ -35,19 +38,29 @@ public class Goal implements RouteListener{
 	 * @param startStation The Station the goal starts from
 	 * @param finalStation The Station the goal ends at
 	 * @param stationVia The Station the goal wants you to travel via
-	 * @param cargo The type of cargo the train is carrying.
+	 * @param cargo The type of cargo the train is carrying
 	 * @param reward The reward (currently Gold) you get for completing the Goal
+	 * @param startTurn The turn number that the goal is started on
+	 * @param turnLimit The number of turns allowed to complete the goal
 	 */
-	public Goal(Station startStation, Station finalStation, Station stationVia, String cargo, int reward)
-	{
+	
+	//Overloaded constructor to allow instantiation of goals without turnLimits.
+	public Goal(Station startStation, Station finalStation, Station stationVia, String cargo, int reward) {
+		this(startStation, finalStation, stationVia, cargo, reward, 0);
+	}
+
+	public Goal(Station startStation, Station finalStation, Station stationVia, String cargo, int reward, int turnLimit) {
 		this.sStation = startStation;
 		this.fStation = finalStation;
 		this.stationVia = stationVia;
-		this.setSpecial(false); 
+		this.setSpecial(false);
 		this.reward = reward;  
 		this.cargo = cargo;
 		
-        startDate = "1"; //initialized to 1, not yet implemented. 
+        startDate = "1"; //initialized to 1, not yet implemented.
+        this.startTurn = GameData.turnCount;
+        this.turnLimit = turnLimit;
+        this.withinTurnLimit = true;
 		
 		// Initiliase goal completion variables to false
 		startStationPassed = false;
@@ -124,7 +137,7 @@ public class Goal implements RouteListener{
 	}
 	
 	/**
-	 * Called when the goal is successfully complete:
+	 * Called when the goal is successfully complete
 	 */	
 	public void goalComplete()
 	{
@@ -155,26 +168,27 @@ public class Goal implements RouteListener{
 		if(train == this.train)
 		{
 			System.out.println(train.getName() +" passed " + station.getName());
-			System.out.println(GameData.COAL_BASE);
-			System.out.println(GameData.turnCount);
 			
-			if(station.equals(sStation))
-			{
+			if(station.equals(sStation)) {
 				startStationPassed = true;
 				System.out.println("start passed");
 			}
-			if(startStationPassed && station.equals(fStation))
-			{
+			if(startStationPassed && station.equals(fStation)) {
 				finalStationPassed = true;
 				System.out.println("final passed");
 			}
-			if(stationVia == null || (startStationPassed && station.equals(stationVia)))
-			{
+			if(stationVia == null || (startStationPassed && station.equals(stationVia))) {
 				stationViaPassed = true;
 				System.out.println("via passed");
 			}
-						
-			if(startStationPassed && finalStationPassed && stationViaPassed)
+			if( turnLimit == 0 || startTurn + (turnLimit * 2) > GameData.turnCount) {
+				withinTurnLimit = true;
+				System.out.println("within turn limit");
+			} else {
+				withinTurnLimit = false;
+				System.out.println("turn limit exceeded, goal failed");
+			}
+			if(startStationPassed && finalStationPassed && stationViaPassed && withinTurnLimit)
 				goalComplete();
 		}
 	}
