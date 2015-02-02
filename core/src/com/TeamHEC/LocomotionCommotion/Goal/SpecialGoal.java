@@ -4,9 +4,13 @@ import com.TeamHEC.LocomotionCommotion.Map.Station;
 
 public class SpecialGoal extends Goal{
  
-	 public SpecialGoal(Station Startstation, Station FinalStation, Station stationVia, String cargo, int reward2)
+	public SpecialGoal(Station startStation, Station finalStation, Station stationVia, String cargo, int reward2) {
+		this(startStation, finalStation, stationVia, cargo, reward2, 0);
+	}
+	
+	 public SpecialGoal(Station startstation, Station finalStation, Station stationVia, String cargo, int reward2, int turnLimit)
 	 {
-		 super(Startstation, FinalStation, stationVia , cargo, reward2);  
+		 super(startstation, finalStation, stationVia , cargo, reward2);  
 		 this.setSpecial(true);
 	 }
 }

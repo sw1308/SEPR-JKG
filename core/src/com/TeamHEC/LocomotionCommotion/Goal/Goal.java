@@ -157,6 +157,24 @@ public class Goal implements RouteListener{
 		startStationPassed = false;
 		stationViaPassed = false;
 		finalStationPassed = false;
+		withinTurnLimit = true;
+	}
+	
+	/*
+	 * Called when the goal has been failed
+	 */
+	public void goalFailed() {
+		WarningMessage.fireWarningWindow("GOAL FAILED!", "You failed to complete the route: " + getSStation()
+				+ " to " + getFStation() + "\n Better luck next time!");
+		
+		train.route.unregister(this);
+		
+		train.getOwner().getGoals().remove(this);
+		
+		startStationPassed = false;
+		stationViaPassed = false;
+		finalStationPassed = false;
+		withinTurnLimit = true;
 	}
 	
 	/**
@@ -187,6 +205,7 @@ public class Goal implements RouteListener{
 			} else {
 				withinTurnLimit = false;
 				System.out.println("turn limit exceeded, goal failed");
+				goalFailed();
 			}
 			if(startStationPassed && finalStationPassed && stationViaPassed && withinTurnLimit)
 				goalComplete();

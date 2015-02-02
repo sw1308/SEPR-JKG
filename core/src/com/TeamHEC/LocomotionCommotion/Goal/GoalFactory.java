@@ -3,6 +3,7 @@ package com.TeamHEC.LocomotionCommotion.Goal;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.TeamHEC.LocomotionCommotion.GameData;
 import com.TeamHEC.LocomotionCommotion.Goal.Graph.Dijkstra;
 import com.TeamHEC.LocomotionCommotion.Map.Station;
 import com.TeamHEC.LocomotionCommotion.Map.WorldMap;
@@ -36,13 +37,68 @@ public class GoalFactory{
 	 * @param fStation The final station for the goal.
 	 * @return A value representing the reward. Will be proportional to the minimum distance between sStation and fStation.
 	 */
-	private int genReward(Station sStation, Station fStation){
+	private int genReward(Station sStation, Station fStation) {
 		Dijkstra d = new Dijkstra(); //implements dijkstra 
-		d.computePaths(d.lookUpNode(sStation)); //uses the loopup function to get instance of a
+		d.computePaths(d.lookUpNode(sStation)); //uses the lookup function to get instance of a
 												//station and compute paths 
 		double rew = d.lookUpNode(fStation).minDistance; // 
 		return (int) rew; //returns reward casted to integer 
-	}	
+	}
+	
+	private int genComboReward(Station sStation, Station viaStation, Station fStation) {
+		Dijkstra d = new Dijkstra(); //implements dijkstra 
+		d.computePaths(d.lookUpNode(sStation)); //uses the lookup function to get instance of a
+												//station and compute paths 
+		double rew = d.lookUpNode(viaStation).minDistance;
+		
+		d.computePaths(d.lookUpNode(viaStation));
+		rew += d.lookUpNode(fStation).minDistance;
+		
+		rew = rew * 2;
+		
+		return (int) rew; //returns reward casted to integer
+	}
+	
+	/*
+	 * Generates a suggested turn limit for special goals
+	 * @param fStation The start station for the goal
+	 * @param viaStation The station that must be passed through for special goals
+	 * @param fStation The final station for the goal
+	 * @return A value representing the maximum turn limit for a goal to be completed in
+	 */
+	
+	private int genTurnLimit(Station fStation, Station sStation) {
+		int minSpeed = Math.min(GameData.COAL_BASE, Math.min(GameData.ELECTRIC_BASE, Math.min(GameData.NUCLEAR_BASE, GameData.OIL_BASE)));
+		double turnLimit;
+		double dist;
+		
+		Dijkstra d = new Dijkstra(); //implements dijkstra 
+		d.computePaths(d.lookUpNode(sStation)); //uses the lookup function to get instance of a
+												//station and compute paths 
+		dist = d.lookUpNode(fStation).minDistance;
+		
+		turnLimit = dist/minSpeed;
+		
+		return (int) turnLimit;
+	}
+	
+	private int genComboTurnLimit(Station fStation, Station viaStation, Station sStation) {
+		int minSpeed = Math.min(GameData.COAL_BASE, Math.min(GameData.ELECTRIC_BASE, Math.min(GameData.NUCLEAR_BASE, GameData.OIL_BASE)));
+		double turnLimit;
+		double dist;
+		
+		Dijkstra d = new Dijkstra(); //implements dijkstra 
+		d.computePaths(d.lookUpNode(sStation)); //uses the lookup function to get instance of a
+												//station and compute paths 
+		dist = d.lookUpNode(viaStation).minDistance;
+		
+		d.computePaths(d.lookUpNode(viaStation));
+		dist += d.lookUpNode(fStation).minDistance;
+		
+		turnLimit = dist/minSpeed;
+		
+		return (int) turnLimit;
+	}
 	
 	/**
 	 * Gets a random station from the stationList.
@@ -58,14 +114,13 @@ public class GoalFactory{
 	 * @return A random goal.
 	 */
 	public Goal CreateRandomGoal(){
-		Goal newgoal;
+		Goal newGoal;
 
 		Station sStation = newStation();
 		Station fStation = newStation();		
 
 		while (sStation.getName() == fStation.getName())
-			fStation = newStation();		
-		int reward = genReward(sStation, fStation);
+			fStation = newStation();
 		
 		String cargo;
 		if(random.nextInt(2) == 0)
@@ -73,12 +128,26 @@ public class GoalFactory{
 		else
 			cargo = "Cargo";
 		
-		if(random.nextInt(5) == 5) //random 1/5 choice of getting special goals
-			newgoal = new SpecialGoal(sStation ,fStation, null, cargo, reward);		
-		else
-			newgoal = new Goal(sStation, fStation, null, cargo, reward);
-		
-		return newgoal; 
+		//random 1/5 choice of getting special goals
+		if(random.nextInt(5) == 0) {
+			Station viaStation = newStation();
+			
+			while (sStation.getName() == viaStation.getName() || fStation.getName() == viaStation.getName()) {
+				viaStation = newStation();
+			}
+			
+			//Change to random.nextInt(3) == 0 to allow 3 different types of special goal
+			if(true) {
+				int turnLimit = this.genComboTurnLimit(sStation, viaStation, fStation);
+				int reward = this.genComboReward(sStation, viaStation, fStation);
+				
+				newGoal = new ComboGoal(sStation, fStation, viaStation, cargo, reward, turnLimit);
+			}
+		} else {
+			int reward = genReward(sStation, fStation);
+			newGoal = new Goal(sStation, fStation, null, cargo, reward);
+		}
+		return newGoal;
 	}
 
 }
