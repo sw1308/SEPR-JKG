@@ -42,6 +42,7 @@ public class LocomotionCommotion extends Game {
 	@Override
 	public void create()
 	{
+		GameData GameData = new GameData();
 		setScreen(SceneManager.getInstance().startScene);
 	}
 

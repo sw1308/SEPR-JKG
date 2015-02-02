@@ -1,6 +1,8 @@
 package com.TeamHEC.LocomotionCommotion.Goal;
 
+import com.TeamHEC.LocomotionCommotion.GameData;
 import com.TeamHEC.LocomotionCommotion.Map.Station;
+import com.TeamHEC.LocomotionCommotion.Player.Player;
 import com.TeamHEC.LocomotionCommotion.Train.RouteListener;
 import com.TeamHEC.LocomotionCommotion.Train.Train;
 import com.TeamHEC.LocomotionCommotion.UI_Elements.WarningMessage;
@@ -154,6 +156,7 @@ public class Goal implements RouteListener{
 		if(train == this.train)
 		{
 			System.out.println(train.getName() +" passed " + station.getName());
+			System.out.println(GameData.COAL_BASE);
 			
 			if(station.equals(sStation))
 			{
