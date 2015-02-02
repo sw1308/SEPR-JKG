@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
+import com.TeamHEC.LocomotionCommotion.GameData;
 import com.TeamHEC.LocomotionCommotion.Card.Card;
 import com.TeamHEC.LocomotionCommotion.Goal.Goal;
 import com.TeamHEC.LocomotionCommotion.Map.MapObj;
@@ -39,7 +40,6 @@ public class CoreGame {
 	private Player player1;
 	private Player player2;
 	private Player playerTurn;
-	private int turnCount;
 	private int turnLimit;
 	
 	/**
@@ -94,7 +94,7 @@ public class CoreGame {
 		// Initialise Map and other Game Resources
 
 		gameMap = WorldMap.getInstance();
-		turnCount = 0;
+		GameData.turnCount = 0;
 		this.turnLimit = turnLimit;
 
 		// Make decision on who goes first
@@ -147,7 +147,7 @@ public class CoreGame {
 	public void EndTurn() {
 
 		playerTurn.lineBonuses();
-		turnCount = (turnCount + 1);
+		GameData.turnCount ++;
 		if (playerTurn == player1)
 			playerTurn = player2;
 		else
@@ -213,7 +213,7 @@ public class CoreGame {
 	}
 
 	public int getTurnCount() {
-		return turnCount;
+		return GameData.turnCount;
 	}
 
 	public int getTurnLimit() {
@@ -237,7 +237,7 @@ public class CoreGame {
 		
 		//Save Turn - whose turn, turn count, turnLimit
 		finalJSON += "\"playerTurn\": \"" + playerTurn.getName() + "\", ";
-		finalJSON += "\"turnCount\": " + turnCount + ", ";
+		finalJSON += "\"turnCount\": " + GameData.turnCount + ", ";
 		finalJSON += "\"turnLimit\": " + turnLimit;
 		
 		finalJSON += "}";
