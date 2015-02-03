@@ -152,11 +152,10 @@ public class GoalFactory{
 				int reward = this.genReward(sStation, fStation) * 2;
 				
 				newGoal = new RouteGoal(sStation, fStation, viaStation, cargo, reward);
-			} else {
-				//Place the instantiation code for CargoGoal here, and delete the current code in this else block.
-				int reward = this.genReward(sStation, fStation) * 2;
-				
-				newGoal = new RouteGoal(sStation, fStation, viaStation, cargo, reward);
+			} else {				
+				cargo = "Special (Diamond)";
+				int reward = (int) (this.genReward(sStation, fStation) * 1.50) ;
+				newGoal = new RouteGoal(sStation, fStation, null, cargo, reward);
 			}
 		} else {
 			int reward = genReward(sStation, fStation);
@@ -168,7 +167,31 @@ public class GoalFactory{
 }
 
 
+// Scalable Special Cargo Goals
+/*				
+int randomcargonum = random.nextInt(3);
 
+if(randomcargonum == 0)
+{
+	cargo = "Graphite";
+	int reward = (int) (this.genReward(sStation, fStation) * 1.10) ; 
+	newGoal = new RouteGoal(sStation, fStation, null, cargo, reward);
+}
+
+else if (randomcargonum == 1)
+{
+	cargo = "Silver";
+	int reward = (int) (this.genReward(sStation, fStation) * 1.25) ;
+	newGoal = new RouteGoal(sStation, fStation, null, cargo, reward);
+}
+
+else 
+{
+	cargo = "Diamond";
+	int reward = (int) (this.genReward(sStation, fStation) * 1.50) ;
+	newGoal = new RouteGoal(sStation, fStation, null, cargo, reward);
+}		
+*/
 
 
 
