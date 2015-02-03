@@ -147,6 +147,10 @@ public abstract class Train {
 		speedMod += by;
 	}
 	
+	public void decreaseSpeedMod(int by) {
+		speedMod -= by;
+	}
+	
 	public void decreaseFuelPerTurn(int by)
 	{
 		fuelPerTurn -= by;

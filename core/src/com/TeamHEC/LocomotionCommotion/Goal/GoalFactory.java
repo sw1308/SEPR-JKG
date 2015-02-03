@@ -54,7 +54,7 @@ public class GoalFactory{
 		d.computePaths(d.lookUpNode(viaStation));
 		rew += d.lookUpNode(fStation).minDistance;
 		
-		rew = rew * 2;
+		rew = rew * 3;
 		
 		return (int) rew; //returns reward casted to integer
 	}
@@ -136,12 +136,27 @@ public class GoalFactory{
 				viaStation = newStation();
 			}
 			
-			//Change to random.nextInt(3) == 0 to allow 3 different types of special goal
-			if(true) {
+			int rand = random.nextInt(4);
+			
+			if(rand == 0) {
 				int turnLimit = this.genComboTurnLimit(sStation, viaStation, fStation);
 				int reward = this.genComboReward(sStation, viaStation, fStation);
 				
 				newGoal = new ComboGoal(sStation, fStation, viaStation, cargo, reward, turnLimit);
+			} else if(rand == 1) {
+				int turnLimit = this.genTurnLimit(sStation, fStation);
+				int reward = this.genReward(sStation, fStation) * 2;
+				
+				newGoal = new TimedGoal(sStation, fStation, viaStation, cargo, reward, turnLimit);
+			} else if(rand == 2) {
+				int reward = this.genReward(sStation, fStation) * 2;
+				
+				newGoal = new RouteGoal(sStation, fStation, viaStation, cargo, reward);
+			} else {
+				//Place the instantiation code for CargoGoal here, and delete the current code in this else block.
+				int reward = this.genReward(sStation, fStation) * 2;
+				
+				newGoal = new RouteGoal(sStation, fStation, viaStation, cargo, reward);
 			}
 		} else {
 			int reward = genReward(sStation, fStation);
