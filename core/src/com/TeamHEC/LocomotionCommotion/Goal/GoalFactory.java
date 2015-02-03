@@ -155,7 +155,7 @@ public class GoalFactory{
 			} else {				
 				cargo = "Special (Diamond)";
 				int reward = (int) (this.genReward(sStation, fStation) * 1.50) ;
-				newGoal = new RouteGoal(sStation, fStation, null, cargo, reward);
+				newGoal = new CargoGoal(sStation, fStation, null, cargo, reward);
 			}
 		} else {
 			int reward = genReward(sStation, fStation);
