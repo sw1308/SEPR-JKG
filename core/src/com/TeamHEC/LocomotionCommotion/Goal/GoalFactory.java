@@ -147,7 +147,7 @@ public class GoalFactory{
 				int turnLimit = this.genTurnLimit(sStation, fStation);
 				int reward = this.genReward(sStation, fStation) * 2;
 				
-				newGoal = new TimedGoal(sStation, fStation, viaStation, cargo, reward, turnLimit);
+				newGoal = new TimedGoal(sStation, fStation, null, cargo, reward, turnLimit);
 			} else if(rand == 2) {
 				int reward = this.genReward(sStation, fStation) * 2;
 				
