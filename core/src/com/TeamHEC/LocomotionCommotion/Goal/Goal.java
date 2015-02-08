@@ -96,6 +96,14 @@ public class Goal implements RouteListener{
 		return startDate;
 	}
 	
+	public int getStartTurn() {
+		return startTurn;
+	}
+	
+	public int getTurnLimit() {
+		return turnLimit;
+	}
+	
 	public void setActor(GoalActor actor)
 	{
 		goalActor = actor;
