@@ -310,7 +310,7 @@ public class GoalMenu {
 		String output;
 		output ="";
 
-		output += type + getCenterSpace(type.length(), (12 + (int) Math.log10((double) turnLimit))) + "Turn Limit: " + turnLimit + getCenterSpace((12 + (int) Math.log10(turnLimit)), (int) Math.log10()) + reward;
+		output += type + getCenterSpace(type.length(), (12 + (int) Math.log10(turnLimit))) + "Turn Limit: " + turnLimit + getCenterSpace((12 + (int) Math.log10(turnLimit)), (int) Math.log10(reward)) + reward;
 		output += "\n\n";
 		output += from + getSpacing(from.length()) + startdate; 
 		output += "\n\n";
@@ -353,7 +353,7 @@ public class GoalMenu {
 					goals.get(i).getSStation(),
 					goals.get(i).getStartDate(), 
 					goals.get(i).getFStation(), 
-					goals.get(i).getVia()
+					goals.get(i).getVia(),
 					goals.get(i).getTurnLimit()));
 			} else {
 				goalLabels.get(a).setText(ticketMaker(	goals.get(i).getCargo(),
