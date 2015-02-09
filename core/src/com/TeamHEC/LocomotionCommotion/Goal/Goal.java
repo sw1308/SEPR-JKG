@@ -27,9 +27,14 @@ public class Goal implements RouteListener{
 	// Variables used to track Goal completion:
 	private Train train;	
 	private boolean startStationPassed;
-	private boolean stationViaPassed;
 	private boolean finalStationPassed;
+	
+	
+	//Variables used to track special Goal completion
+	private boolean stationViaPassed;
 	private boolean withinTurnLimit;
+	protected boolean specialcargo;
+	
 	
 	public static GoalActor goalActor;
 	
@@ -61,8 +66,11 @@ public class Goal implements RouteListener{
         this.startTurn = GameData.turnCount;
         this.turnLimit = turnLimit;
         this.withinTurnLimit = true;
-		
-		// Initiliase goal completion variables to false
+        
+        //initialised as false
+        this.specialcargo = false ;
+        		
+		// initialise goal completion variables to false
 		startStationPassed = false;
 		if(stationVia == null)
 		stationViaPassed = true; //does not exist hence always passed 
@@ -134,11 +142,17 @@ public class Goal implements RouteListener{
 	{
 		this.train = train;
 		train.route.register(this);
-		
+
+		if (this.specialcargo) 
+		{
+			int dec = (int) 0.2 * train.getSpeed(); //can be expanded to different special cargo goals by scaling 
+			train.decreaseSpeedMod(dec);
+		}
+	
 		if(train.route.getStation() == sStation)
 			startStationPassed = true;
 	}
-	
+
 	public Train getTrain()
 	{
 		return train;
@@ -166,9 +180,10 @@ public class Goal implements RouteListener{
 		stationViaPassed = false;
 		finalStationPassed = false;
 		withinTurnLimit = true;
+		specialcargo = false;
 	}
 	
-	/*
+	/**
 	 * Called when the goal has been failed
 	 */
 	public void goalFailed() {
@@ -183,6 +198,7 @@ public class Goal implements RouteListener{
 		stationViaPassed = false;
 		finalStationPassed = false;
 		withinTurnLimit = true;
+		specialcargo = false;
 	}
 	
 	/**
