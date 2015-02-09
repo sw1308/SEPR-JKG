@@ -2,6 +2,8 @@ package com.TeamHEC.LocomotionCommotion.Map;
 
 import java.util.ArrayList;
 
+import javax.swing.JOptionPane;
+
 import com.TeamHEC.LocomotionCommotion.Player.Player;
 import com.TeamHEC.LocomotionCommotion.Resource.Resource;
 import com.TeamHEC.LocomotionCommotion.Map.Line;
@@ -24,6 +26,8 @@ public class Station extends MapObj{
 	private Line[] line = null;//max number of lines on one station is 3, alter if this changes
 	private int rentValue;
 	private int rentValueMod;
+	private boolean hasFault;
+	private int stationFaultLevel; //fault level for station- between 0 and 4?
 	public double mindistance = Double.POSITIVE_INFINITY;
 	
 	protected ArrayList<StationListener> listeners = new ArrayList<StationListener>();
@@ -59,6 +63,7 @@ public class Station extends MapObj{
 		this.line = line;
 		this.rentValue = rentValue;
 		this.rentValueMod = 0;
+		this.stationFaultLevel = 0;
 	}
 	
 	/**
@@ -180,7 +185,7 @@ public class Station extends MapObj{
 	public int getRentValueMod() //Not currently implemented but is ready if needed later
 	{
 		return rentValueMod;
-	}	
+	}
 	public void setRentValueMod(int value) //Not currently implemented but is ready if needed later
 	{
 		rentValueMod = value;
@@ -255,5 +260,26 @@ public class Station extends MapObj{
 		{
 			listener.ownerChanged(station, player);
 		}
+	}
+	public boolean isFaulty(){
+		return hasFault;
+	}
+	public void fixFault(){
+		hasFault = false;
+	}
+	public void makeFaulty(){
+		hasFault = true;
+	}
+	public void upgradeStation(){
+		if(stationFaultLevel < 5){
+			stationFaultLevel++;
+		}
+		else{
+			JOptionPane.showMessageDialog(null, "Sorry- the maximum station level is 4!");
+		}
+	}
+	public double getFaultRate(){
+		//returns probability of station developing a fault in a particular level-
+		return 0.1 - (stationFaultLevel / 50.0);
 	}
 }
