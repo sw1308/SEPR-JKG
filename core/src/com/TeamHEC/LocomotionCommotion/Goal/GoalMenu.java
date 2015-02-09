@@ -7,6 +7,7 @@ package com.TeamHEC.LocomotionCommotion.Goal;
  * 
  */
 
+import java.lang.Math;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -297,7 +298,7 @@ public class GoalMenu {
 		String output;
 		output ="";
 
-		output += type + getSpacing(type.length()) + reward; 
+		output += type + getSpacing(type.length()) + reward;
 		output += "\n\n";
 		output += from + getSpacing(from.length()) + startdate; 
 		output += "\n\n";
@@ -305,12 +306,33 @@ public class GoalMenu {
 		return output;
 
 	}
+	//TicketMaker for time limited and combo goals
+	public static String ticketMaker(String type, int reward, String from, String startdate, String dest, String route, int turnLimit) {
+		String output;
+		output ="";
+
+		output += type + getCenterSpace(type.length(), (12 + (int) Math.log10(turnLimit))) + "Turn Limit: " + turnLimit + getCenterSpace((12 + (int) Math.log10(turnLimit)), (int) Math.log10()) + reward;
+		output += "\n\n";
+		output += from + getSpacing(from.length()) + startdate; 
+		output += "\n\n";
+		output += dest + getSpacing(dest.length()) + route;
+		return output;
+	}
 	//Adds spacing for Labels
 	public static String getSpacing(int len){
 		String space="";
 		for (int i=0; i<(17-len)+22; i++){
 			space += " ";
 
+		}
+		return space;
+	}
+	
+	//Adds spacing to place text in the middle of the ticket
+	pulblic static String getCenterSpace(int len, int centerLen) {
+		String space="";
+		for (int i=0; i<(17-len)+11-(centerLen/2)) {
+			space += " ";
 		}
 		return space;
 	}
