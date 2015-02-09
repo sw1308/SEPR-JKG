@@ -305,12 +305,32 @@ public class GoalMenu {
 		return output;
 
 	}
+	//TicketMaker for time limited and combo goals
+	public static String ticketMaker(String type, int reward, String from, String startdate, String dest, String route, int turnLimit) {
+		String output;
+		output ="";
+
+		output += type + getCenterSpace(type.length(), (12 + (int) Math.log10((double) turnLimit))) + "Turn Limit: " + turnLimit + getCenterSpace((12 + (int) Math.log10(turnLimit)), (int) Math.log10()) + reward;
+		output += "\n\n";
+		output += from + getSpacing(from.length()) + startdate; 
+		output += "\n\n";
+		output += dest + getSpacing(dest.length()) + route;
+		return output;
+	}
 	//Adds spacing for Labels
 	public static String getSpacing(int len){
 		String space="";
 		for (int i=0; i<(17-len)+22; i++){
 			space += " ";
 
+		}
+		return space;
+	}
+	
+	public static String getCenterSpace(int len, int centerLen) {
+		String space="";
+		for (int i=0; i<(17-len)+11-(centerLen/2); i++) {
+			space += " ";
 		}
 		return space;
 	}
@@ -327,12 +347,22 @@ public class GoalMenu {
 			int emptyspace= findEmptyGoalSlot(goalLabels);
 			String a = new Integer(emptyspace+1).toString();
 
-			goalLabels.get(a).setText(ticketMaker(	goals.get(i).getCargo(),
+			if(goals.get(i) instanceof ComboGoal || goals.get(i) instanceof TimedGoal) {
+				goalLabels.get(a).setText(ticketMaker(	goals.get(i).getCargo(),
+					goals.get(i).getReward(),
+					goals.get(i).getSStation(),
+					goals.get(i).getStartDate(), 
+					goals.get(i).getFStation(), 
+					goals.get(i).getVia()
+					goals.get(i).getTurnLimit()));
+			} else {
+				goalLabels.get(a).setText(ticketMaker(	goals.get(i).getCargo(),
 					goals.get(i).getReward(),
 					goals.get(i).getSStation(),
 					goals.get(i).getStartDate(), 
 					goals.get(i).getFStation(), 
 					goals.get(i).getVia()));
+			}
 			createdGoals.get(emptyspace).setGoal(goals.get(i));
 			createdGoals.get(emptyspace).setEmpty(false);
 			createdGoals.get(emptyspace).setIndex(emptyspace+1);
