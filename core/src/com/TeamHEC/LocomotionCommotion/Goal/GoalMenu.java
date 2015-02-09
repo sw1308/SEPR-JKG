@@ -349,12 +349,22 @@ public class GoalMenu {
 			int emptyspace= findEmptyGoalSlot(goalLabels);
 			String a = new Integer(emptyspace+1).toString();
 
-			goalLabels.get(a).setText(ticketMaker(	goals.get(i).getCargo(),
+			if(goals.get(i) instanceof ComboGoal || goals.get(i) instanceof TimedGoal) {
+				goalLabels.get(a).setText(ticketMaker(	goals.get(i).getCargo(),
+					goals.get(i).getReward(),
+					goals.get(i).getSStation(),
+					goals.get(i).getStartDate(), 
+					goals.get(i).getFStation(), 
+					goals.get(i).getVia()
+					goals.get(i).getTurnLimit()));
+			} else {
+				goalLabels.get(a).setText(ticketMaker(	goals.get(i).getCargo(),
 					goals.get(i).getReward(),
 					goals.get(i).getSStation(),
 					goals.get(i).getStartDate(), 
 					goals.get(i).getFStation(), 
 					goals.get(i).getVia()));
+			}
 			createdGoals.get(emptyspace).setGoal(goals.get(i));
 			createdGoals.get(emptyspace).setEmpty(false);
 			createdGoals.get(emptyspace).setIndex(emptyspace+1);
