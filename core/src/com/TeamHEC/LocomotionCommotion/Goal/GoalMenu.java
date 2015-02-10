@@ -308,9 +308,17 @@ public class GoalMenu {
 	//TicketMaker for time limited and combo goals
 	public static String ticketMaker(String type, int reward, String from, String startdate, String dest, String route, int turnLimit) {
 		String output;
+		int goalTurnLimit;
 		output ="";
-
-		output += type + getCenterSpace(type.length(), (12 + (int) Math.log10(turnLimit))) + "Turn Limit: " + turnLimit + getCenterSpace((12 + (int) Math.log10(turnLimit)), (int) Math.log10(reward)) + reward;
+		
+		if(turnLimit == 0) {
+			goalTurnLimit = 0;
+		}
+		else {
+			goalTurnLimit = 12 + (int) Math.log10(turnLimit);
+		}
+		
+		output += type + getCenterSpace(type.length(), goalTurnLimit) + "Turn Limit: " + turnLimit + getCenterSpace(goalTurnLimit, (int) Math.log10(reward)) + reward;
 		output += "\n\n";
 		output += from + getSpacing(from.length()) + startdate; 
 		output += "\n\n";
