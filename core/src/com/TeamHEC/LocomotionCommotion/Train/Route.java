@@ -461,12 +461,14 @@ public class Route{
 	public void update(float moveBy)
 	{
 		if(inStation()){
-			if(getStation().isFaulty()){
-				abortRoute();
-				path.clear();
-				routeIndex = 0;
-				isComplete = true;
-				return;
+			if(getStation() != null){ //determines that it is not a junction
+				if(getStation().isFaulty()){ //aborts the route if we reach a broken station!
+					abortRoute();
+					path.clear();
+					routeIndex = 0;
+					isComplete = true;
+					return;
+				}
 			}
 		}
 		// gets the length of the current connection:
