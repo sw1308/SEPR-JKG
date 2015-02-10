@@ -128,8 +128,8 @@ public class GoalFactory{
 		else
 			cargo = "Cargo";
 		
-		//random 1/5 choice of getting special goals
-		if(random.nextInt(5) == 0) {
+		//random 1/2 chance of getting special goals
+		if(random.nextInt(2) == 0) {
 			Station viaStation = newStation();
 			
 			while (sStation.getName() == viaStation.getName() || fStation.getName() == viaStation.getName()) {
@@ -153,7 +153,7 @@ public class GoalFactory{
 				
 				newGoal = new RouteGoal(sStation, fStation, viaStation, cargo, reward);
 			} else {				
-				cargo = "Special (Diamond)";
+				cargo = "Diamonds";
 				int reward = (int) (this.genReward(sStation, fStation) * 1.50) ;
 				newGoal = new CargoGoal(sStation, fStation, null, cargo, reward);
 			}
