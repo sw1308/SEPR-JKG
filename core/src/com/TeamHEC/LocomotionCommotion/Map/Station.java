@@ -241,7 +241,7 @@ public class Station extends MapObj{
 	}
 	
 	/**
-	 * Removes object implementing StationListener so it no longer recieves updates
+	 * Removes object implementing StationListener so it no longer receives updates
 	 * @param s the object to be removed
 	 */
 	public void unregister(StationListener s)
@@ -265,9 +265,11 @@ public class Station extends MapObj{
 		return hasFault;
 	}
 	public void fixFault(){
+		gameMapStation.stationBroken(false);
 		hasFault = false;
 	}
 	public void makeFaulty(){
+		gameMapStation.stationBroken(true);
 		hasFault = true;
 	}
 	public void upgradeStation(){

@@ -460,6 +460,15 @@ public class Route{
 	 */
 	public void update(float moveBy)
 	{
+		if(inStation()){
+			if(getStation().isFaulty()){
+				abortRoute();
+				path.clear();
+				routeIndex = 0;
+				isComplete = true;
+				return;
+			}
+		}
 		// gets the length of the current connection:
 		float connectionLength = path.get(routeIndex).getLength();
 		
@@ -477,7 +486,10 @@ public class Route{
 			float diff = Math.abs(connectionTravelled + moveBy - connectionLength);
 			currentMapObj = path.get(routeIndex).getDestination();
 			
+			//increases route index
 			routeIndex++;
+			
+
 			connectionTravelled = 0;
 			
 			// Triggers a listener so we can implement station tax and Goal completion validation:

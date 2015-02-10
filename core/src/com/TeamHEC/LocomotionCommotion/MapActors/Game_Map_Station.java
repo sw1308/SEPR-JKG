@@ -26,6 +26,21 @@ public class Game_Map_Station extends Game_Map_MapObj implements StationListener
 		return station;
 	}
 
+	public void stationBroken(Boolean broken)
+	{
+		//TODO implement this method- station should have a graphic to show if it is broken.
+		if(broken){
+			//station is broken
+			texture = Game_Map_TextureManager.getInstance().stationBroken;
+			toggleTexture1 = Game_Map_TextureManager.getInstance().stationBroken;
+			toggleTexture2 = Game_Map_TextureManager.getInstance().stationx2Broken;
+		}
+		else{
+			//station not broken
+		}
+	}
+	
+	
 	@Override
 	public void ownerChanged(Station station, Player player)
 	{

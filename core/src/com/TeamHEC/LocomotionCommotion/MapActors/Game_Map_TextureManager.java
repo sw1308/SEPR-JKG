@@ -22,7 +22,9 @@ public class Game_Map_TextureManager{
 	public Texture map = new Texture(Gdx.files.internal("gameScreen/game_map/map.png"));
 	public Texture mapInfo = new Texture(Gdx.files.internal("gameScreen/game_map/mapinfo.png"));
 	public Texture station = new Texture(Gdx.files.internal("gameScreen/game_map/station.png"));
+	public Texture stationBroken = new Texture(Gdx.files.internal("gameScreen/game_map/station-broken.png"));
 	public Texture stationx2 = new Texture(Gdx.files.internal("gameScreen/game_map/Stop.png"));
+	public Texture stationx2Broken = new Texture(Gdx.files.internal("gameScreen/game_map/Stop-broken.png"));
 	
 	public Texture stationInfo = new Texture(Gdx.files.internal("gameScreen/game_map/stationInfoframe.png"));
 	public Texture stationSelect = new Texture(Gdx.files.internal("gameScreen/game_map/stationSelectBtn.png"));
