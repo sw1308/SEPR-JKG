@@ -303,14 +303,18 @@ public class Route{
 	 */
 	public void abortRoute()
 	{	
-		currentMapObj = path.get(routeIndex).getStartMapObj();
-		hideRouteBlips();
-		updateRouteText();
-		
-		while(removeConnection()){}
-		
-		routeIndex = 0;
-		connectionTravelled = 0;
+		if(path.isEmpty()) {
+			WarningMessage.fireWarningWindow("No Route Planned", "Nothing to abort.");
+		} else {
+			currentMapObj = path.get(routeIndex).getStartMapObj();
+			hideRouteBlips();
+			updateRouteText();
+			
+			while(removeConnection()){}
+			
+			routeIndex = 0;
+			connectionTravelled = 0;
+		}
 	}
 	
 	/**
