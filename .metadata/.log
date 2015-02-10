@@ -1,0 +1,74 @@
+!SESSION 2015-02-09 15:52:10.342 -----------------------------------------------
+eclipse.buildId=debbuild
+java.version=1.7.0_75
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_GB
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.springsource.ide.eclipse.gradle.core 4 0 2015-02-09 15:53:36.355
+!MESSAGE 
+!STACK 0
+java.lang.NullPointerException
+	at org.springsource.ide.eclipse.gradle.core.wizards.GradleImportOperation.refreshProjects(GradleImportOperation.java:256)
+	at org.springsource.ide.eclipse.gradle.core.wizards.GradleImportOperation.perform(GradleImportOperation.java:195)
+	at org.springsource.ide.eclipse.gradle.ui.wizards.GradleImportWizard$1.doit(GradleImportWizard.java:66)
+	at org.springsource.ide.eclipse.gradle.core.util.GradleRunnable$1.run(GradleRunnable.java:53)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.springsource.ide.eclipse.gradle.core 4 0 2015-02-09 15:56:02.362
+!MESSAGE 
+!STACK 0
+java.lang.NullPointerException
+	at org.springsource.ide.eclipse.gradle.core.wizards.GradleImportOperation.refreshProjects(GradleImportOperation.java:256)
+	at org.springsource.ide.eclipse.gradle.core.wizards.GradleImportOperation.perform(GradleImportOperation.java:195)
+	at org.springsource.ide.eclipse.gradle.ui.wizards.GradleImportWizard$1.doit(GradleImportWizard.java:66)
+	at org.springsource.ide.eclipse.gradle.core.util.GradleRunnable$1.run(GradleRunnable.java:53)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.springsource.ide.eclipse.gradle.core 4 0 2015-02-09 15:56:48.879
+!MESSAGE 
+!STACK 0
+java.lang.NullPointerException
+	at org.springsource.ide.eclipse.gradle.core.wizards.GradleImportOperation.refreshProjects(GradleImportOperation.java:256)
+	at org.springsource.ide.eclipse.gradle.core.wizards.GradleImportOperation.perform(GradleImportOperation.java:195)
+	at org.springsource.ide.eclipse.gradle.ui.wizards.GradleImportWizard$1.doit(GradleImportWizard.java:66)
+	at org.springsource.ide.eclipse.gradle.core.util.GradleRunnable$1.run(GradleRunnable.java:53)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:54)
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-02-09 15:57:25.990
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10001 2015-02-09 15:57:25.990
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-02-09 15:57:25.990
+!MESSAGE "Gradle IDE" will be ignored because it is already installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2015-02-09 15:57:25.990
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-02-09 15:57:25.990
+!MESSAGE Software being installed: Spring UAA Integration (optional) 3.6.3.201411271001-RELEASE (org.springframework.ide.eclipse.uaa.feature.feature.group 3.6.3.201411271001-RELEASE)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-02-09 15:57:25.990
+!MESSAGE Missing requirement: Spring UAA Integration 3.6.3.201411271001-RELEASE (org.springframework.ide.eclipse.uaa 3.6.3.201411271001-RELEASE) requires 'package com.google.protobuf 0.0.0' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-02-09 15:57:25.990
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-02-09 15:57:25.990
+!MESSAGE From: Spring UAA Integration (optional) 3.6.3.201411271001-RELEASE (org.springframework.ide.eclipse.uaa.feature.feature.group 3.6.3.201411271001-RELEASE)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-02-09 15:57:25.991
+!MESSAGE To: org.springframework.ide.eclipse.uaa [3.6.3.201411271001-RELEASE]
+
+!ENTRY org.eclipse.equinox.p2.operations 4 0 2015-02-09 15:57:25.997
+!MESSAGE Operation details
+!SUBENTRY 1 org.eclipse.equinox.p2.operations 2 10001 2015-02-09 15:57:25.997
+!MESSAGE Your original request has been modified.
+!SUBENTRY 2 org.eclipse.equinox.p2.operations 2 10005 2015-02-09 15:57:25.997
+!MESSAGE "Gradle IDE" will be ignored because it is already installed.
+!SUBENTRY 1 org.eclipse.equinox.p2.director 4 1 2015-02-09 15:57:25.997
+!MESSAGE Cannot complete the install because one or more required items could not be found.
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-02-09 15:57:25.997
+!MESSAGE Software being installed: Spring UAA Integration (optional) 3.6.3.201411271001-RELEASE (org.springframework.ide.eclipse.uaa.feature.feature.group 3.6.3.201411271001-RELEASE)
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 0 2015-02-09 15:57:25.997
+!MESSAGE Missing requirement: Spring UAA Integration 3.6.3.201411271001-RELEASE (org.springframework.ide.eclipse.uaa 3.6.3.201411271001-RELEASE) requires 'package com.google.protobuf 0.0.0' but it could not be found
+!SUBENTRY 2 org.eclipse.equinox.p2.director 4 1 2015-02-09 15:57:25.997
+!MESSAGE Cannot satisfy dependency:
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-02-09 15:57:25.997
+!MESSAGE From: Spring UAA Integration (optional) 3.6.3.201411271001-RELEASE (org.springframework.ide.eclipse.uaa.feature.feature.group 3.6.3.201411271001-RELEASE)
+!SUBENTRY 3 org.eclipse.equinox.p2.director 4 0 2015-02-09 15:57:25.997
+!MESSAGE To: org.springframework.ide.eclipse.uaa [3.6.3.201411271001-RELEASE]
