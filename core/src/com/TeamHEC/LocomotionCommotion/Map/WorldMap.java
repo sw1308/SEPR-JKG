@@ -1,6 +1,7 @@
 package com.TeamHEC.LocomotionCommotion.Map;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import com.TeamHEC.LocomotionCommotion.Resource.*;
 
@@ -107,6 +108,18 @@ public class WorldMap {
 		for(int i = 0; i < connection.length; i++)
 		{
 			mapObj.connections.add(new Connection(mapObj, connection[i]));
+		}
+	}
+	
+	//GENERATE FAULTS
+	public void generateFaults(){
+		for(int i = 0; i < stationsList.size(); i++){
+			Random random = new Random();
+			int randInt = random.nextInt(1000); //percentage
+			int faultRate = (int) (stationsList.get(i).getFaultRate() * 100);
+			if(randInt <= faultRate){ //if random integer is less than fault rate, station becomes faulty- fault rate decreases as station levels up, therefore this becomes less likely
+				stationsList.get(i).makeFaulty();
+			}
 		}
 	}
 }

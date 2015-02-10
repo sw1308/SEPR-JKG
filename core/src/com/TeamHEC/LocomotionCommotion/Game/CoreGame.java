@@ -148,10 +148,13 @@ public class CoreGame {
 
 		playerTurn.lineBonuses();
 		GameData.turnCount ++;
-		if (playerTurn == player1)
+		if (playerTurn == player1){
 			playerTurn = player2;
-		else
+		}
+		else{
+			gameMap.generateFaults();
 			playerTurn = player1;
+		}
 		StartTurn();
 	}
 
@@ -165,6 +168,7 @@ public class CoreGame {
 			// Proceed with the turn:
 			playerTurn.lineBonuses();
 			playerTurn.stationRewards();
+			
 		}
 	}
 
