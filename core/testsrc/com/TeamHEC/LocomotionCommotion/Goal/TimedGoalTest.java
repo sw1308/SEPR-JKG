@@ -6,10 +6,12 @@ import java.util.ArrayList;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import com.TeamHEC.LocomotionCommotion.Card.Card;
 import com.TeamHEC.LocomotionCommotion.Map.Station;
 import com.TeamHEC.LocomotionCommotion.Map.WorldMap;
+import com.TeamHEC.LocomotionCommotion.Mocking.GdxTestRunner;
 import com.TeamHEC.LocomotionCommotion.Player.Player;
 import com.TeamHEC.LocomotionCommotion.Resource.Coal;
 import com.TeamHEC.LocomotionCommotion.Resource.Electric;
@@ -20,6 +22,7 @@ import com.TeamHEC.LocomotionCommotion.Train.OilTrain;
 import com.TeamHEC.LocomotionCommotion.Train.Route;
 import com.TeamHEC.LocomotionCommotion.Train.Train;
 
+@RunWith(GdxTestRunner.class)
 public class TimedGoalTest {
 
 	Goal goal;
