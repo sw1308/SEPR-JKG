@@ -293,51 +293,48 @@ public class GoalMenu {
 
 	}
 	//Creates the string that make up the ticket information
-	public static String ticketMaker(String type, int reward, String from, String startdate, String dest, String route){
+	public static String ticketMaker(String type, int reward, String from, int startdate, String dest, String route){
 		String output;
 		output ="";
 
-		output += type + getSpacing(type.length()) + reward; 
+		output += type + getSpacing(type.length(), String.valueOf(reward).length()) + reward; 
 		output += "\n\n";
-		output += from + getSpacing(from.length()) + startdate; 
+		output += from + getSpacing(from.length(), String.valueOf(startdate).length()) + startdate; 
 		output += "\n\n";
-		output += dest + getSpacing(dest.length()) + route;
+		output += dest + getSpacing(dest.length(), String.valueOf(route).length()) + route;
 		return output;
 
 	}
 	//TicketMaker for time limited and combo goals
-	public static String ticketMaker(String type, int reward, String from, String startdate, String dest, String route, int turnLimit) {
+	public static String ticketMaker(String type, int reward, String from, int startdate, String dest, String route, int turnLimit) {
 		String output;
 		int goalTurnLimit;
 		output ="";
+
+		goalTurnLimit = 12 + String.valueOf(turnLimit).length();
 		
-		if(turnLimit == 0) {
-			goalTurnLimit = 0;
-		}
-		else {
-			goalTurnLimit = 12 + (int) Math.log10(turnLimit);
-		}
-		
-		output += type + getCenterSpace(type.length(), goalTurnLimit) + "Turn Limit: " + turnLimit + getCenterSpace(goalTurnLimit, (int) Math.log10(reward)) + reward;
+		output += type + getCenterSpace(type.length(), goalTurnLimit) 
+				+ "Turn Limit: " + turnLimit 
+				+ getCenterSpace(goalTurnLimit, String.valueOf(reward).length()) + reward;
 		output += "\n\n";
-		output += from + getSpacing(from.length()) + startdate; 
+		output += from + getSpacing(from.length(), String.valueOf(startdate).length()) + startdate; 
 		output += "\n\n";
-		output += dest + getSpacing(dest.length()) + route;
+		output += dest + getSpacing(dest.length(), String.valueOf(route).length()) + route;
 		return output;
 	}
 	//Adds spacing for Labels
-	public static String getSpacing(int len){
+	public static String getSpacing(int len, int rightLen){
 		String space="";
-		for (int i=0; i<(17-len)+22; i++){
+		for (int i=0; i<40 - (len+rightLen); i++){
 			space += " ";
 
 		}
 		return space;
 	}
 	
-	public static String getCenterSpace(int len, int centerLen) {
+	public static String getCenterSpace(int len, int rightLen) {
 		String space="";
-		for (int i=0; i<(17-len)+11-(centerLen/2); i++) {
+		for (int i=0; i<20 - (len + rightLen/2); i++) {
 			space += " ";
 		}
 		return space;
@@ -359,7 +356,7 @@ public class GoalMenu {
 				goalLabels.get(a).setText(ticketMaker(	goals.get(i).getCargo(),
 					goals.get(i).getReward(),
 					goals.get(i).getSStation(),
-					goals.get(i).getStartDate(), 
+					goals.get(i).getStartTurn(), 
 					goals.get(i).getFStation(), 
 					goals.get(i).getVia(),
 					goals.get(i).getTurnLimit()));
@@ -367,7 +364,7 @@ public class GoalMenu {
 				goalLabels.get(a).setText(ticketMaker(	goals.get(i).getCargo(),
 					goals.get(i).getReward(),
 					goals.get(i).getSStation(),
-					goals.get(i).getStartDate(), 
+					goals.get(i).getStartTurn(), 
 					goals.get(i).getFStation(), 
 					goals.get(i).getVia()));
 			}

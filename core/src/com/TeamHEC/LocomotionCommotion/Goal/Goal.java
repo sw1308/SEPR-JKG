@@ -99,11 +99,6 @@ public class Goal implements RouteListener{
 		return reward;
 	}
 	
-	public String getStartDate()
-	{
-		return startDate;
-	}
-	
 	public int getStartTurn() {
 		return startTurn;
 	}

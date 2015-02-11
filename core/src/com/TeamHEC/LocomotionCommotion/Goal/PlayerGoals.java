@@ -171,32 +171,53 @@ public class PlayerGoals {
 
 
 	}
-	/**
-	 * TicketMaker creates the Label using the Goal attributes.
-	 */
-	public static String ticketMaker(String type, int reward, String from, String startdate, String dest, String route){
+	//Creates the string that make up the ticket information
+	public static String ticketMaker(String type, int reward, String from, int startdate, String dest, String route){
 		String output;
 		output ="";
 
-		output += type + getSpacing(type.length()) + reward; 
+		output += type + getSpacing(type.length(), String.valueOf(reward).length()) + reward; 
 		output += "\n\n";
-		output += from + getSpacing(from.length()) + startdate; 
+		output += from + getSpacing(from.length(), String.valueOf(startdate).length()) + startdate; 
 		output += "\n\n";
-		output += dest + getSpacing(dest.length()) + route;
+		output += dest + getSpacing(dest.length(), String.valueOf(route).length()) + route;
 		return output;
 
 	}
-	/**
-	 * Finds the spacing needed for formatting the ticket.
-	 */
-	public static String getSpacing(int len){
+	//TicketMaker for time limited and combo goals
+	public static String ticketMaker(String type, int reward, String from, int startdate, String dest, String route, int turnLimit) {
+		String output;
+		int goalTurnLimit;
+		output ="";
+
+		goalTurnLimit = 12 + String.valueOf(turnLimit).length();
+		
+		output += type + getCenterSpace(type.length(), goalTurnLimit) 
+				+ "Turn Limit: " + turnLimit 
+				+ getCenterSpace(goalTurnLimit, String.valueOf(reward).length()) + reward;
+		output += "\n\n";
+		output += from + getSpacing(from.length(), String.valueOf(startdate).length()) + startdate; 
+		output += "\n\n";
+		output += dest + getSpacing(dest.length(), String.valueOf(route).length()) + route;
+		return output;
+	}
+	//Adds spacing for Labels
+	public static String getSpacing(int len, int rightLen){
 		String space="";
-		for (int i=0; i<(17-len)+20; i++){
+		for (int i=0; i<40 - (len+rightLen); i++){
 			space += " ";
 
 		}
 		return space;
 	}
+		
+		public static String getCenterSpace(int len, int rightLen) {
+			String space="";
+			for (int i=0; i<20 - (len + rightLen/2); i++) {
+				space += " ";
+			}
+			return space;
+		}
 
 	/**
 	 * Moves the playerGoals in to place when the goal menu is opened. This is used to avoid having to create more objects.
@@ -315,13 +336,26 @@ public class PlayerGoals {
 		else
 		{
 			String a = new Integer(numberofOwnedGoals+1).toString();
-			ticketLabels.get(a).setText(ticketMaker(newgoal.getGoal().getCargo(),
-					newgoal.getGoal().getReward(),
-					newgoal.getGoal().getSStation(),
-					newgoal.getGoal().getStartDate(), 
-					newgoal.getGoal().getFStation(), 
-					newgoal.getGoal().getVia())
-					);
+			Goal goalTicket = newgoal.getGoal();
+			
+			if(goalTicket instanceof ComboGoal || goalTicket instanceof TimedGoal) {
+				ticketLabels.get(a).setText(ticketMaker(	goalTicket.getCargo(),
+						goalTicket.getReward(),
+						goalTicket.getSStation(),
+						goalTicket.getStartTurn(), 
+						goalTicket.getFStation(), 
+						goalTicket.getVia(), 
+						goalTicket.getTurnLimit())
+						);
+			} else {
+				ticketLabels.get(a).setText(ticketMaker(	goalTicket.getCargo(),
+						goalTicket.getReward(),
+						goalTicket.getSStation(),
+						goalTicket.getStartTurn(), 
+						goalTicket.getFStation(), 
+						goalTicket.getVia())
+						);
+			}
 			ticketLabels.get(a).setColor(0,0,0,1);
 
 			playerGoalActors.get(a).setGoal(newgoal.getGoal());
@@ -380,13 +414,27 @@ public class PlayerGoals {
 			ticketLabels.get(a).setX(15);
 			ticketLabels.get(a).setY(tickety);
 			tickety-=200;
-			ticketLabels.get(a).setText(ticketMaker(	playerGoalActors.get(a).getGoal().getCargo(),
-					playerGoalActors.get(a).getGoal().getReward(),
-					playerGoalActors.get(a).getGoal().getSStation(),
-					playerGoalActors.get(a).getGoal().getStartDate(), 
-					playerGoalActors.get(a).getGoal().getFStation(), 
-					playerGoalActors.get(a).getGoal().getVia())
-					);
+			
+			Goal goalTicket = playerGoalActors.get(a).getGoal();
+			
+			if(goalTicket instanceof ComboGoal || goalTicket instanceof TimedGoal) {
+				ticketLabels.get(a).setText(ticketMaker(	goalTicket.getCargo(),
+						goalTicket.getReward(),
+						goalTicket.getSStation(),
+						goalTicket.getStartTurn(), 
+						goalTicket.getFStation(), 
+						goalTicket.getVia(), 
+						goalTicket.getTurnLimit())
+						);
+			} else {
+				ticketLabels.get(a).setText(ticketMaker(	goalTicket.getCargo(),
+						goalTicket.getReward(),
+						goalTicket.getSStation(),
+						goalTicket.getStartTurn(), 
+						goalTicket.getFStation(), 
+						goalTicket.getVia())
+						);
+			}
 			removebuttons.get(a).setX(400);
 			removebuttons.get(a).setY(buttony);
 			buttony-=200;

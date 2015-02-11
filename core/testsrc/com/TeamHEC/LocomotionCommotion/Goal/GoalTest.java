@@ -99,7 +99,7 @@ public class GoalTest {
    }
 	@Test 
 	public void testgetStartDate(){
-		assertTrue( goal.getStartDate() != null);
+		assertTrue( goal.getStartTurn() > 0);
 	}
 
 }
