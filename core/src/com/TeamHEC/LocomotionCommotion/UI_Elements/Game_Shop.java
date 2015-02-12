@@ -90,7 +90,7 @@ public class Game_Shop {
 			game_shop_backbtn = new SpriteButton(1350,860,Game_TextureManager.getInstance().game_shop_backbtn){
 				@Override
 				protected void onClicked(){
-					if (Game_Shop.actorManager.start== false)
+					if (Game_Shop.actorManager.start == false)
 					{
 						Game_Shop.actorManager.start= true;
 						for(int i=Game_Shop.actorManager.getstartScreenStageStart(); i<=Game_Shop.actorManager.getstartScreenStageEnd();i++){
@@ -281,17 +281,16 @@ public class Game_Shop {
 
 							}else
 								GameScreen.getStage().getActors().get(i).setVisible(true);
-
-						}			}
+						}
+					}
 					else
 					{	Game_Shop.actorManager.open= false;
-					for(int i=Game_Shop.actorManager.getStageStart(); i<=Game_Shop.actorManager.getStageEnd();i++){
-						if (i > GameScreen.getStage().getActors().size-1){
+						for(int i=Game_Shop.actorManager.getStageStart(); i<=Game_Shop.actorManager.getStageEnd();i++){
+							if (i > GameScreen.getStage().getActors().size-1){
 
-						}else
-							GameScreen.getStage().getActors().get(i).setVisible(false);
-
-					}
+							}else
+								GameScreen.getStage().getActors().get(i).setVisible(false);
+						}
 
 					}
 
@@ -306,22 +305,23 @@ public class Game_Shop {
 					if (Game_Shop.actorManager.start== false)
 					{
 						Game_Shop.actorManager.start= true;
-						for(int i=Game_Shop.actorManager.getstartScreenStageStart(); i<=Game_Shop.actorManager.getstartScreenStageEnd();i++){
+						for(int i=Game_Shop.actorManager.getstartScreenStageStart(); i<=Game_Shop.actorManager.getstartScreenStageEnd(); i++){
 							if (i > GameScreen.getStage().getActors().size-1){
 
 							}else
 								GameScreen.getStage().getActors().get(i).setVisible(true);
 
-						}			}
+						}
+					}
 					else
 					{	Game_Shop.actorManager.start= false;
-					for(int i=Game_Shop.actorManager.getstartScreenStageStart(); i<=Game_Shop.actorManager.getstartScreenStageEnd();i++){
-						if (i > GameScreen.getStage().getActors().size-1){
+						for(int i=Game_Shop.actorManager.getstartScreenStageStart(); i<=Game_Shop.actorManager.getstartScreenStageEnd(); i++){
+							if (i > GameScreen.getStage().getActors().size-1){
 
-						}else
-							GameScreen.getStage().getActors().get(i).setVisible(false);
-
-					}
+							}else
+								GameScreen.getStage().getActors().get(i).setVisible(false);
+							
+						}
 
 					}
 
@@ -358,6 +358,7 @@ public class Game_Shop {
 				}
 			};
 			this.actors.add(shopsellButton);
+			
 			SpriteButton train = new SpriteButton(1050,350, Game_TextureManager.getInstance().game_shop_starttrain){
 				@Override
 				protected void onClicked(){

@@ -293,8 +293,8 @@ public class Game_Map_Manager {
 		undoLastRouteButton.setVisible(false);
 	}
 
-	public static void moveInfoBox(float x,float y){
-		showInfoBox();
+	public static void moveInfoBox(float x,float y, boolean faulty){
+		showInfoBox(faulty);
 		stationInfo.setX(x);
 		stationInfo.setY(y);
 		stationInfo.refreshBounds();
@@ -321,8 +321,15 @@ public class Game_Map_Manager {
 		stationLabelCost.setVisible(false);
 	}
 
-	public static void showInfoBox(){
+	public static void showInfoBox(boolean faulty){
 		stationInfo.setVisible(true);
+		
+		if(faulty == true){
+			Game_Map_Manager.stationSelect.setTexture(Game_Map_TextureManager.getInstance().stationRepair);
+		} else {
+			Game_Map_Manager.stationSelect.setTexture(Game_Map_TextureManager.getInstance().stationSelect);
+		}
+		
 		Game_Map_Manager.stationSelect.setVisible(true);
 
 		stationLabelName.setVisible(true);

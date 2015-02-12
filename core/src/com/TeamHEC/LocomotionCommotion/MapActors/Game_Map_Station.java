@@ -76,7 +76,7 @@ public class Game_Map_Station extends Game_Map_MapObj implements StationListener
 		{	
 			highlighted = true;
 			if(!Game_Map_Manager.routingModeWindow.isVisible())
-				showInfoBox();
+				showInfoBox(Game_Map_StationBtn.selectedStation.getStation().isFaulty());
 		}
 		else
 		{
@@ -85,7 +85,7 @@ public class Game_Map_Station extends Game_Map_MapObj implements StationListener
 		}
 	}
 
-	public void showInfoBox()
+	public void showInfoBox(boolean faulty)
 	{
 		for(int i = Game_Map_Manager.stagestart;i <= Game_Map_Manager.stagestart + Game_Map_Manager.mapActors-1; i++)	
 		{ 	
@@ -101,7 +101,7 @@ public class Game_Map_Station extends Game_Map_MapObj implements StationListener
 		Game_Map_Manager.stationLabelCost.setText(String.format("%d", station.getBaseValue() ));
 		Game_Map_Manager.stationLabelFuel.setText(String.format("%d * %s", station.getResourceType().getValue(), station.getResourceString()));
 
-		Game_Map_Manager.moveInfoBox(this.actorX-180, this.actorY-80);
+		Game_Map_Manager.moveInfoBox(this.actorX-180, this.actorY-80, faulty);
 
 
 	}

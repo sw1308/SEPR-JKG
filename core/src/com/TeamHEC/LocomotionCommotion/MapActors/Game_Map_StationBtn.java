@@ -7,8 +7,15 @@ import com.TeamHEC.LocomotionCommotion.UI_Elements.GameScreenUI;
 import com.TeamHEC.LocomotionCommotion.UI_Elements.Game_StartingSequence;
 import com.TeamHEC.LocomotionCommotion.UI_Elements.Game_TextureManager;
 import com.TeamHEC.LocomotionCommotion.UI_Elements.SpriteButton;
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
+import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
+import com.badlogic.gdx.scenes.scene2d.utils.Align;
 
 public class Game_Map_StationBtn extends SpriteButton {
 
@@ -17,7 +24,7 @@ public class Game_Map_StationBtn extends SpriteButton {
 	// Used to hold player1s selection:
 	public static Game_Map_Station selectedStation, selectedP1;
 	public static Station tempP1Station;
-
+	
 	public Game_Map_StationBtn(float x, float y, Texture texture)
 	{
 		super(x, y, texture);	
@@ -75,6 +82,15 @@ public class Game_Map_StationBtn extends SpriteButton {
 					
 					Game_StartingSequence.selectLabel.setText(GameScreen.game.getPlayerTurn().getName()+" select a new Goal from the Goal Screen!");
 					Game_StartingSequence.selectLabel.setX(950);
+				}
+			}
+			else if(selectedStation.getStation().isFaulty()) {
+				if (GameScreen.game.getPlayerTurn().getGold() > 300) {
+					GameScreen.game.getPlayerTurn().subGold(300);
+					selectedStation.getStation().fixFault();
+				}
+				else {
+					
 				}
 			}
 			else
