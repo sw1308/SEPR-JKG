@@ -36,7 +36,7 @@ public class Game_Map_Station extends Game_Map_MapObj implements StationListener
 				toggleTexture1 = Game_Map_TextureManager.getInstance().stationBroken;
 				toggleTexture2 = Game_Map_TextureManager.getInstance().stationx2Broken;
 			}
-			else if(texture == Game_Map_TextureManager.getInstance().p2Station){
+			else if(texture == Game_Map_TextureManager.getInstance().p1Station){
 				texture = Game_Map_TextureManager.getInstance().p1StationBroken;
 				toggleTexture1 = Game_Map_TextureManager.getInstance().p1StationBroken;
 				toggleTexture2 = Game_Map_TextureManager.getInstance().p1Stationx2Broken;
