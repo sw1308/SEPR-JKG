@@ -31,12 +31,39 @@ public class Game_Map_Station extends Game_Map_MapObj implements StationListener
 		//TODO implement this method- station should have a graphic to show if it is broken.
 		if(broken){
 			//station is broken
-			texture = Game_Map_TextureManager.getInstance().stationBroken;
-			toggleTexture1 = Game_Map_TextureManager.getInstance().stationBroken;
-			toggleTexture2 = Game_Map_TextureManager.getInstance().stationx2Broken;
+			if(texture == Game_Map_TextureManager.getInstance().station){
+				texture = Game_Map_TextureManager.getInstance().stationBroken;
+				toggleTexture1 = Game_Map_TextureManager.getInstance().stationBroken;
+				toggleTexture2 = Game_Map_TextureManager.getInstance().stationx2Broken;
+			}
+			else if(texture == Game_Map_TextureManager.getInstance().p2Station){
+				texture = Game_Map_TextureManager.getInstance().p1StationBroken;
+				toggleTexture1 = Game_Map_TextureManager.getInstance().p1StationBroken;
+				toggleTexture2 = Game_Map_TextureManager.getInstance().p1Stationx2Broken;
+			}
+			else{
+				texture = Game_Map_TextureManager.getInstance().p2StationBroken;
+				toggleTexture1 = Game_Map_TextureManager.getInstance().p2StationBroken;
+				toggleTexture2 = Game_Map_TextureManager.getInstance().p2Stationx2Broken;
+			}
 		}
 		else{
 			//station not broken
+			if(texture == Game_Map_TextureManager.getInstance().stationBroken){
+				texture = Game_Map_TextureManager.getInstance().station;
+				toggleTexture1 = Game_Map_TextureManager.getInstance().station;
+				toggleTexture2 = Game_Map_TextureManager.getInstance().stationx2;
+			}
+			else if(texture == Game_Map_TextureManager.getInstance().p1StationBroken){
+				texture = Game_Map_TextureManager.getInstance().p1Station;
+				toggleTexture1 = Game_Map_TextureManager.getInstance().p1Station;
+				toggleTexture2 = Game_Map_TextureManager.getInstance().p1Stationx2;
+			}
+			else{
+				texture = Game_Map_TextureManager.getInstance().p2Station;
+				toggleTexture1 = Game_Map_TextureManager.getInstance().p2Station;
+				toggleTexture2 = Game_Map_TextureManager.getInstance().p2Stationx2;
+			}
 		}
 	}
 	

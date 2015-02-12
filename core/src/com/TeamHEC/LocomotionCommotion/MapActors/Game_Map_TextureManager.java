@@ -35,12 +35,16 @@ public class Game_Map_TextureManager{
 	public Texture junctionx2 = new Texture(Gdx.files.internal("gameScreen/game_map/junction2.png"));
 	
 	public Texture p1Station = new Texture(Gdx.files.internal("gameScreen/game_map/p1station.png"));
+	public Texture p1StationBroken = new Texture(Gdx.files.internal("gameScreen/game_map/p1station-broken.png"));
 	public Texture p1Stationx2 = new Texture(Gdx.files.internal("gameScreen/game_map/p1station2.png"));
+	public Texture p1Stationx2Broken = new Texture(Gdx.files.internal("gameScreen/game_map/p1station2-broken.png"));
 	public Texture p1Train = new Texture(Gdx.files.internal("gameScreen/game_map/p1train.png"));
 	public Texture p1Trainx2 = new Texture(Gdx.files.internal("gameScreen/game_map/p1train2.png"));
 	
 	public Texture p2Station = new Texture(Gdx.files.internal("gameScreen/game_map/p2station.png"));
+	public Texture p2StationBroken = new Texture(Gdx.files.internal("gameScreen/game_map/p2station-broken.png"));
 	public Texture p2Stationx2 = new Texture(Gdx.files.internal("gameScreen/game_map/p2station2.png"));
+	public Texture p2Stationx2Broken = new Texture(Gdx.files.internal("gameScreen/game_map/p2station2-broken.png"));
 	public Texture p2Train = new Texture(Gdx.files.internal("gameScreen/game_map/p2train.png"));
 	public Texture p2Trainx2 = new Texture(Gdx.files.internal("gameScreen/game_map/p2train2.png"));
 	
