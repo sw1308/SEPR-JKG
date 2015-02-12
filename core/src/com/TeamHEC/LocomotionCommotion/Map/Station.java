@@ -258,18 +258,18 @@ public class Station extends MapObj{
 	{
 		for(StationListener listener: listeners)
 		{
-			listener.ownerChanged(station, player);
+			listener.updateButton(station, player);
 		}
 	}
 	public boolean isFaulty(){
 		return hasFault;
 	}
 	public void fixFault(){
-		gameMapStation.stationBroken(false);
+		gameMapStation.updateButton(this, owner);
 		hasFault = false;
 	}
 	public void makeFaulty(){
-		gameMapStation.stationBroken(true);
+		gameMapStation.updateButton(this, owner);
 		hasFault = true;
 	}
 	public void upgradeStation(){

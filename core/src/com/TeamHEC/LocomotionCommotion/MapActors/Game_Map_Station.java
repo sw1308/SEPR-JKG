@@ -25,18 +25,18 @@ public class Game_Map_Station extends Game_Map_MapObj implements StationListener
 	{
 		return station;
 	}
-
-	public void stationBroken(Boolean broken)
+	
+	@Override
+	public void updateButton(Station station, Player player)
 	{
-		//TODO implement this method- station should have a graphic to show if it is broken.
-		if(broken){
+		if(station.isFaulty()){
 			//station is broken
-			if(texture == Game_Map_TextureManager.getInstance().station){
+			if(player == null){
 				texture = Game_Map_TextureManager.getInstance().stationBroken;
 				toggleTexture1 = Game_Map_TextureManager.getInstance().stationBroken;
 				toggleTexture2 = Game_Map_TextureManager.getInstance().stationx2Broken;
 			}
-			else if(texture == Game_Map_TextureManager.getInstance().p1Station){
+			else if(player.isPlayer1){
 				texture = Game_Map_TextureManager.getInstance().p1StationBroken;
 				toggleTexture1 = Game_Map_TextureManager.getInstance().p1StationBroken;
 				toggleTexture2 = Game_Map_TextureManager.getInstance().p1Stationx2Broken;
@@ -49,12 +49,12 @@ public class Game_Map_Station extends Game_Map_MapObj implements StationListener
 		}
 		else{
 			//station not broken
-			if(texture == Game_Map_TextureManager.getInstance().stationBroken){
+			if(player == null){
 				texture = Game_Map_TextureManager.getInstance().station;
 				toggleTexture1 = Game_Map_TextureManager.getInstance().station;
 				toggleTexture2 = Game_Map_TextureManager.getInstance().stationx2;
 			}
-			else if(texture == Game_Map_TextureManager.getInstance().p1StationBroken){
+			else if(player.isPlayer1){
 				texture = Game_Map_TextureManager.getInstance().p1Station;
 				toggleTexture1 = Game_Map_TextureManager.getInstance().p1Station;
 				toggleTexture2 = Game_Map_TextureManager.getInstance().p1Stationx2;
@@ -64,31 +64,6 @@ public class Game_Map_Station extends Game_Map_MapObj implements StationListener
 				toggleTexture1 = Game_Map_TextureManager.getInstance().p2Station;
 				toggleTexture2 = Game_Map_TextureManager.getInstance().p2Stationx2;
 			}
-		}
-	}
-	
-	
-	@Override
-	public void ownerChanged(Station station, Player player)
-	{
-		if(player == null)
-		{
-			texture = Game_Map_TextureManager.getInstance().station;
-			toggleTexture1 = Game_Map_TextureManager.getInstance().station;
-			toggleTexture2 = Game_Map_TextureManager.getInstance().stationx2;
-		}
-
-		else if(player.isPlayer1)
-		{
-			texture = Game_Map_TextureManager.getInstance().p1Station;
-			toggleTexture1 = Game_Map_TextureManager.getInstance().p1Station;
-			toggleTexture2 = Game_Map_TextureManager.getInstance().p1Stationx2;
-		}
-		else
-		{
-			texture = Game_Map_TextureManager.getInstance().p2Station;
-			toggleTexture1 = Game_Map_TextureManager.getInstance().p2Station;
-			toggleTexture2 = Game_Map_TextureManager.getInstance().p2Stationx2;
 		}
 	}
 

@@ -14,5 +14,5 @@ public interface StationListener {
 	 * @param station the station which has changed owner
 	 * @param player the new owner of the station
 	 */
-	public void ownerChanged(Station station, Player player);
+	public void updateButton(Station station, Player player);
 }
