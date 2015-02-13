@@ -6,12 +6,7 @@ import java.util.HashMap;
 import com.TeamHEC.LocomotionCommotion.Card.Card;
 import com.TeamHEC.LocomotionCommotion.Goal.Goal;
 import com.TeamHEC.LocomotionCommotion.Map.Station;
-import com.TeamHEC.LocomotionCommotion.Resource.Coal;
-import com.TeamHEC.LocomotionCommotion.Resource.Electric;
-import com.TeamHEC.LocomotionCommotion.Resource.Fuel;
-import com.TeamHEC.LocomotionCommotion.Resource.Gold;
-import com.TeamHEC.LocomotionCommotion.Resource.Nuclear;
-import com.TeamHEC.LocomotionCommotion.Resource.Oil;
+import com.TeamHEC.LocomotionCommotion.Resource.*;
 import com.TeamHEC.LocomotionCommotion.Train.RouteListener;
 import com.TeamHEC.LocomotionCommotion.Train.Train;
 import com.TeamHEC.LocomotionCommotion.UI_Elements.GameScreenUI;
@@ -26,7 +21,7 @@ import com.TeamHEC.LocomotionCommotion.UI_Elements.Game_StartingSequence;
 public class Player implements RouteListener{
 
 	private String name;
-	private int points;
+	private Score score;
 	private Gold gold;
 	private Coal coal;
 	private Oil oil;
@@ -43,10 +38,10 @@ public class Player implements RouteListener{
 
 	public boolean isPlayer1;
 
-	public Player(String name, int points, Gold gold, Coal coal, Electric electric, Nuclear nuclear, Oil oil, ArrayList<Card> cards, ArrayList<Goal> goals, ArrayList<Train> trains)
+	public Player(String name, Score score, Gold gold, Coal coal, Electric electric, Nuclear nuclear, Oil oil, ArrayList<Card> cards, ArrayList<Goal> goals, ArrayList<Train> trains)
 	{
 		this.name = name;
-		this.points = points;
+		this.score = score;
 		this.gold = gold;
 		this.coal = coal;
 		this.oil = oil;
@@ -80,11 +75,18 @@ public class Player implements RouteListener{
 	}
 
 	/**
-	 * @return returns the players points
+	 * @return returns the player's score
 	 */
-	public int getPoints()
+	public int getscore()
 	{
-		return points;
+		return score.getValue();
+	}
+	
+	public void addscore(int value)
+	{
+		score.setValue(score.getValue() + value);
+		if(!Game_StartingSequence.inProgress)
+				GameScreenUI.refreshResources();
 	}
 
 	//Shop

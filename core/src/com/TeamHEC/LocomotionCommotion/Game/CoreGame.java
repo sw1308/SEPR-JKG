@@ -13,12 +13,7 @@ import com.TeamHEC.LocomotionCommotion.Map.MapObj;
 import com.TeamHEC.LocomotionCommotion.Map.Station;
 import com.TeamHEC.LocomotionCommotion.Map.WorldMap;
 import com.TeamHEC.LocomotionCommotion.Player.Player;
-import com.TeamHEC.LocomotionCommotion.Resource.Coal;
-import com.TeamHEC.LocomotionCommotion.Resource.Electric;
-import com.TeamHEC.LocomotionCommotion.Resource.Gold;
-import com.TeamHEC.LocomotionCommotion.Resource.Nuclear;
-import com.TeamHEC.LocomotionCommotion.Resource.Oil;
-import com.TeamHEC.LocomotionCommotion.Resource.Resource;
+import com.TeamHEC.LocomotionCommotion.Resource.*;
 import com.TeamHEC.LocomotionCommotion.Train.CoalTrain;
 import com.TeamHEC.LocomotionCommotion.Train.ElectricTrain;
 import com.TeamHEC.LocomotionCommotion.Train.NuclearTrain;
@@ -63,7 +58,7 @@ public class CoreGame {
 		HashMap<String, Resource> player1Resources = getBaseResources(Player1StationStart);
 		HashMap<String, Resource> player2Resources = getBaseResources(Player2StationStart);
 
-		player1 = new Player(Player1Name, 0,
+		player1 = new Player(Player1Name, (Score) player1Resources.get("score"),
 				(Gold) player1Resources.get("gold"),
 				(Coal) player1Resources.get("coal"),
 				(Electric) player1Resources.get("electric"),
@@ -72,7 +67,7 @@ public class CoreGame {
 				new ArrayList<Card>(), new ArrayList<Goal>(),
 				new ArrayList<Train>());
 
-		player2 = new Player(Player2Name, 0,
+		player2 = new Player(Player2Name, (Score) player1Resources.get("score"),
 				(Gold) player2Resources.get("gold"),
 				(Coal) player2Resources.get("coal"),
 				(Electric) player2Resources.get("electric"),
@@ -192,6 +187,7 @@ public class CoreGame {
 		Oil oil = new Oil(200);
 		Electric electric = new Electric(200);
 		Nuclear nuclear = new Nuclear(200);
+		Score score = new Score(0);
 
 		HashMap<String, Resource> dict = new HashMap<String, Resource>();
 
@@ -200,6 +196,7 @@ public class CoreGame {
 		dict.put("oil", oil);
 		dict.put("electric", electric);
 		dict.put("nuclear", nuclear);
+		dict.put("score", score);
 
 		return dict;
 	}

@@ -173,9 +173,9 @@ public class Station extends MapObj{
 	}
 	
 	/**
-	 * @return the base amount of rent a player will be charged for using an opponents station
+	 * @return the base amount of rent a player will receive for owning a station
 	 */
-	public int getBaseRentValue() //Not currently implemented but is ready if needed later
+	public int getBaseRentValue() 
 	{
 		return rentValue;
 	}
