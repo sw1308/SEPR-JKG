@@ -91,20 +91,30 @@ public class CargoGoalTest {
 	@Test
 	public void testAssignTrain() {
 		assertTrue("", goal.getTrain() == train); //Cargo Goal has been successfully been assigned to a train
-		//System.out.println(goal.getTrain().getSpeed());
+		System.out.println("When goal is active, SpeedMod is 10% of TrainSpeed : " + train.getSpeedMod());
+		System.out.println("When goal is active, Train's Speed : " + train.getSpeed());
 	}
 	
 	
 	@Test
 	 public void testgetReward(){
-		   assertTrue(goal.getReward() > 0); //Cargo Goal's reward is successfully generated and is greater than zero
-	   }
+		   assertTrue(goal.getReward() > 0); //Cargo Goal's reward is successfully generated and is greater than zero   
+	}
 	
 	@Test
    public void testisSpecial(){
 	   assertTrue(goal.isSpecial() == true); //On initialisation of CargoGoal the Isspecial bool of Goal class should be set to true 
 	   
-   }
+	}
+	
+	@Test
+	public void testTrainSpeedAfterGoal(){
+		goal.goalComplete();
+		System.out.println("Train's SpeedMod Restored After Goal Completion : " + train.getSpeedMod());
+		System.out.println("Train's Speed Restored to Original After Goal Completion : " + train.getSpeed());
+		assertTrue("Train SpeedMod restored to zero after goal completion", train.getSpeedMod() == 0);
+	}
+	
 
 	public boolean compareStations(String Sname){
 		 for (int i = 0; i < wm.stationsList.size(); i++){
@@ -114,7 +124,8 @@ public class CargoGoalTest {
 	 	 }
 		 return false;
 		 
-	 }
+	}
+
 }
 
 //@Test 
