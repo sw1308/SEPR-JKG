@@ -140,8 +140,8 @@ public class Goal implements RouteListener{
 
 		if (this.specialcargo) 
 		{
-			int dec = (int) 0.2 * train.getSpeed(); //can be expanded to different special cargo goals by scaling 
-			train.decreaseSpeedMod(dec);
+			int dec = (int) ( this.train.getSpeed() / 10 ); // decrease in speed by 10% for special diamond goals 
+			this.train.decreaseSpeedMod(dec);
 		}
 	
 		if(train.route.getStation() == sStation)
