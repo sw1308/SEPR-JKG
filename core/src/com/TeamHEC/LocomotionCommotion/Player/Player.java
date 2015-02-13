@@ -472,6 +472,7 @@ public class Player implements RouteListener{
 			else
 			{
 				this.addFuel(currentStation.getResourceString(), currentStation.getTotalResourceOut());
+				this.addGold(currentStation.getBaseResourceOut());
 			}
 		}
 	}
