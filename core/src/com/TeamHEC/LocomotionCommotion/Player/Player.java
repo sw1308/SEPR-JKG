@@ -82,7 +82,7 @@ public class Player implements RouteListener{
 		return score.getValue();
 	}
 	
-	public void addscore(int value)
+	public void addScore(int value)
 	{
 		score.setValue(score.getValue() + value);
 		if(!Game_StartingSequence.inProgress)
