@@ -265,12 +265,12 @@ public class Station extends MapObj{
 		return hasFault;
 	}
 	public void fixFault(){
-		gameMapStation.updateButton(this, owner);
 		hasFault = false;
+		gameMapStation.updateButton(this, owner);
 	}
 	public void makeFaulty(){
-		gameMapStation.updateButton(this, owner);
 		hasFault = true;
+		gameMapStation.updateButton(this, owner);
 	}
 	public void upgradeStation(){
 		if(stationFaultLevel < 5){
