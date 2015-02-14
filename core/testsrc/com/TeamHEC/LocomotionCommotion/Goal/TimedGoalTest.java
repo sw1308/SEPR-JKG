@@ -73,25 +73,24 @@ public class TimedGoalTest {
 
 	@Test
 	public void testGoalStations() { 
-		assertTrue(compareStations(goal.getSStation())); //if the Combo Goal has a start station
-		assertTrue(compareStations(goal.getFStation())); //if the Combo Goal has a finish station
+		assertTrue(compareStations(goal.getSStation())); //if the TimedGoal has a start station
+		assertTrue(compareStations(goal.getFStation())); //if the TimedGoal has a finish station
 	}
   	
 	@Test
 	public void testAssignTrain() {
-		assertTrue("", goal.getTrain() == train); //Combo Goal has been successfully been assigned to a train
+		assertTrue("", goal.getTrain() == train); //TimedGoal has been successfully been assigned to a train
 	}
 	
 	
 	@Test
 	public void testgetReward(){
-		assertTrue(goal.getReward() > 0); //Combo Goal's reward is successfully generated and is greater than zero
+		assertTrue(goal.getReward() > 0); //TimedGoal's reward is successfully generated and is greater than zero
 	}
 	
 	@Test
 	public void testisSpecial(){
-		assertTrue(goal.isSpecial() == true); //On initialisation of ComboGoal the Isspecial bool of Goal class should be set to true 
-	
+		assertTrue(goal.isSpecial() == true); //On initialisation of TimedGoal the isSpecial bool of Goal class should be set to true
 	}
 	
 	public void testTurnLimit() {
@@ -99,7 +98,7 @@ public class TimedGoalTest {
 	}
 	
 	public void testStartTurn() {
-		assertTrue(goal.getStartTurn() >= 0); //If the Combo Goal has been allocated a start turn then it would be greater than or equal to 0
+		assertTrue(goal.getStartTurn() >= 0); //If the TimedGoal has been allocated a start turn then it would be greater than or equal to 0
 	}
 
 	public boolean compareStations(String Sname){

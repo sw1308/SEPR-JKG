@@ -73,27 +73,25 @@ public class RouteGoalTest {
 
 	@Test
 	public void testGoalStations() { 
-		assertTrue(compareStations(goal.getSStation())); //if the Combo Goal has a start station
-		assertTrue(compareStations(goal.getVia())); //if the Combo Goal has a via station
-		assertTrue(compareStations(goal.getFStation())); //if the Combo Goal has a finish station
-//		assertTrue(goal.stationPassed(ss, train);
+		assertTrue(compareStations(goal.getSStation())); //if the RouteGoal has a start station
+		assertTrue(compareStations(goal.getVia())); //if the RouteGoal has a via station
+		assertTrue(compareStations(goal.getFStation())); //if the RouteGoal has a finish station
 	}
   	
 	@Test
 	public void testAssignTrain() {
-		assertTrue("", goal.getTrain() == train); //Combo Goal has been successfully been assigned to a train
-		//System.out.println(goal.getTrain().getSpeed());
+		assertTrue("", goal.getTrain() == train); //RouteGoal has been successfully been assigned to a train
 	}
 	
 	
 	@Test
 	public void testgetReward(){
-		assertTrue(goal.getReward() > 0); //Combo Goal's reward is successfully generated and is greater than zero
+		assertTrue(goal.getReward() > 0); //RouteGoal's reward is successfully generated and is greater than zero
 	}
 	
 	@Test
 	public void testisSpecial(){
-		assertTrue(goal.isSpecial() == true); //On initialisation of ComboGoal the Isspecial bool of Goal class should be set to true 
+		assertTrue(goal.isSpecial() == true); //On initialisation of RouteGoal the isSpecial bool of Goal class should be set to true 
 	
 	}
 
