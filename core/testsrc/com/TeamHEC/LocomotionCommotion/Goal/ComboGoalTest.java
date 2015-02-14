@@ -102,7 +102,7 @@ public class ComboGoalTest {
 	}
 	
 	public void testStartTurn() {
-		assertTrue(goal.getStartTurn() > 0); //If the Combo Goal has been allocated a start turn then it would be greater than 0
+		assertTrue(goal.getStartTurn() >= 0); //If the Combo Goal has been allocated a start turn then it would be greater than or equal to 0
 	}
 
 	public boolean compareStations(String Sname){

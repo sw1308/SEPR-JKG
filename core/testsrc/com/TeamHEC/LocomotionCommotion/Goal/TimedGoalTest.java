@@ -75,13 +75,11 @@ public class TimedGoalTest {
 	public void testGoalStations() { 
 		assertTrue(compareStations(goal.getSStation())); //if the Combo Goal has a start station
 		assertTrue(compareStations(goal.getFStation())); //if the Combo Goal has a finish station
-//		assertTrue(goal.stationPassed(ss, train);
 	}
   	
 	@Test
 	public void testAssignTrain() {
 		assertTrue("", goal.getTrain() == train); //Combo Goal has been successfully been assigned to a train
-		//System.out.println(goal.getTrain().getSpeed());
 	}
 	
 	
@@ -101,7 +99,7 @@ public class TimedGoalTest {
 	}
 	
 	public void testStartTurn() {
-		assertTrue(goal.getStartTurn() > 0); //If the Combo Goal has been allocated a start turn then it would be greater than 0
+		assertTrue(goal.getStartTurn() >= 0); //If the Combo Goal has been allocated a start turn then it would be greater than or equal to 0
 	}
 
 	public boolean compareStations(String Sname){
