@@ -22,6 +22,8 @@ import com.TeamHEC.LocomotionCommotion.Train.OilTrain;
 import com.TeamHEC.LocomotionCommotion.Train.Route;
 import com.TeamHEC.LocomotionCommotion.Train.Train;
 
+
+
 @RunWith(GdxTestRunner.class)
 public class CargoGoalTest {
 
@@ -63,8 +65,8 @@ public class CargoGoalTest {
 				trains);
 		
 		
-		train = new OilTrain(0, true, new Route(WorldMap.getInstance().AMSTERDAM), player);
-		
+		train = new OilTrain(10, true, new Route(WorldMap.getInstance().AMSTERDAM), player);		
+		// Oil Train ( Base Speed is 80, Original SpeedMod is set to 10, Original Speed : 90 )
 		goal.assignTrain(train);
 		
 	}
@@ -85,35 +87,26 @@ public class CargoGoalTest {
 	public void testGoalStations() { 
 		assertTrue(compareStations(goal.getSStation())); //if the Cargo Goal has a start station
 		assertTrue(compareStations(goal.getFStation())); //if the Cargo Goal has a finish station
-//		assertTrue(goal.stationPassed(ss, train);
 	}
   	
 	@Test
 	public void testAssignTrain() {
-		assertTrue("", goal.getTrain() == train); //Cargo Goal has been successfully been assigned to a train
-		System.out.println("When goal is active, SpeedMod is 10% of TrainSpeed : " + train.getSpeedMod());
-		System.out.println("When goal is active, Train's Speed : " + train.getSpeed());
+		assertTrue("Special Cargo Goal has been successfully assigned to the train" , goal.getTrain() == train);
+		System.out.println("When cargo goal is active, Train's SpeedMod is : " + train.getSpeedMod());
 	}
-	
 	
 	@Test
 	 public void testgetReward(){
-		   assertTrue(goal.getReward() > 0); //Cargo Goal's reward is successfully generated and is greater than zero   
+		   assertTrue("Goal's reward is greater than zero", goal.getReward() > 0); //Cargo Goal's reward is successfully generated and is greater than zero   
 	}
 	
 	@Test
-   public void testisSpecial(){
-	   assertTrue(goal.isSpecial() == true); //On initialisation of CargoGoal the Isspecial bool of Goal class should be set to true 
-	   
-	}
-	
-	@Test
-	public void testTrainSpeedAfterGoal(){
+	public void testTrainSpeedModAfterGoal(){
 		goal.goalComplete();
-		System.out.println("Train's SpeedMod Restored After Goal Completion : " + train.getSpeedMod());
-		System.out.println("Train's Speed Restored to Original After Goal Completion : " + train.getSpeed());
-		assertTrue("Train SpeedMod restored to zero after goal completion", train.getSpeedMod() == 0);
+		assertTrue("Train SpeedMod restored to originalSpeedMod(10) after Cargo Goal Completion", train.getSpeedMod() == 10); 
+		//System.out.println("Train's SpeedMod Restored After Goal Completion : " + train.getSpeedMod());
 	}
+	
 	
 
 	public boolean compareStations(String Sname){
