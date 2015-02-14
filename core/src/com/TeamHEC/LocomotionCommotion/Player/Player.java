@@ -7,8 +7,7 @@ import com.TeamHEC.LocomotionCommotion.Card.Card;
 import com.TeamHEC.LocomotionCommotion.Goal.Goal;
 import com.TeamHEC.LocomotionCommotion.Map.Station;
 import com.TeamHEC.LocomotionCommotion.Resource.*;
-import com.TeamHEC.LocomotionCommotion.Train.RouteListener;
-import com.TeamHEC.LocomotionCommotion.Train.Train;
+import com.TeamHEC.LocomotionCommotion.Train.*;
 import com.TeamHEC.LocomotionCommotion.UI_Elements.GameScreenUI;
 import com.TeamHEC.LocomotionCommotion.UI_Elements.Game_StartingSequence;
 
@@ -137,6 +136,22 @@ public class Player implements RouteListener{
 		playerFuel.get(fuelType).subValue(quantity);
 		if(!Game_StartingSequence.inProgress)
 			GameScreenUI.refreshResources();
+	}
+	
+	public void addTrain(String trainType) {
+		if(trainType == "coal") {
+			CoalTrain train = new CoalTrain(0, true, null, this);
+			trains.add(train);
+		} else if(trainType == "electric") {
+			ElectricTrain train = new ElectricTrain(0, true, null, this);
+			trains.add(train);
+		} else if(trainType == "nuclear") {
+			NuclearTrain train = new NuclearTrain(0, true, null, this);
+			trains.add(train);
+		} else if(trainType == "oil") {
+			OilTrain train = new OilTrain(0, true, null, this);
+			trains.add(train);
+		}
 	}
 
 	//Gold

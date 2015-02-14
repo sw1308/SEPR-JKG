@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 
 import com.TeamHEC.LocomotionCommotion.Player.Player;
 import com.TeamHEC.LocomotionCommotion.Resource.Resource;
+import com.TeamHEC.LocomotionCommotion.UI_Elements.WarningMessage;
 import com.TeamHEC.LocomotionCommotion.Map.Line;
 import com.TeamHEC.LocomotionCommotion.MapActors.Game_Map_Station;
 
@@ -277,7 +278,7 @@ public class Station extends MapObj{
 			stationFaultLevel++;
 		}
 		else{
-			JOptionPane.showMessageDialog(null, "Sorry- the maximum station level is 4!");
+			WarningMessage.fireWarningWindow("Sorry", "The maximum station level is 4!");
 		}
 	}
 	public double getFaultRate(){

@@ -7,15 +7,8 @@ import com.TeamHEC.LocomotionCommotion.UI_Elements.GameScreenUI;
 import com.TeamHEC.LocomotionCommotion.UI_Elements.Game_StartingSequence;
 import com.TeamHEC.LocomotionCommotion.UI_Elements.Game_TextureManager;
 import com.TeamHEC.LocomotionCommotion.UI_Elements.SpriteButton;
-import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator;
-import com.badlogic.gdx.graphics.g2d.freetype.FreeTypeFontGenerator.FreeTypeFontParameter;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
-import com.badlogic.gdx.scenes.scene2d.ui.Label.LabelStyle;
-import com.badlogic.gdx.scenes.scene2d.utils.Align;
 
 public class Game_Map_StationBtn extends SpriteButton {
 
@@ -85,13 +78,8 @@ public class Game_Map_StationBtn extends SpriteButton {
 				}
 			}
 			else if(selectedStation.getStation().isFaulty()) {
-				if (GameScreen.game.getPlayerTurn().getGold() > 300) {
-					GameScreen.game.getPlayerTurn().subGold(300);
-					selectedStation.getStation().fixFault();
-				}
-				else {
-					
-				}
+				GameScreen.game.getPlayerTurn().getShop().repairStation(selectedStation.getStation());
+				Game_Map_Manager.hideInfoBox();
 			}
 			else
 			{

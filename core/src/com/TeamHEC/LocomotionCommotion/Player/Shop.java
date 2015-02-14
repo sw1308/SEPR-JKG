@@ -1,6 +1,7 @@
 package com.TeamHEC.LocomotionCommotion.Player;
 
 import com.TeamHEC.LocomotionCommotion.Card.CardFactory;
+import com.TeamHEC.LocomotionCommotion.Map.Station;
 import com.TeamHEC.LocomotionCommotion.UI_Elements.WarningMessage;
 
 /**
@@ -79,6 +80,15 @@ public class Shop {
 	public void buyTrain(String trainType, int quantity, boolean testCase) {
 		if(trainType == "coal" && customer.getGold() >= quantity*coalTrainPrice) {
 			//customer.addTrain(trainType)
+		}
+	}
+	
+	public void repairStation(Station station) {
+		if(customer.getGold() >= 300) {
+			station.fixFault();
+			customer.subGold(300);
+		} else {
+			WarningMessage.fireWarningWindow("SORRY", "You don't have enough gold!");
 		}
 	}
 		
