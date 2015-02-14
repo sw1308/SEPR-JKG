@@ -12,6 +12,7 @@ import com.TeamHEC.LocomotionCommotion.Goal.Goal;
 import com.TeamHEC.LocomotionCommotion.Map.MapObj;
 import com.TeamHEC.LocomotionCommotion.Mocking.GdxTestRunner;
 import com.TeamHEC.LocomotionCommotion.Player.Player;
+import com.TeamHEC.LocomotionCommotion.Resource.Score;
 import com.TeamHEC.LocomotionCommotion.Resource.Coal;
 import com.TeamHEC.LocomotionCommotion.Resource.Electric;
 import com.TeamHEC.LocomotionCommotion.Resource.Gold;
@@ -56,7 +57,7 @@ public class TrainTest {
 	public void setUp()	{
 	owner = new Player(
 			"Alice", 
-			0, 
+			new Score(0), 
 			new Gold(1000), 
 			new Coal(1000), 
 			new Electric(1000), 

@@ -14,6 +14,7 @@ import com.TeamHEC.LocomotionCommotion.Goal.Goal;
 import com.TeamHEC.LocomotionCommotion.Map.Station;
 import com.TeamHEC.LocomotionCommotion.Map.Line;
 import com.TeamHEC.LocomotionCommotion.Mocking.GdxTestRunner;
+import com.TeamHEC.LocomotionCommotion.Resource.Score;
 import com.TeamHEC.LocomotionCommotion.Resource.Coal;
 import com.TeamHEC.LocomotionCommotion.Resource.Electric;
 import com.TeamHEC.LocomotionCommotion.Resource.Fuel;
@@ -34,7 +35,7 @@ import com.TeamHEC.LocomotionCommotion.Train.Route;
 public class PlayerTest {
 	
 	String name;
-	int points;
+	Score score;
 	Gold gold;
 	Coal coal;
 	Oil oil;
@@ -54,7 +55,7 @@ public class PlayerTest {
 	@Before
 	public void setUp() throws Exception {
 		name = "Player 1";
-		points = 0;
+		score = new Score(0);
 		gold = new Gold(1000);
 		coal = new Coal(200);
 		oil = new Oil(200);
@@ -66,7 +67,7 @@ public class PlayerTest {
 		
 		tester = new Player(
 				name,
-				points,
+				score,
 				gold,
 				coal,
 				electric,
@@ -83,7 +84,7 @@ public class PlayerTest {
 	@Test
 	public void testPlayer() {
 		assertTrue("name not set correctly", tester.getName() == name);
-		assertTrue("points not set correctly", tester.getPoints() == points);
+		assertTrue("points not set correctly", tester.getScore() == score.getValue());
 		assertTrue("gold not set correctly", tester.getGold() == gold.getValue());
 		assertTrue("coal not set correctly", tester.getFuel("Coal") == coal.getValue());
 		assertTrue("oil not set correctly", tester.getFuel("Oil") == oil.getValue());

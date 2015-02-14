@@ -13,6 +13,7 @@ import com.TeamHEC.LocomotionCommotion.Goal.Goal;
 import com.TeamHEC.LocomotionCommotion.Map.WorldMap;
 import com.TeamHEC.LocomotionCommotion.Mocking.GdxTestRunner;
 import com.TeamHEC.LocomotionCommotion.Player.Player;
+import com.TeamHEC.LocomotionCommotion.Resource.Score;
 import com.TeamHEC.LocomotionCommotion.Resource.Coal;
 import com.TeamHEC.LocomotionCommotion.Resource.Electric;
 import com.TeamHEC.LocomotionCommotion.Resource.Gold;
@@ -34,7 +35,7 @@ public class GoFasterStripesCardTest {
 		currentSpeedUpgrade = 10; //Update if it changes
 		player = new Player(
 				"Alice",
-				0,
+				new Score(0),
 				new Gold(500),
 				new Coal(500),
 				new Electric(500),

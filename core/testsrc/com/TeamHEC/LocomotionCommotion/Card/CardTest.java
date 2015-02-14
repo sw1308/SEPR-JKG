@@ -11,6 +11,7 @@ import org.junit.runner.RunWith;
 
 import com.TeamHEC.LocomotionCommotion.Goal.Goal;
 import com.TeamHEC.LocomotionCommotion.Player.Player;
+import com.TeamHEC.LocomotionCommotion.Resource.Score;
 import com.TeamHEC.LocomotionCommotion.Resource.Coal;
 import com.TeamHEC.LocomotionCommotion.Resource.Electric;
 import com.TeamHEC.LocomotionCommotion.Resource.Gold;
@@ -33,7 +34,7 @@ public class CardTest {
 	public void setUp() throws Exception {		
 		player = new Player(
 				"Alice",
-				0,
+				new Score(0),
 				new Gold(500),
 				new Coal(500),
 				new Electric(500),
@@ -64,7 +65,7 @@ public class CardTest {
 	public void testSetOwner() {
 		Player player2 = new Player(
 				"Ben",
-				0,
+				new Score(0),
 				new Gold(500),
 				new Coal(500),
 				new Electric(500),

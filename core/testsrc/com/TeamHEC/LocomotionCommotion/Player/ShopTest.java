@@ -14,6 +14,7 @@ import com.TeamHEC.LocomotionCommotion.Card.Card;
 import com.TeamHEC.LocomotionCommotion.Card.CardFactory;
 import com.TeamHEC.LocomotionCommotion.Goal.Goal;
 import com.TeamHEC.LocomotionCommotion.Mocking.GdxTestRunner;
+import com.TeamHEC.LocomotionCommotion.Resource.Score;
 import com.TeamHEC.LocomotionCommotion.Resource.Coal;
 import com.TeamHEC.LocomotionCommotion.Resource.Electric;
 import com.TeamHEC.LocomotionCommotion.Resource.Gold;
@@ -31,9 +32,10 @@ public class ShopTest {
 
 	int baseFuelValue;
 	int baseGoldValue;
+	int baseScoreValue;
 	
 	String customerName;
-	int customerPoints;
+	Score customerScore;
 	Gold customerGold;
 	Coal customerCoal;
 	Electric customerElectric;
@@ -51,9 +53,10 @@ public class ShopTest {
 	public void setUp() throws Exception {
 		baseFuelValue = 20000;
 		baseGoldValue = 50000000;
+		baseScoreValue = 0;
 		
 		customerName = "Alice";
-		customerPoints = 100;
+		customerScore = new Score(baseScoreValue);
 		customerGold = new Gold(baseGoldValue);
 		customerCoal = new Coal(baseFuelValue);
 		customerElectric = new Electric(baseFuelValue);
@@ -65,7 +68,7 @@ public class ShopTest {
 		
 		testCustomer = new Player(
 				customerName,
-				customerPoints,
+				customerScore,
 				customerGold,
 				customerCoal,
 				customerElectric,

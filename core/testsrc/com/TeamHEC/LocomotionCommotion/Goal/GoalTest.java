@@ -13,6 +13,7 @@ import com.TeamHEC.LocomotionCommotion.Map.Station;
 import com.TeamHEC.LocomotionCommotion.Map.WorldMap;
 import com.TeamHEC.LocomotionCommotion.Mocking.GdxTestRunner;
 import com.TeamHEC.LocomotionCommotion.Player.Player;
+import com.TeamHEC.LocomotionCommotion.Resource.Score;
 import com.TeamHEC.LocomotionCommotion.Resource.Coal;
 import com.TeamHEC.LocomotionCommotion.Resource.Electric;
 import com.TeamHEC.LocomotionCommotion.Resource.Gold;
@@ -36,7 +37,7 @@ public class GoalTest {
 		goal = gf.CreateRandomGoal();
 		
 		String name = "Player 1";
-		int points = 0;
+		Score score = new Score(0);
 		Gold gold = new Gold(1000);
 		Coal coal = new Coal(200);
 		Oil oil = new Oil(200);
@@ -48,7 +49,7 @@ public class GoalTest {
 		
 		Player player = new Player(
 				name,
-				points,
+				score,
 				gold,
 				coal,
 				electric,

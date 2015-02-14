@@ -77,7 +77,7 @@ public class Player implements RouteListener{
 	/**
 	 * @return returns the player's score
 	 */
-	public int getscore()
+	public int getScore()
 	{
 		return score.getValue();
 	}
