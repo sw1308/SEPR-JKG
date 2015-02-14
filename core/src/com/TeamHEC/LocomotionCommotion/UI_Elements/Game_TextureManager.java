@@ -98,6 +98,10 @@ public class Game_TextureManager {
 	public Texture game_shop_oilitem = new Texture(Gdx.files.internal("gameScreen/game_shop/item_oil.png"));
 	public Texture game_shop_electricityitem = new Texture(Gdx.files.internal("gameScreen/game_shop/item_electricity.png"));
 	public Texture game_shop_nuclearitem = new Texture(Gdx.files.internal("gameScreen/game_shop/item_nuclear.png"));
+	public Texture game_shop_coaltrain = new Texture(Gdx.files.internal("gameScreen/game_shop/item_coalTrain.png"));
+	public Texture game_shop_oiltrain = new Texture(Gdx.files.internal("gameScreen/game_shop/item_oilTrain.png"));
+	public Texture game_shop_electricitytrain = new Texture(Gdx.files.internal("gameScreen/game_shop/item_electricityTrain.png"));
+	public Texture game_shop_nucleartrain = new Texture(Gdx.files.internal("gameScreen/game_shop/item_nuclearTrain.png"));
 	public Texture game_shop_carditem = new Texture(Gdx.files.internal("gameScreen/game_shop/item_card.png"));
 	public Texture game_shop_trainitem = new Texture(Gdx.files.internal("gameScreen/game_shop/item_train.png"));
 	

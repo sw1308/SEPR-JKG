@@ -24,6 +24,14 @@ public class Shop {
 	public final static float electricSellPrice = 2.1f;
 	public final static int nuclearPrice = 4;
 	public final static float nuclearSellPrice = 2.8f;
+	public final static int coalTrainPrice = 1000;
+	public final static int coalTrainSellPrice = 700;
+	public final static int oilTrainPrice = 2000;
+	public final static int oilTrainSellPrice = 1400;
+	public final static int electricTrainPrice = 3000;
+	public final static int electricTrainSellPrice = 2100;
+	public final static int nuclearTrainPrice = 4000;
+	public final static int nuclearTrainSellPrice = 2800;
 	public final static int cardPrice = 1000;
 	public final static float cardSellPrice = 700f;
 	
@@ -65,6 +73,12 @@ public class Shop {
 		{
 			if(!testCase)
 				WarningMessage.fireWarningWindow("SORRY", "You don't have enough gold!");
+		}
+	}
+	
+	public void buyTrain(String trainType, int quantity, boolean testCase) {
+		if(trainType == "coal" && customer.getGold() >= quantity*coalTrainPrice) {
+			//customer.addTrain(trainType)
 		}
 	}
 		
