@@ -78,7 +78,7 @@ public class CargoGoalTest {
 	}
 	
 	@Test
-	public void testCargoGoal(){
+	public void testCargo(){
 		assertTrue(goal.getCargo() == "Diamonds"); 
 		System.out.println("The Goal's Type is : " + goal.getCargo());
 	}
