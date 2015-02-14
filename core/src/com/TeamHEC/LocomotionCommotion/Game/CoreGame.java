@@ -20,6 +20,7 @@ import com.TeamHEC.LocomotionCommotion.Train.NuclearTrain;
 import com.TeamHEC.LocomotionCommotion.Train.OilTrain;
 import com.TeamHEC.LocomotionCommotion.Train.Route;
 import com.TeamHEC.LocomotionCommotion.Train.Train;
+import com.TeamHEC.LocomotionCommotion.UI_Elements.WarningMessage;
 
 /**
  * 
@@ -171,8 +172,27 @@ public class CoreGame {
 	 * Ends the current game.
 	 */
 	private void EndGame() {
-
+		int winnerScore;
+		String playerWon;
+		if (player1.getScore() < player2.getScore()){
+			playerWon = player2.getName();
+			winnerScore = player2.getScore();
+			WarningMessage.fireWarningWindow("Thank you, you've completed the game!", "Player " + playerWon + " has Won with a score of " + winnerScore);
+		}
+		else if(player1.getScore() > player2.getScore()){
+			playerWon = player1.getName();
+			winnerScore = player1.getScore();
+			WarningMessage.fireWarningWindow("Thank you, you've completed the game!", "Player " + playerWon + " has Won with a score of " + winnerScore);
+		}
+		else{
+			WarningMessage.fireWarningWindow("Thank you, you've completed the game!", "The Game was a draw!! Well done to both players");
+		}
+		
+		System.exit(0);
+		
 	}
+	
+	
 
 	/**
 	 * Generates the resources a player will start with based on their start
