@@ -7,7 +7,8 @@ import com.TeamHEC.LocomotionCommotion.Train.Train;
 import com.TeamHEC.LocomotionCommotion.UI_Elements.WarningMessage;
 
 /**
- * 
+ * @author Sam Watkins <sw1308@york.ac.uk>
+ * @author Eashan Maheshwari <em948@york.ac.uk>
  * @author Sam Anderson <sa902@york.ac.uk>
  * @author Matthew Taylor <mjkt500@york.ac.uk>
  *
@@ -34,6 +35,7 @@ public class Goal implements RouteListener{
 	private boolean stationViaPassed;
 	private boolean withinTurnLimit;
 	protected boolean specialcargo;
+	protected int ospeedmod; //Used to keep track of original speedmod of train during special cargo goal
 	
 	
 	public static GoalActor goalActor;
@@ -138,14 +140,16 @@ public class Goal implements RouteListener{
 		this.train = train;
 		train.route.register(this);
 
+		if(train.route.getStation() == sStation)
+			startStationPassed = true;
+
 		if (this.specialcargo) 
 		{
+			this.ospeedmod = this.train.getSpeedMod(); //keeps track of original train speed mod before the train being assigned a diamonds goal 
 			int dec = (int) ( this.train.getSpeed() / 10 ); // decrease in speed by 10% for special diamond goals 
 			this.train.decreaseSpeedMod(dec);
 		}
-	
-		if(train.route.getStation() == sStation)
-			startStationPassed = true;
+
 	}
 
 	public Train getTrain()
@@ -162,7 +166,6 @@ public class Goal implements RouteListener{
 				+ " to " + getFStation() + "\n you've won " + getReward());
 		
 		train.getOwner().addGold(getReward());
-		train.getOwner().addScore(getReward());
 		train.route.unregister(this);
 		
 		train.getOwner().getGoals().remove(this);
@@ -176,7 +179,12 @@ public class Goal implements RouteListener{
 		stationViaPassed = false;
 		finalStationPassed = false;
 		withinTurnLimit = true;
+		
+		if (specialcargo) {
 		specialcargo = false;
+		train.setSpeedMod(this.ospeedmod);
+		}
+		
 	}
 	
 	/**
@@ -194,7 +202,6 @@ public class Goal implements RouteListener{
 		stationViaPassed = false;
 		finalStationPassed = false;
 		withinTurnLimit = true;
-		specialcargo = false;
 	}
 	
 	/**
