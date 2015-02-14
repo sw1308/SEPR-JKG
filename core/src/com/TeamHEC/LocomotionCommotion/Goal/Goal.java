@@ -65,7 +65,7 @@ public class Goal implements RouteListener{
 		this.cargo = cargo;
 		
         startDate = "1"; //initialized to 1, not yet implemented.
-        this.startTurn = GameData.turnCount;
+        this.startTurn = 0;
         this.turnLimit = turnLimit;
         this.withinTurnLimit = true;
         
@@ -137,6 +137,7 @@ public class Goal implements RouteListener{
 	 */
 	public void assignTrain(Train train)
 	{
+		this.startTurn = GameData.turnCount;
 		this.train = train;
 		train.route.register(this);
 
