@@ -188,11 +188,8 @@ public class CoreGame {
 			WarningMessage.fireWarningWindow("Thank you, you've completed the game!", "The Game was a draw!! Well done to both players");
 		}
 		
-		System.exit(0);
-		
 	}
-	
-	
+
 
 	/**
 	 * Generates the resources a player will start with based on their start

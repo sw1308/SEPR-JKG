@@ -15,6 +15,7 @@ import com.TeamHEC.LocomotionCommotion.UI_Elements.Game_StartingSequence;
  * @author Matthew Taylor <mjkt500@york.ac.uk>
  * @author Callum Hewitt <ch1194@york.ac.uk>
  * @author Elliot Bray <eb1033@york.ac.uk>
+ * @author Richard Brierley <rb1038@york.ac.uk>
  */
 
 public class Player implements RouteListener{
@@ -81,6 +82,10 @@ public class Player implements RouteListener{
 		return score.getValue();
 	}
 	
+	/**
+	 * 
+	 * @param value amount to be adde to the player's score
+	 */
 	public void addScore(int value)
 	{
 		score.setValue(score.getValue() + value);

@@ -182,4 +182,5 @@ public class PlayerTest {
 		assertTrue("bonuses ere incorrectly set", tester.getStations().get(1).getResourceOutMod() == (int)(tester.getStations().get(2).getBaseResourceOut() * 0.05 * 4));
 		
 	}
+	
 }

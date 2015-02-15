@@ -100,6 +100,9 @@ public class WarningMessage {
 	 */
 	public static void killWarningWindow()
 	{	
+		if (titleLabel.textEquals("Thank you, you've completed the game!")){
+			System.exit(0);
+		}
 		window.setVisible(false);
 		titleLabel.setVisible(false);
 		titleLabel.setText("");
@@ -110,5 +113,13 @@ public class WarningMessage {
 		{
 			stage.getActors().removeValue(a, true);
 		}
+	
+	}
+	
+	public boolean isVisible()
+	{
+		boolean visible;
+		visible = window.isVisible();
+		return visible;
 	}
 }
