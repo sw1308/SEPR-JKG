@@ -34,7 +34,7 @@ public class LocomotionCommotion extends Game {
 	}
 
 	private LocomotionCommotion(){}
-	public static final String TITLE = "LOCOMOTION COMOTION", VERSION = "0.0.0.1";
+	public static final String TITLE = "LOCOMOTION COMMOTION", VERSION = "0.0.0.2";
 
 	/**
 	 * Create sets the screen to show the start scene
