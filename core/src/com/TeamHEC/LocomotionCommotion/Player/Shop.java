@@ -78,8 +78,28 @@ public class Shop {
 	}
 	
 	public void buyTrain(String trainType, int quantity, boolean testCase) {
-		if(trainType == "coal" && customer.getGold() >= quantity*coalTrainPrice) {
-			//customer.addTrain(trainType)
+		int trainPrice = 0;
+		
+		if(trainType == "Coal") {
+			trainPrice = coalTrainPrice;
+		}else if(trainType == "Oil") {
+			trainPrice = oilTrainPrice;
+		}else if(trainType == "Elecric") {
+			trainPrice = electricTrainPrice;
+		}else if(trainType == "Nuclear") {
+			trainPrice = nuclearTrainPrice;
+		}
+		
+		if(customer.getGold() >= trainPrice * quantity) {
+			for(int i = 0; i < quantity; i++) {
+			customer.subGold(trainPrice);
+			customer.addTrain(trainType);
+			}
+		} else {
+			if(!testCase) {
+				WarningMessage.fireWarningWindow("SORRY", "You don't have enough gold!");
+			}
+			
 		}
 	}
 	

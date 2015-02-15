@@ -389,5 +389,96 @@ public class ShopTest {
 				testCustomer.getCards().size() == 0);
 		
 	}
+	
+	@Test
+	public void testBuyTrain() {
+		//Setup
+				int currentGold = testCustomer.getGold();
+				
+				//Execute coal buy
+				testShop.buyTrain("Coal", 1, true);		
+				//Test
+				assertTrue(
+						"testCustomers number of Coal trains was not increased by 1",
+						testCustomer.getTrains().size() == 1);
+				assertTrue(
+						"testCustomer's Gold was not decremented by Shop.coalTrainPrice",
+						testCustomer.getGold() == currentGold - Shop.coalTrainPrice);
+				
+				//Execute oil buy
+				currentGold = testCustomer.getGold();
+				testShop.buyTrain("Oil", 1, true);		
+				//Test
+				assertTrue(
+						"testCustomer's train count was not incremented by 1",
+						testCustomer.getTrains().size() == 2);
+				assertTrue(
+						"testCustomer's Gold was not decremented by Shop.oilTrainPrice",
+						testCustomer.getGold() == currentGold - Shop.oilTrainPrice);
+				
+				//Execute electric buy
+				currentGold = testCustomer.getGold();
+				testShop.buyTrain("Electric", 1, true);		
+				//Test
+				assertTrue(
+						"testCustomer's train count was not incremented by 1",
+						testCustomer.getFuel("Electric") == 3);
+				assertTrue(
+						"testCustomer's Gold was not decremented by Shop.electricTrainPrice",
+						testCustomer.getGold() == currentGold - Shop.electricTrainPrice);
+						
+				//Execute nuclear buy
+				currentGold = testCustomer.getGold();
+				testShop.buyTrain("Nuclear", 1, true);		
+				//Test
+				assertTrue(
+						"testCustomer's train count was not incremented by 1",
+						testCustomer.getTrains().size() == 4);
+				assertTrue(
+						"testCustomer's Gold was not decremented by Shop.nuclearTrainPrice",
+						testCustomer.getGold() == currentGold - Shop.nuclearTrainPrice);		
+				
+				//Try buys with no gold.
+				//Setup
+				testCustomer.subGold(testCustomer.getGold());
+				assertTrue("Customer gold was not set to 0 in setup", testCustomer.getGold() == 0);
+				
+				//Coal
+				int preAttemptTrains = testCustomer.getTrains().size();
+				testShop.buyTrain("Coal", 1, true);
+				assertTrue(
+						"testCustomer's coal was changed after an attempt to purchase coal with no gold.",
+						testCustomer.getTrains().size() == preAttemptTrains);
+				assertTrue(
+						"testCustomer's gold was changed after an attempt to purchase coal with no gold.",
+						testCustomer.getGold() == 0);
+				
+				//Oil
+				testShop.buyTrain("Oil", 1, true);
+				assertTrue(
+						"testCustomer's coal was changed after an attempt to purchase coal with no gold.",
+						testCustomer.getTrains().size() == preAttemptTrains);
+				assertTrue(
+						"testCustomer's gold was changed after an attempt to purchase coal with no gold.",
+						testCustomer.getGold() == 0);
+				
+				//Electric
+				testShop.buyTrain("Electric", 1, true);
+				assertTrue(
+						"testCustomer's coal was changed after an attempt to purchase coal with no gold.",
+						testCustomer.getTrains().size() == preAttemptTrains);
+				assertTrue(
+						"testCustomer's gold was changed after an attempt to purchase coal with no gold.",
+						testCustomer.getGold() == 0);
+				
+				//Nuclear
+				testShop.buyTrain("Nuclear", 1, true);
+				assertTrue(
+						"testCustomer's coal was changed after an attempt to purchase coal with no gold.",
+						testCustomer.getTrains().size() == preAttemptTrains);
+				assertTrue(
+						"testCustomer's gold was changed after an attempt to purchase coal with no gold.",
+						testCustomer.getGold() == 0);
+	}
 
 }
