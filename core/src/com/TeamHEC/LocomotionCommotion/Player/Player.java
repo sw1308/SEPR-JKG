@@ -144,16 +144,16 @@ public class Player implements RouteListener{
 	}
 	
 	public void addTrain(String trainType) {
-		if(trainType == "coal") {
+		if(trainType == "Coal") {
 			CoalTrain train = new CoalTrain(0, true, new Route(stations.get(0)), this);
 			trains.add(train);
-		} else if(trainType == "electric") {
+		} else if(trainType == "Electric") {
 			ElectricTrain train = new ElectricTrain(0, true, new Route(stations.get(0)), this);
 			trains.add(train);
-		} else if(trainType == "nuclear") {
+		} else if(trainType == "Nuclear") {
 			NuclearTrain train = new NuclearTrain(0, true, new Route(stations.get(0)), this);
 			trains.add(train);
-		} else if(trainType == "oil") {
+		} else if(trainType == "Oil") {
 			OilTrain train = new OilTrain(0, true, new Route(stations.get(0)), this);
 			trains.add(train);
 		}

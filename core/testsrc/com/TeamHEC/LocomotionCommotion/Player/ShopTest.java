@@ -13,6 +13,8 @@ import org.junit.runner.RunWith;
 import com.TeamHEC.LocomotionCommotion.Card.Card;
 import com.TeamHEC.LocomotionCommotion.Card.CardFactory;
 import com.TeamHEC.LocomotionCommotion.Goal.Goal;
+import com.TeamHEC.LocomotionCommotion.Map.Line;
+import com.TeamHEC.LocomotionCommotion.Map.Station;
 import com.TeamHEC.LocomotionCommotion.Mocking.GdxTestRunner;
 import com.TeamHEC.LocomotionCommotion.Resource.Score;
 import com.TeamHEC.LocomotionCommotion.Resource.Coal;
@@ -20,6 +22,8 @@ import com.TeamHEC.LocomotionCommotion.Resource.Electric;
 import com.TeamHEC.LocomotionCommotion.Resource.Gold;
 import com.TeamHEC.LocomotionCommotion.Resource.Nuclear;
 import com.TeamHEC.LocomotionCommotion.Resource.Oil;
+import com.TeamHEC.LocomotionCommotion.Train.CoalTrain;
+import com.TeamHEC.LocomotionCommotion.Train.Route;
 import com.TeamHEC.LocomotionCommotion.Train.Train;
 
 /**
@@ -47,6 +51,7 @@ public class ShopTest {
 	
 	Player testCustomer;
 	Shop testShop;
+	Station AMSTERDAM;
 	
 	
 	@Before
@@ -78,6 +83,10 @@ public class ShopTest {
 				customerGoals,
 				customerTrains
 				);
+		
+		AMSTERDAM = new Station("Amsterdam", 850, new Electric(500), 50, new Line[]{Line.Orange, Line.Orange, Line.Orange}, 50, 615f, 560f);
+		testCustomer.getTrains().add(new CoalTrain(0, true, new Route(AMSTERDAM), testCustomer));
+		testCustomer.purchaseStation(AMSTERDAM);
 		
 		testShop = new Shop(testCustomer);
 	}
@@ -394,46 +403,50 @@ public class ShopTest {
 	public void testBuyTrain() {
 		//Setup
 				int currentGold = testCustomer.getGold();
+				int currentTrains = testCustomer.getTrains().size();
 				
 				//Execute coal buy
 				testShop.buyTrain("Coal", 1, true);		
 				//Test
 				assertTrue(
 						"testCustomers number of Coal trains was not increased by 1",
-						testCustomer.getTrains().size() == 1);
+						testCustomer.getTrains().size() == currentTrains + 1);
 				assertTrue(
 						"testCustomer's Gold was not decremented by Shop.coalTrainPrice",
 						testCustomer.getGold() == currentGold - Shop.coalTrainPrice);
 				
 				//Execute oil buy
 				currentGold = testCustomer.getGold();
+				currentTrains = testCustomer.getTrains().size();
 				testShop.buyTrain("Oil", 1, true);		
 				//Test
 				assertTrue(
 						"testCustomer's train count was not incremented by 1",
-						testCustomer.getTrains().size() == 2);
+						testCustomer.getTrains().size() == currentTrains + 1);
 				assertTrue(
 						"testCustomer's Gold was not decremented by Shop.oilTrainPrice",
 						testCustomer.getGold() == currentGold - Shop.oilTrainPrice);
 				
 				//Execute electric buy
 				currentGold = testCustomer.getGold();
+				currentTrains = testCustomer.getTrains().size();
 				testShop.buyTrain("Electric", 1, true);		
 				//Test
 				assertTrue(
 						"testCustomer's train count was not incremented by 1",
-						testCustomer.getFuel("Electric") == 3);
+						testCustomer.getTrains().size() == currentTrains + 1);
 				assertTrue(
 						"testCustomer's Gold was not decremented by Shop.electricTrainPrice",
 						testCustomer.getGold() == currentGold - Shop.electricTrainPrice);
 						
 				//Execute nuclear buy
 				currentGold = testCustomer.getGold();
+				currentTrains = testCustomer.getTrains().size();
 				testShop.buyTrain("Nuclear", 1, true);		
 				//Test
 				assertTrue(
 						"testCustomer's train count was not incremented by 1",
-						testCustomer.getTrains().size() == 4);
+						testCustomer.getTrains().size() == currentTrains + 1);
 				assertTrue(
 						"testCustomer's Gold was not decremented by Shop.nuclearTrainPrice",
 						testCustomer.getGold() == currentGold - Shop.nuclearTrainPrice);		

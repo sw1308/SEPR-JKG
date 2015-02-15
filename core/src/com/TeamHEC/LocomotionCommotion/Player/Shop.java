@@ -84,7 +84,7 @@ public class Shop {
 			trainPrice = coalTrainPrice;
 		}else if(trainType == "Oil") {
 			trainPrice = oilTrainPrice;
-		}else if(trainType == "Elecric") {
+		}else if(trainType == "Electric") {
 			trainPrice = electricTrainPrice;
 		}else if(trainType == "Nuclear") {
 			trainPrice = nuclearTrainPrice;
