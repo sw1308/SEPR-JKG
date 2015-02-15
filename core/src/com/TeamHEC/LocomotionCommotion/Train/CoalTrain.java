@@ -16,8 +16,7 @@ public class CoalTrain extends Train {
 		
 	public CoalTrain(int speedMod, boolean inStation, Route route, Player player)
 	{
-		super("Steam Machine", new Coal(200), BASE_SPEED, speedMod, VALUE,
-				inStation, route, player);
+		super("Steam Machine", new Coal(200), BASE_SPEED, speedMod, VALUE, inStation, route, player);
 		fuelPerTurn = 10;
 	}
 }
