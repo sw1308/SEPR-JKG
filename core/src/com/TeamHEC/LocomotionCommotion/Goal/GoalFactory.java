@@ -128,8 +128,8 @@ public class GoalFactory{
 		else
 			cargo = "Cargo";
 		
-		//random 1/2 chance of getting special goals
-		if(random.nextInt(2) == 0) {
+		//random 1/4 chance of getting special goals
+		if(random.nextInt(3) == 0) {
 			Station viaStation = newStation();
 			
 			while (sStation.getName() == viaStation.getName() || fStation.getName() == viaStation.getName()) {

@@ -36,6 +36,10 @@ public class GoalTest {
 		GoalFactory gf = new GoalFactory(1);
 		goal = gf.CreateRandomGoal();
 		
+		while((goal instanceof SpecialGoal)) {
+			goal = gf.CreateRandomGoal();
+		}
+		
 		String name = "Player 1";
 		Score score = new Score(0);
 		Gold gold = new Gold(1000);
@@ -100,7 +104,7 @@ public class GoalTest {
    }
 	@Test 
 	public void testgetStartDate(){
-		assertTrue( goal.getStartTurn() > 0);
+		assertTrue( goal.getStartTurn() >= 0);
 	}
 
 }
