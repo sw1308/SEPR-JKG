@@ -29,6 +29,8 @@ public class Game_Map_TextureManager{
 	public Texture stationInfo = new Texture(Gdx.files.internal("gameScreen/game_map/stationInfoframe.png"));
 	public Texture stationSelect = new Texture(Gdx.files.internal("gameScreen/game_map/stationSelectBtn.png"));
 	public Texture stationRepair = new Texture(Gdx.files.internal("gameScreen/game_map/stationRepairBtn.png"));
+	public Texture stationBuy = new Texture(Gdx.files.internal("gameScreen/game_map/stationBuyBtn.png"));
+	public Texture stationUpgrade = new Texture(Gdx.files.internal("gameScreen/game_map/stationUpgradeBtn.png"));
 	public Texture trainInfo = new Texture(Gdx.files.internal("gameScreen/game_map/trainInfo.png"));
 	public Texture trainInfoPlanRoute = new Texture(Gdx.files.internal("gameScreen/game_map/trainInfoPlanRoute.png"));
 	
