@@ -3,6 +3,7 @@ package com.TeamHEC.LocomotionCommotion.UI_Elements;
 import java.util.ArrayList;
 
 import com.TeamHEC.LocomotionCommotion.LocomotionCommotion;
+import com.TeamHEC.LocomotionCommotion.GameData;
 import com.TeamHEC.LocomotionCommotion.Card.Game_CardHand;
 import com.TeamHEC.LocomotionCommotion.Game.GameScreen;
 import com.TeamHEC.LocomotionCommotion.Goal.GoalMenu;
@@ -192,9 +193,7 @@ public class GameScreenUI {
 				Game_Shop.actorManager.refreshgold(GameScreen.game.getPlayerTurn().getGold());
 				PlayerGoals.changePlayer(GameScreen.game.getPlayerTurn());
 				Game_CardHand.actorManager.changePlayer(GameScreen.game.getPlayerTurn());
-				playerScore.setText(GameScreen.game.getPlayer1().getName()+"    " + 0 +
-						"     SCORE     "+ 0+"     "+GameScreen.game.getPlayer2().getName()
-						+"     "+GameScreen.game.getPlayerTurn().getName()+" it's your turn ");
+				playerScore.setText("Turn " + GameData.turnCount + "  " + GameScreen.game.getPlayer1().getName()+"    " + GameScreen.game.getPlayer1().getScore() + "     SCORE     "+ GameScreen.game.getPlayer2().getScore() +"     " + GameScreen.game.getPlayer2().getName() + "     " + GameScreen.game.getPlayerTurn().getName()+" it's your turn ");
 				currentPlayerName.setText(GameScreen.game.getPlayerTurn().getName()+"'s TURN");
 				GoalMenu.fillGoalScreen();
 			}
@@ -352,7 +351,7 @@ public class GameScreenUI {
 		playerScore = new Label(null, style);
 		playerScore.setColor(0,0,0,1);
 		playerScore.setText("");
-		playerScore.setX(600);
+		playerScore.setX(490);
 		playerScore.setY(Gdx.graphics.getHeight()- playerScore.getHeight() -45);
 		actors.add(playerScore);
 

@@ -3,6 +3,7 @@ package com.TeamHEC.LocomotionCommotion.UI_Elements;
 import java.util.ArrayList;
 
 import com.TeamHEC.LocomotionCommotion.LocomotionCommotion;
+import com.TeamHEC.LocomotionCommotion.GameData;
 import com.TeamHEC.LocomotionCommotion.Game.GameScreen;
 import com.TeamHEC.LocomotionCommotion.Goal.Goal;
 import com.TeamHEC.LocomotionCommotion.Goal.GoalFactory;
@@ -94,8 +95,8 @@ public class Game_StartingSequence {
 
 		//Handle Text within Game
 		//Score and Who's Turn it is
-		GameScreenUI.playerScore.setText(GameScreen.game.getPlayer1().getName()+"    " + 0 +
-				"     SCORE     "+ 0+"     "+GameScreen.game.getPlayer2().getName());
+		GameScreenUI.playerScore.setText("Turn "+ 0 + "  " + GameScreen.game.getPlayer1().getName()+"    " + 0 +
+				"     SCORE     " + 0 + "     "+GameScreen.game.getPlayer2().getName());
 		GameScreenUI.currentPlayerName.setText(GameScreen.game.getPlayerTurn().getName()+"'s TURN");
 		//Resources
 		GameScreenUI.goldQuant.setText(""+GameScreen.game.getPlayerTurn().getGold());

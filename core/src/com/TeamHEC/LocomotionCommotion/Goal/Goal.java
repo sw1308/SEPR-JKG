@@ -5,6 +5,8 @@ import com.TeamHEC.LocomotionCommotion.Map.Station;
 import com.TeamHEC.LocomotionCommotion.Train.RouteListener;
 import com.TeamHEC.LocomotionCommotion.Train.Train;
 import com.TeamHEC.LocomotionCommotion.UI_Elements.WarningMessage;
+import com.TeamHEC.LocomotionCommotion.UI_Elements.GameScreenUI;
+import com.TeamHEC.LocomotionCommotion.Game.GameScreen;
 
 /**
  * @author Sam Watkins <sw1308@york.ac.uk>
@@ -167,7 +169,8 @@ public class Goal implements RouteListener{
 				+ " to " + getFStation() + "\n you've won " + getReward());
 		
 		train.getOwner().addGold(getReward());
-		train.getOwner().addScore(getReward());
+		train.getOwner().addScore(getReward()/100);
+		GameScreenUI.playerScore.setText("Turn "+ GameData.turnCount + "   " + GameScreen.game.getPlayer1().getName()+ "    " + GameScreen.game.getPlayer1().getScore() + "     SCORE     " + GameScreen.game.getPlayer2().getScore() + "     "+ GameScreen.game.getPlayer2().getName() + "     " + GameScreen.game.getPlayerTurn().getName()+" it's your turn ");
 		train.route.unregister(this);
 		
 		train.getOwner().getGoals().remove(this);

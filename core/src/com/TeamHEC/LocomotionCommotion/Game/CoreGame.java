@@ -59,7 +59,8 @@ public class CoreGame {
 		HashMap<String, Resource> player1Resources = getBaseResources(Player1StationStart);
 		HashMap<String, Resource> player2Resources = getBaseResources(Player2StationStart);
 
-		player1 = new Player(Player1Name, (Score) player1Resources.get("score"),
+		player1 = new Player(Player1Name, 
+				(Score) player1Resources.get("score"),
 				(Gold) player1Resources.get("gold"),
 				(Coal) player1Resources.get("coal"),
 				(Electric) player1Resources.get("electric"),
@@ -68,7 +69,8 @@ public class CoreGame {
 				new ArrayList<Card>(), new ArrayList<Goal>(),
 				new ArrayList<Train>());
 
-		player2 = new Player(Player2Name, (Score) player1Resources.get("score"),
+		player2 = new Player(Player2Name, 
+				(Score) player2Resources.get("score"),
 				(Gold) player2Resources.get("gold"),
 				(Coal) player2Resources.get("coal"),
 				(Electric) player2Resources.get("electric"),
