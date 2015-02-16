@@ -22,10 +22,13 @@ public class GoalFactoryTest {
 	@Test
 	public void testCreateRandomGoal() {
 		
+		//Booleans used to track creation of special goals
 		boolean nor = false;
 		boolean spl = false;
 		boolean cspl = false;
-		
+		boolean combog = false;
+		boolean routeg = false;
+		boolean timedg = false;
 		
 		for(int i = 0; i < 500; i ++)
 		{			
@@ -58,13 +61,23 @@ public class GoalFactoryTest {
 			if (goal.specialcargo){ 
 				cspl = true; //The value of cspl is set to true if one or more special goals are created by the method
 			}	
-			
+			if (goal instanceof ComboGoal){
+				combog = true;
+			}
+			if (goal instanceof RouteGoal){
+				routeg = true;
+			}
+			if (goal instanceof TimedGoal){
+				timedg = true;
+			}
 		}
 		
 		assertTrue("GoalFactory successsfully created one or more normal/non-special goals", cspl);
 		assertTrue("GoalFactory successsfully created one or more special goals", spl);
 		assertTrue("GoalFactory successsfully created one or more special Cargo goals", nor);
-		
+		assertTrue("GoalFactory successsfully created one or more special Route goals", routeg);
+		assertTrue("GoalFactory successsfully created one or more special Combo goals", combog);
+		assertTrue("GoalFactory successsfully created one or more special Combo goals", timedg);
 	}
 	
 	//@Test
