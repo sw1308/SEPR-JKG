@@ -327,8 +327,10 @@ public class Game_Map_Manager {
 		
 		if(faulty == true){
 			Game_Map_Manager.stationSelect.setTexture(Game_Map_TextureManager.getInstance().stationRepair);
-		} else if(Game_Map_StationBtn.selectedStation.getStation().getOwner() == GameScreen.game.getPlayerTurn()) {
-			Game_Map_Manager.stationSelect.setTexture(Game_Map_TextureManager.getInstance().stationUpgrade);
+		} else if(Game_Map_StationBtn.selectedStation.getStation().getOwner() != null) {
+			if(Game_Map_StationBtn.selectedStation.getStation().getOwner() == GameScreen.game.getPlayerTurn()) {
+				Game_Map_Manager.stationSelect.setTexture(Game_Map_TextureManager.getInstance().stationUpgrade);
+			}
 		} else if(Game_StartingSequence.inProgress) {
 			Game_Map_Manager.stationSelect.setTexture(Game_Map_TextureManager.getInstance().stationSelect);
 		} else {
