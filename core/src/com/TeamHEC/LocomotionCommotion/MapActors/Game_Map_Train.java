@@ -74,7 +74,6 @@ public class Game_Map_Train extends Actor{
 			Game_Map_Manager.trainInfo.showLabel(train);
 			
 			if(Game_Map_Manager.trainInfo.train.route.inStation()) {
-				System.out.println("test");
 				clickCount = 2;
 			}else{
 				clickCount = 1;
@@ -96,7 +95,6 @@ public class Game_Map_Train extends Actor{
 			
 			if(Game_Map_Manager.trainInfo.train.route.inStation())
 			{
-				System.out.println("thing");
 				Game_Map_Manager.trainInfo.train.route.getStation().getStationActor().showInfoBox(Game_Map_Manager.trainInfo.train.route.getStation().isFaulty());
 				Game_Map_StationBtn.selectedStation = Game_Map_Manager.trainInfo.train.route.getStation().getStationActor();
 			}
