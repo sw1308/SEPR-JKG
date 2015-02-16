@@ -1,5 +1,7 @@
 package com.TeamHEC.LocomotionCommotion.Card;
 
+import java.util.Random;
+
 import com.TeamHEC.LocomotionCommotion.Map.MapObj;
 import com.TeamHEC.LocomotionCommotion.Map.WorldMap;
 import com.TeamHEC.LocomotionCommotion.Player.Player;
@@ -30,11 +32,12 @@ public class TeleportCard extends Card{
 	 */
 	public void implementCard()
 	{
+		Random rnd = new Random();
 		// Need a way to choose the train:
-		Train train = getOwner().getTrains().get(0);
+		Train train = getOwner().getTrains().get(rnd.nextInt(getOwner().getTrains().size()));
 		
 		// Need a way to choose station:
-		MapObj chosenLocation = WorldMap.getInstance().stationsList.get(0);
+		MapObj chosenLocation = WorldMap.getInstance().stationsList.get(rnd.nextInt(WorldMap.getInstance().stationsList.size()));
 		
 		train.route.getRoute().clear();
 		train.route.setRouteIndex(0);
