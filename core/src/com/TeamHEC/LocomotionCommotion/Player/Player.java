@@ -10,6 +10,7 @@ import com.TeamHEC.LocomotionCommotion.Resource.*;
 import com.TeamHEC.LocomotionCommotion.Train.*;
 import com.TeamHEC.LocomotionCommotion.UI_Elements.GameScreenUI;
 import com.TeamHEC.LocomotionCommotion.UI_Elements.Game_StartingSequence;
+import com.TeamHEC.LocomotionCommotion.UI_Elements.WarningMessage;
 
 /**
  * @author Matthew Taylor <mjkt500@york.ac.uk>
@@ -285,7 +286,7 @@ public class Player implements RouteListener{
 					}
 					else
 					{
-						//WarningMessage.fireWarningWindow("Not enough gold", "");
+						WarningMessage.fireWarningWindow("SORRY", "You don't have enough gold!");
 					}
 				}
 				else

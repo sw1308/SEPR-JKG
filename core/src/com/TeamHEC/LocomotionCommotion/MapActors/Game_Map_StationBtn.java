@@ -78,8 +78,11 @@ public class Game_Map_StationBtn extends SpriteButton {
 				}
 			}
 			else if(selectedStation.getStation().isFaulty()) {
-				GameScreen.game.getPlayerTurn().getShop().repairStation(selectedStation.getStation());
+				GameScreen.game.getPlayerTurn().getShop().repairStation(selectedStation.getStation(), false);
 				Game_Map_Manager.hideInfoBox();
+			}
+			else if(selectedStation.getStation().getOwner() == GameScreen.game.getPlayerTurn()) {
+				GameScreen.game.getPlayerTurn().getShop().upgradeStation(selectedStation.getStation(), false);
 			}
 			else
 			{

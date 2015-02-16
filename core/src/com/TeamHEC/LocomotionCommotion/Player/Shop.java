@@ -103,15 +103,27 @@ public class Shop {
 		}
 	}
 	
-	public void repairStation(Station station) {
+	public void repairStation(Station station, boolean testCase) {
 		if(customer.getGold() >= 300) {
 			station.fixFault();
 			customer.subGold(300);
 		} else {
+			if(!testCase){
+				WarningMessage.fireWarningWindow("SORRY", "You don't have enough gold!");
+			}
+		}
+	}
+	
+	public void upgradeStation(Station station, boolean testCase) {
+		if(customer.getGold() >= 400) {
+			station.upgradeStation();
+			customer.subGold(400);
+		}
+		else{
 			WarningMessage.fireWarningWindow("SORRY", "You don't have enough gold!");
 		}
 	}
-		
+	
 	public void sellFuel(String fuelType, int quantity, boolean testCase)
 	{
 		

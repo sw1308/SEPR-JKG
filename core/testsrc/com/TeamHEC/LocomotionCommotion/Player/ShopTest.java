@@ -493,5 +493,41 @@ public class ShopTest {
 						"testCustomer's gold was changed after an attempt to purchase coal with no gold.",
 						testCustomer.getGold() == 0);
 	}
-
+	
+	@Test
+	public void testRepairStation() {
+		//Setup
+		
+		AMSTERDAM.makeFaulty();
+		int currentGold = testCustomer.getGold();
+		
+		testShop.repairStation(AMSTERDAM, true);
+		//Test
+		assertTrue(
+				"Station was not repaired",
+				AMSTERDAM.isFaulty() == false);
+		assertTrue(
+				"testCustomer's Gold was not decremented by 400",
+				testCustomer.getGold() == currentGold - 400);
+		
+		//Try repair with no gold.
+		//Setup
+		testCustomer.subGold(testCustomer.getGold());
+		assertTrue("Customer gold was not set to 0 in setup", testCustomer.getGold() == 0);
+		
+		//Coal
+		int preAttemptTrains = testCustomer.getTrains().size();
+		testShop.buyTrain("Coal", 1, true);
+		assertTrue(
+				"testCustomer's coal was changed after an attempt to purchase coal with no gold.",
+				testCustomer.getTrains().size() == preAttemptTrains);
+		assertTrue(
+				"testCustomer's gold was changed after an attempt to purchase coal with no gold.",
+				testCustomer.getGold() == 0);
+	}
+	
+	@Test
+	public void testUpgradeStation() {
+		
+	}
 }
