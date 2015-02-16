@@ -279,6 +279,9 @@ public class Station extends MapObj{
 			WarningMessage.fireWarningWindow("Sorry", "The maximum station level is 4!");
 		}
 	}
+	public int getStationLevel() {
+		return stationFaultLevel;
+	}
 	public double getFaultRate(){
 		//returns probability of station developing a fault in a particular level-
 		return 0.1 - (stationFaultLevel / 50.0);

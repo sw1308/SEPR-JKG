@@ -4,6 +4,7 @@ import com.TeamHEC.LocomotionCommotion.Game.GameScreen;
 import com.TeamHEC.LocomotionCommotion.Map.Station;
 import com.TeamHEC.LocomotionCommotion.Map.StationListener;
 import com.TeamHEC.LocomotionCommotion.Player.Player;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 public class Game_Map_Station extends Game_Map_MapObj implements StationListener {
 
@@ -15,7 +16,6 @@ public class Game_Map_Station extends Game_Map_MapObj implements StationListener
 	public Game_Map_Station(Station station, float actorX, float actorY)
 	{
 		super(actorX, actorY, Game_Map_TextureManager.getInstance().station, Game_Map_TextureManager.getInstance().stationx2);
-
 		this.station = station;
 		this.owned = false;
 		station.register(this);

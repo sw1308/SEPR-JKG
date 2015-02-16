@@ -120,7 +120,9 @@ public class Shop {
 			customer.subGold(400);
 		}
 		else{
-			WarningMessage.fireWarningWindow("SORRY", "You don't have enough gold!");
+			if(!testCase){
+				WarningMessage.fireWarningWindow("SORRY", "You don't have enough gold!");
+			}	
 		}
 	}
 	

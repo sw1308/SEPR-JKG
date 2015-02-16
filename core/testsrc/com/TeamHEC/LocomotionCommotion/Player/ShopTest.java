@@ -460,7 +460,7 @@ public class ShopTest {
 				int preAttemptTrains = testCustomer.getTrains().size();
 				testShop.buyTrain("Coal", 1, true);
 				assertTrue(
-						"testCustomer's coal was changed after an attempt to purchase coal with no gold.",
+						"testCustomer's coal train count was changed after an attempt to purchase coal with no gold.",
 						testCustomer.getTrains().size() == preAttemptTrains);
 				assertTrue(
 						"testCustomer's gold was changed after an attempt to purchase coal with no gold.",
@@ -469,16 +469,16 @@ public class ShopTest {
 				//Oil
 				testShop.buyTrain("Oil", 1, true);
 				assertTrue(
-						"testCustomer's coal was changed after an attempt to purchase coal with no gold.",
+						"testCustomer's coal train count was changed after an attempt to purchase coal with no gold.",
 						testCustomer.getTrains().size() == preAttemptTrains);
 				assertTrue(
-						"testCustomer's gold was changed after an attempt to purchase coal with no gold.",
+						"testCustomer's Oil was changed after an attempt to purchase coal with no gold.",
 						testCustomer.getGold() == 0);
 				
 				//Electric
 				testShop.buyTrain("Electric", 1, true);
 				assertTrue(
-						"testCustomer's coal was changed after an attempt to purchase coal with no gold.",
+						"testCustomer's Electric train count was changed after an attempt to purchase coal with no gold.",
 						testCustomer.getTrains().size() == preAttemptTrains);
 				assertTrue(
 						"testCustomer's gold was changed after an attempt to purchase coal with no gold.",
@@ -487,7 +487,7 @@ public class ShopTest {
 				//Nuclear
 				testShop.buyTrain("Nuclear", 1, true);
 				assertTrue(
-						"testCustomer's coal was changed after an attempt to purchase coal with no gold.",
+						"testCustomer's nuclear train count was changed after an attempt to purchase coal with no gold.",
 						testCustomer.getTrains().size() == preAttemptTrains);
 				assertTrue(
 						"testCustomer's gold was changed after an attempt to purchase coal with no gold.",
@@ -497,7 +497,6 @@ public class ShopTest {
 	@Test
 	public void testRepairStation() {
 		//Setup
-		
 		AMSTERDAM.makeFaulty();
 		int currentGold = testCustomer.getGold();
 		
@@ -507,27 +506,56 @@ public class ShopTest {
 				"Station was not repaired",
 				AMSTERDAM.isFaulty() == false);
 		assertTrue(
-				"testCustomer's Gold was not decremented by 400",
-				testCustomer.getGold() == currentGold - 400);
+				"testCustomer's Gold was not decremented by 300",
+				testCustomer.getGold() == currentGold - 300);
 		
 		//Try repair with no gold.
 		//Setup
+		AMSTERDAM.makeFaulty();
 		testCustomer.subGold(testCustomer.getGold());
-		assertTrue("Customer gold was not set to 0 in setup", testCustomer.getGold() == 0);
 		
-		//Coal
-		int preAttemptTrains = testCustomer.getTrains().size();
-		testShop.buyTrain("Coal", 1, true);
+		assertTrue("Customer gold was not set to 0 in setup", testCustomer.getGold() == 0);
+		assertTrue("AMSTERDAM was not made faulty", AMSTERDAM.isFaulty() == true);
+		
+		//repair station
+		testShop.repairStation(AMSTERDAM, true);
 		assertTrue(
-				"testCustomer's coal was changed after an attempt to purchase coal with no gold.",
-				testCustomer.getTrains().size() == preAttemptTrains);
+				"Station was repaired.",
+				AMSTERDAM.isFaulty() == true);
 		assertTrue(
-				"testCustomer's gold was changed after an attempt to purchase coal with no gold.",
+				"testCustomer's gold was changed after an attempt to repair with no gold.",
 				testCustomer.getGold() == 0);
 	}
 	
 	@Test
 	public void testUpgradeStation() {
-		
+		//Setup
+				int stationLevel = AMSTERDAM.getStationLevel();
+				int currentGold = testCustomer.getGold();
+				
+				testShop.upgradeStation(AMSTERDAM, true);
+				//Test
+				assertTrue(
+						"Station was not repaired",
+						stationLevel == AMSTERDAM.getStationLevel() - 1);
+				assertTrue(
+						"testCustomer's Gold was not decremented by 400",
+						testCustomer.getGold() == currentGold - 400);
+				
+				//Try repair with no gold.
+				//Setup
+				stationLevel = AMSTERDAM.getStationLevel();
+				testCustomer.subGold(testCustomer.getGold());
+				
+				assertTrue("Customer gold was not set to 0 in setup", testCustomer.getGold() == 0);
+				
+				//upgrade station
+				testShop.upgradeStation(AMSTERDAM, true);
+				assertTrue(
+						"Station was upgraded.",
+						stationLevel == AMSTERDAM.getStationLevel());
+				assertTrue(
+						"testCustomer's gold was changed after an attempt to upgrade with no gold.",
+						testCustomer.getGold() == 0);
 	}
 }
