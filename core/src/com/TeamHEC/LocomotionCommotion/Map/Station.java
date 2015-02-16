@@ -2,8 +2,6 @@ package com.TeamHEC.LocomotionCommotion.Map;
 
 import java.util.ArrayList;
 
-import javax.swing.JOptionPane;
-
 import com.TeamHEC.LocomotionCommotion.Player.Player;
 import com.TeamHEC.LocomotionCommotion.Resource.Resource;
 import com.TeamHEC.LocomotionCommotion.UI_Elements.WarningMessage;
