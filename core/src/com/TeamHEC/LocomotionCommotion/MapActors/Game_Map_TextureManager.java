@@ -12,6 +12,10 @@ public class Game_Map_TextureManager{
 	protected Game_Map_TextureManager()
 	{}
 	
+	/**
+	 * gets an instance of the texture manager
+	 * @return
+	 */
 	public static Game_Map_TextureManager getInstance() {
 		if(instance == null)
 			instance = new Game_Map_TextureManager();

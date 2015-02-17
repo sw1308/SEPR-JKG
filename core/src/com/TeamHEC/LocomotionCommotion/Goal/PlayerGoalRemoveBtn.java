@@ -29,18 +29,35 @@ public class PlayerGoalRemoveBtn extends SpriteButton {
 		else
 			PlayerGoals.removeGoal(index);
 	}
-
+	
+	/**
+	 * Gets the new goal index of the goal
+	 * @return Int new goal index
+	 */
 	public int getnewgoalindex(){
 		return this.newgoalindex;
 	}
 	
+	/**
+	 * Sets the goal index
+	 * @param i
+	 */
 	public void setnewgoalindex(int i){
 		this.newgoalindex=i;
 	}
-
+	
+	/**
+	 * returns if you can undo selecting the goal
+	 * @return Boolean can undo
+	 */
 	public boolean getUndo(){
 		return this.undo;
 	}
+	
+	/**
+	 * Sets if you can undo selecting the goal
+	 * @param boolean undo
+	 */
 	public void setUndo(boolean b){
 		this.undo=b;
 		if (undo){
@@ -49,12 +66,17 @@ public class PlayerGoalRemoveBtn extends SpriteButton {
 		else
 			setTexture(Game_TextureManager.getInstance().game_menuobject_removegoalbtn);
 	}
-
+	
+	/**
+	 * resets the button texture
+	 */
 	public void resetButtons(){
 		setTexture(Game_TextureManager.getInstance().game_menuobject_removegoalbtn);
 	}
 
-
+	/**
+	 * Sets the redo button
+	 */
 	public void setRedoBtn() {
 		this.undo=true;
 		setTexture(Game_TextureManager.getInstance().game_menuobject_redobtn);

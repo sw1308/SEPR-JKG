@@ -235,6 +235,9 @@ public class Game_Map_Manager {
 		stage.addActor(mapInfo);
 	}
 	
+	/**
+	 * Enters routing mode
+	 */
 	public static void enterRoutingMode()
 	{		
 		trainInfo.train.getRoute().showRouteBlips();
@@ -264,6 +267,9 @@ public class Game_Map_Manager {
 		undoLastRouteButton.setVisible(true);
 	}
 	
+	/**
+	 * Exits routing mode
+	 */
 	public static void exitRoutingMode()
 	{
 		trainInfo.unhighlightAdjacent();
@@ -293,7 +299,13 @@ public class Game_Map_Manager {
 		routeFuelCost.setVisible(false);
 		undoLastRouteButton.setVisible(false);
 	}
-
+	
+	/**
+	 * moves the info box for a station
+	 * @param x
+	 * @param y
+	 * @param faulty
+	 */
 	public static void moveInfoBox(float x,float y, boolean faulty){
 		showInfoBox(faulty);
 		stationInfo.setX(x);
@@ -312,7 +324,10 @@ public class Game_Map_Manager {
 		stationLabelCost.setX(x+100);
 		stationLabelCost.setY(y+60);
 	}
-
+	
+	/**
+	 * hides the station info box
+	 */
 	public static void hideInfoBox(){
 		stationInfo.setVisible(false);
 		Game_Map_Manager.stationSelect.setVisible(false);
@@ -321,7 +336,11 @@ public class Game_Map_Manager {
 		stationLabelFuel.setVisible(false);
 		stationLabelCost.setVisible(false);
 	}
-
+	
+	/**
+	 * shows the station info box with repair if the station is faulty
+	 * @param faulty
+	 */
 	public static void showInfoBox(boolean faulty){
 		stationInfo.setVisible(true);
 		
@@ -343,7 +362,10 @@ public class Game_Map_Manager {
 		stationLabelFuel.setVisible(true);
 		stationLabelCost.setVisible(true);
 	}
-
+	
+	/**
+	 * resets the owners of all the stations
+	 */
 	public static void resetMap(){
 		for(int i=Game_Map_Manager.stationTracker; i<=Game_Map_Manager.stationTracker +Game_Map_Manager.numberOfStations-1;i++)	//All the stations on the stage
 		{ 	

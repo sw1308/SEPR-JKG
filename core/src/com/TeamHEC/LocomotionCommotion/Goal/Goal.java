@@ -75,35 +75,63 @@ public class Goal implements RouteListener{
 		stationViaPassed = false;
 		finalStationPassed = false;
 	}
-
+	
+	/**
+	 * Gets if the goal is a special goal
+	 * @return Boolean special
+	 */
 	public boolean isSpecial()
 	{
 		return special;
 	}
-
+	
+	/**
+	 * Gets the start station
+	 * @return Station
+	 */
 	public String getSStation()
 	{
 		return this.sStation.getName();
 	}
 	
+	/**
+	 * Gets the finish station for the goal
+	 * @return Station
+	 */
 	public String getFStation()
 	{
 		return this.fStation.getName();
 	}
-
+	
+	/**
+	 * Gets the reward for the goal
+	 * @return Int reward
+	 */
 	public int getReward()
 	{
 		return reward;
 	}
 	
+	/**
+	 * Gets the start turn for the station
+	 * @return	Int start turn
+	 */
 	public int getStartTurn() {
 		return startTurn;
 	}
 	
+	/**
+	 * Gets the turn limit for the goal
+	 * @return Int turn limit
+	 */
 	public int getTurnLimit() {
 		return turnLimit;
 	}
 	
+	/**
+	 * Sets the goal actor for the goal
+	 * @param GoalActor actor
+	 */
 	public void setActor(GoalActor actor)
 	{
 		goalActor = actor;
@@ -147,7 +175,11 @@ public class Goal implements RouteListener{
 		}
 
 	}
-
+	
+	/**
+	 * Gets the train assigned to the goal
+	 * @return Train
+	 */
 	public Train getTrain()
 	{
 		return train;

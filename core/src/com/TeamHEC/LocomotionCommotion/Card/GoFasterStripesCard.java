@@ -12,6 +12,9 @@ public class GoFasterStripesCard extends Card {
 		super(player, Game_TextureManager.getInstance().game_card_gofasterstripescard, "GoFasterStripes");
 	}
 	
+	/**
+	 * Aplies the card to the first train the player owns
+	 */
 	@Override
 	public void implementCard()
 	{

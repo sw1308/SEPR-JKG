@@ -111,7 +111,9 @@ public class WorldMap {
 		}
 	}
 	
-	//GENERATE FAULTS
+	/**
+	 * GENERATE FAULTS
+	 */
 	public void generateFaults(){
 		for(int i = 0; i < stationsList.size(); i++){
 			Random random = new Random();

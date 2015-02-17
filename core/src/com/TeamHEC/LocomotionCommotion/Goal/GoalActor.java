@@ -151,7 +151,10 @@ public class GoalActor extends Actor {
 
 	}
 
-
+	/**
+	 * Returns if the goal actor is empty
+	 * @return Boolean empty
+	 */
 	public boolean isEmpty(){
 		return this.empty;
 	}
@@ -177,49 +180,98 @@ public class GoalActor extends Actor {
 	}
 
 
-	//Getters and Setters for goal, actor x, actor y and index
+	/**
+	 * Sets the goal for the goal actor
+	 * @param goal
+	 */
 	public void setGoal(Goal goal){
 		this.goal= goal;
 	}
+	
+	/**
+	 * Gets the goal assigned to the goal actor
+	 * @return Goal
+	 */
 	public  Goal getGoal(){
 		return this.goal;
 	}
-
+	
+	 /**
+	  * Sets the X coordinate of the actor
+	  * @param Float
+	  */
 	public void setX(float x){
 		this.actorX = x;
 	}
+	
+	/**
+	 * Sets the Y coordinate of the goal actor
+	 * @param Float
+	 */
 	public void setY(float y){
 		this.actorY = y;
 	}
+	
+	/**
+	 * Gets the X coordinated of the actor
+	 * @return Float X
+	 */
 	public float getX(){
 		return this.actorX;
 	}
+	
+	/**
+	 * Gets the Y coordinate for the actor
+	 * @return Float
+	 */
 	public float getY(){
 		return this.actorY;
 	}
+	
+	/**
+	 * Gets the goals index
+	 * @return Int index
+	 */
 	public int getIndex(){
 		return this.index;
 	}
+	
+	/**
+	 * Sets the goal's index
+	 * @param i
+	 */
 	public void setIndex(int i){
 		this.index=i;
 	}
 
-
+	/**
+	 * gets if the route plan button is visible
+	 * @return Boolean button visible
+	 */
 	public boolean isPlanRouteButtonVisible() {
 		return planRouteButtonVisible;
 	}
 
-
+	/**
+	 * Sets of the route plan button is visible
+	 * @param planRouteButtonVisible
+	 */
 	public void setPlanRouteButtonVisible(boolean planRouteButtonVisible) {
 		this.planRouteButtonVisible = planRouteButtonVisible;
 	}
 
-
+	/**
+	 * Gets if the goal is owned
+	 * @return Boolean owned goal
+	 */
 	public boolean isOwnedgoal() {
 		return ownedgoal;
 	}
 
-
+	/**
+	 * Sets if a goal has an owner
+	 * @param ownedgoal
+	 */
 	public void setOwnedgoal(boolean ownedgoal) {
 		this.ownedgoal = ownedgoal;
 	}

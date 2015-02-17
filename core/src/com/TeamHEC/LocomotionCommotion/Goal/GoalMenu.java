@@ -199,7 +199,6 @@ public class GoalMenu {
 
 	}
 	
-	//Create Empty Goals
 	private ArrayList<GoalActor> createEmpties() {
 		ArrayList<GoalActor> 		empties = new ArrayList< GoalActor>();
 		HashMap<String, GoalActor> 	goalslots = new HashMap<String, GoalActor>();
@@ -229,7 +228,10 @@ public class GoalMenu {
 	}
 	
 	
-	//Creates the blank labels
+	/**
+	 * Creates the blank labels
+	 * @return HashMap goal labels
+	 */
 	public static  HashMap<String, Label> createLabels(){
 		//Create the Labels in a Hashmap and run through them
 		HashMap<String, Label> goals = new HashMap<String, Label>();
@@ -278,7 +280,10 @@ public class GoalMenu {
 		return goals;
 
 	}
-	//Adds all labels to stage
+	
+	/**
+	 * Adds all labels to stage
+	 */
 	public static void addLabelstoStage(){
 		actors.add(gLabel1);
 		actors.add(gLabel2);
@@ -292,7 +297,16 @@ public class GoalMenu {
 
 
 	}
-	//Creates the string that make up the ticket information
+	/**
+	 * Creates the string that make up the ticket information
+	 * @param type
+	 * @param reward
+	 * @param from
+	 * @param startdate
+	 * @param dest
+	 * @param route
+	 * @return String ticket
+	 */
 	public static String ticketMaker(String type, int reward, String from, int startdate, String dest, String route){
 		String output;
 		output ="";
@@ -305,7 +319,18 @@ public class GoalMenu {
 		return output;
 
 	}
-	//TicketMaker for time limited and combo goals
+	
+	/**
+	 * TicketMaker for time limited and combo goals
+	 * @param type
+	 * @param reward
+	 * @param from
+	 * @param startdate
+	 * @param dest
+	 * @param route
+	 * @param turnLimit
+	 * @return String ticket
+	 */
 	public static String ticketMaker(String type, int reward, String from, int startdate, String dest, String route, int turnLimit) {
 		String output;
 		int goalTurnLimit;
@@ -322,8 +347,9 @@ public class GoalMenu {
 		output += dest + getSpacing(dest.length(), String.valueOf(route).length()) + route;
 		return output;
 	}
+	
 	//Adds spacing for Labels
-	public static String getSpacing(int len, int rightLen){
+	private static String getSpacing(int len, int rightLen){
 		String space="";
 		for (int i=0; i<40 - (len+rightLen); i++){
 			space += " ";
@@ -332,7 +358,7 @@ public class GoalMenu {
 		return space;
 	}
 	
-	public static String getCenterSpace(int len, int rightLen) {
+	private static String getCenterSpace(int len, int rightLen) {
 		String space="";
 		for (int i=0; i<20 - (len + rightLen/2); i++) {
 			space += " ";

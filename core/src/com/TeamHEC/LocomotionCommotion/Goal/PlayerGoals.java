@@ -171,7 +171,16 @@ public class PlayerGoals {
 
 
 	}
-	//Creates the string that make up the ticket information
+	/**
+	 * Creates the string that make up the ticket information
+	 * @param type
+	 * @param reward
+	 * @param from
+	 * @param startdate
+	 * @param dest
+	 * @param route
+	 * @return String ticket
+	 */
 	public static String ticketMaker(String type, int reward, String from, int startdate, String dest, String route){
 		String output;
 		output ="";
@@ -184,7 +193,17 @@ public class PlayerGoals {
 		return output;
 
 	}
-	//TicketMaker for time limited and combo goals
+	/**
+	 * TicketMaker for time limited and combo goals
+	 * @param type
+	 * @param reward
+	 * @param from
+	 * @param startdate
+	 * @param dest
+	 * @param route
+	 * @param turnLimit
+	 * @return String ticket
+	 */
 	public static String ticketMaker(String type, int reward, String from, int startdate, String dest, String route, int turnLimit) {
 		String output;
 		int goalTurnLimit;
@@ -202,7 +221,7 @@ public class PlayerGoals {
 		return output;
 	}
 	//Adds spacing for Labels
-	public static String getSpacing(int len, int rightLen){
+	private static String getSpacing(int len, int rightLen){
 		String space="";
 		for (int i=0; i<40 - (len+rightLen); i++){
 			space += " ";
@@ -211,7 +230,7 @@ public class PlayerGoals {
 		return space;
 	}
 		
-		public static String getCenterSpace(int len, int rightLen) {
+		private static String getCenterSpace(int len, int rightLen) {
 			String space="";
 			for (int i=0; i<20 - (len + rightLen/2); i++) {
 				space += " ";

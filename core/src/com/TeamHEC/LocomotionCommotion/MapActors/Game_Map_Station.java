@@ -20,12 +20,18 @@ public class Game_Map_Station extends Game_Map_MapObj implements StationListener
 		this.owned = false;
 		station.register(this);
 	}
-
+	
+	/**
+	 * Returns the station
+	 * @return Station
+	 */
 	public Station getStation()
 	{
 		return station;
 	}
-	
+	/**
+	 * Update the button texture according to owner and faults
+	 */
 	@Override
 	public void updateButton(Station station, Player player)
 	{
@@ -89,7 +95,10 @@ public class Game_Map_Station extends Game_Map_MapObj implements StationListener
 			WarningMessage.fireWarningWindow("Sorry!", "This station is beyond repair.");
 		}
 	}
-
+	/**
+	 * show the info box for a selected station
+	 * @param faulty
+	 */
 	public void showInfoBox(boolean faulty)
 	{
 		for(int i = Game_Map_Manager.stagestart;i <= Game_Map_Manager.stagestart + Game_Map_Manager.mapActors-1; i++)	
@@ -110,6 +119,9 @@ public class Game_Map_Station extends Game_Map_MapObj implements StationListener
 
 
 	}
+	/**
+	 * hides the info box for a station
+	 */
 	public void hideInfoBox(){
 		for(int i=Game_Map_Manager.stagestart; i<=Game_Map_Manager.stagestart +Game_Map_Manager.mapActors-1;i++)	
 		{ 	
@@ -121,7 +133,11 @@ public class Game_Map_Station extends Game_Map_MapObj implements StationListener
 			}
 		}		
 	}
-
+	
+	/**
+	 * sets if a station is owned
+	 * @param Boolean owned
+	 */
 	public void setOwned(Boolean b)
 	{
 		this.owned =b;

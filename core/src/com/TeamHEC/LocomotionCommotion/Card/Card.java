@@ -28,20 +28,36 @@ public abstract class Card {
 		this.name = name;
 	}
 	
+	/**
+	 * Returns the player that owns that card
+	 * @return Player
+	 */
 	public Player getOwner()
 	{
 		return owner;
 	}
 	
+	/**
+	 * Sets the owner of the card
+	 * @param Player owner
+	 */
 	public void setOwner(Player owner)
 	{
 		this.owner = owner;
 	}	
 	
+	/**
+	 * Gets the texture of the card
+	 * @return Texture - cardImage
+	 */
 	public Texture getImage(){
 		return cardImage;
 	}
 	
+	/**
+	 * Gets the name of the card
+	 * @return string - name
+	 */
 	public String getName(){
 		return name;
 	}
