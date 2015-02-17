@@ -1,5 +1,10 @@
 package com.TeamHEC.LocomotionCommotion.Scene;
 
+/**
+ * 
+ * This class manages the various scenes held on screen at one time
+ *
+ */
 public class SceneManager{
 	
 	public StartMenu startScene;

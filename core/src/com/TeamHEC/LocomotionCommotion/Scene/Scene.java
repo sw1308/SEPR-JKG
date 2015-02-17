@@ -33,7 +33,9 @@ public class Scene implements Screen{
        
 		actors = new Array<Actor>();
 	}
-	
+	/**
+	 *  Adds the actors to the scene for all actors 
+	 */
 	public void addToStage()
 	{
 		for (Actor a : actors)
@@ -45,6 +47,9 @@ public class Scene implements Screen{
 		Gdx.input.setInputProcessor(stage);
 	}
 	
+	/**
+	 * Removes actors from the scene for all actors
+	 */
 	public void removeFromStage()
 	{
 		for (Actor a : actors)
@@ -53,6 +58,10 @@ public class Scene implements Screen{
 		}
 	}
 	
+	/**
+	 * 
+	 * @param visible boolean value denoting the visiblilty the actor is becoming
+	 */
 	public void setVisibility(boolean visible)
 	{
 		for (Actor a : actors)
@@ -61,6 +70,10 @@ public class Scene implements Screen{
 		}
 	}
 	
+	/**
+	 * 
+	 * @param touchable boolean value denoting the interactiblity of an actor
+	 */
 	public void setActorsTouchable(boolean touchable)
 	{
 		for (Actor a : actors)
@@ -82,6 +95,9 @@ public class Scene implements Screen{
 		stage.getCamera().translate(x, y, 0);
 	}
 
+	/**
+	 *  Draws an actor onto screen
+	 */
 	@Override
 	public void render(float delta) {
 		stage.getCamera().update();
@@ -93,6 +109,9 @@ public class Scene implements Screen{
 		stage.draw();
 	}
 
+	/**
+	 * Changes the size of an actor in the scene
+	 */
 	@Override
 	public void resize(int width, int height) {
 		stage.getViewport().update(width, height, true);	
@@ -100,6 +119,9 @@ public class Scene implements Screen{
 		LocomotionCommotion.screenY = height;
 	}
 
+	/**
+	 * Clears the stage
+	 */
 	@Override
 	public void dispose()
 	{

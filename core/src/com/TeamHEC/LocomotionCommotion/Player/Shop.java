@@ -77,7 +77,7 @@ public class Shop {
 		}
 	}
 	
-	/*
+	/**
 	 * lets a player buy a train.
 	 * Reduced the player's gold by the cost of the train and then adds a train to the players list of trains
 	 * 
@@ -111,7 +111,7 @@ public class Shop {
 		}
 	}
 	
-	/*
+	/**
 	 * Repairs a specified station.
 	 * Reduces the player's gold by the cost of the repair and then removes the station fault
 	 * 
@@ -129,7 +129,7 @@ public class Shop {
 		}
 	}
 	
-	/*
+	/**
 	 * Upgrades a station
 	 * Reduces the player's gold by the cost of upgrading a station and increases the station level by 1
 	 * 

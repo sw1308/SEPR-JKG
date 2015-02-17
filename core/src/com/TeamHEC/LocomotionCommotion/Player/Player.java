@@ -17,6 +17,7 @@ import com.TeamHEC.LocomotionCommotion.UI_Elements.WarningMessage;
  * @author Callum Hewitt <ch1194@york.ac.uk>
  * @author Elliot Bray <eb1033@york.ac.uk>
  * @author Richard Brierley <rb1038@york.ac.uk>
+ * This class defines the object of player and all of the things the player owns, resources and trains etc.
  */
 
 public class Player implements RouteListener{
@@ -89,31 +90,50 @@ public class Player implements RouteListener{
 	 */
 	public void addScore(int value)
 	{
-		score.setValue(score.getValue() + value);
+		score.addValue(value);
 		if(!Game_StartingSequence.inProgress)
 				GameScreenUI.refreshResources();
 	}
 
-	//Shop
+	/**
+	 * 
+	 * @return returns the player's instance of shop
+	 */
 	public Shop getShop(){
 		return shop;
 	}
-
+	
+	/**
+	 * 
+	 * @param quantity is the amount on coal to be added to the player's stockpile
+	 */
 	public void buyCoal(int quantity)
 	{
 		shop.buyFuel("Coal", quantity, false);
 	}
 
+	/**
+	 * 
+	 * @param quantity  is the amount on Oil to be added to the player's stockpile
+	 */
 	public void buyOil(int quantity)
 	{
 		shop.buyFuel("Oil", quantity, false);
 	}
 
+	/**
+	 * 
+	 * @param quantity is the amount on Electric to be added to the player's stockpile
+	 */
 	public void buyElectric(int quantity)
 	{
 		shop.buyFuel("Electric", quantity, false);
 	}
 
+	/**
+	 * 
+	 * @param quantity  is the amount on Nuclear to be added to the player's stockpile
+	 */
 	public void buyNuclear(int quantity)
 	{
 		shop.buyFuel("Nuclear", quantity, false);
@@ -124,12 +144,21 @@ public class Player implements RouteListener{
 		shop.buyCard(false);
 	}
 
-	//Fuel	
+	/**
+	 * 
+	 * @param fuelType the kind of fuel that the query will return the amount of.
+	 * @return the amount of fuel of type fuelType
+	 */
 	public int getFuel(String fuelType)
 	{
 		return playerFuel.get(fuelType).getValue();
 	}
 
+	/**
+	 * 
+	 * @param fuelType the kind of fuel that the function will add the amount of.
+	 * @param quantity the amount to increment the fuel value
+	 */
 	public void addFuel(String fuelType, int quantity)
 	{
 		playerFuel.get(fuelType).addValue(quantity);
@@ -137,6 +166,11 @@ public class Player implements RouteListener{
 			GameScreenUI.refreshResources();
 	}
 
+	/**
+	 * 
+	 * @param fuelType the kind of fuel that the function will subtract the amount of.
+	 * @param quantity the amount to decrement the fuel value
+	 */
 	public void subFuel(String fuelType, int quantity){
 		playerFuel.get(fuelType).subValue(quantity);
 		if(!Game_StartingSequence.inProgress)
@@ -164,12 +198,19 @@ public class Player implements RouteListener{
 		}
 	}
 
-	//Gold
+	/**
+	 * 
+	 * @return the amount of gold the player has
+	 */
 	public int getGold()
 	{
 		return gold.getValue();
 	}
 
+	/**
+	 * 
+	 * @param value the amount to increment the gold value
+	 */
 	public void addGold(int value)
 	{
 		gold.setValue(gold.getValue() + value);
@@ -177,6 +218,10 @@ public class Player implements RouteListener{
 			GameScreenUI.refreshResources();
 	}
 
+	/**
+	 * 
+	 * @param value the amount to decrement the gold value
+	 */
 	public void subGold(int value)
 	{
 		gold.setValue(gold.getValue() - value);
@@ -184,22 +229,37 @@ public class Player implements RouteListener{
 			GameScreenUI.refreshResources();
 	}
 
-	//Cards
+	/**
+	 * 
+	 * @param card: an object of type Card to add the the player's stockpile
+	 */
 	public void addCard(Card card)
 	{
 		cards.add(card);
 	}
 
+	/**
+	 * 
+	 * @param card an object of type card to discard from the player's hand
+	 */
 	public void discardCard(Card card)
 	{
 		cards.remove(card);
 	}
 
+	/**
+	 * 
+	 * @return the number of cards the player owns
+	 */
 	public int getNumCards()
 	{
 		return cards.size();
 	}
 
+	/**
+	 * 
+	 * @return returns the array of cards the player owns
+	 */
 	public ArrayList<Card> getCards()
 	{
 		return cards;
@@ -359,20 +419,17 @@ public class Player implements RouteListener{
 		 */
 	}
 
+
 	@Override
+	/**
+	 * 
+	 * Prints the stations as they are passed
+	 * 
+	 */
 	public void stationPassed(Station station, Train train) {
 		// TODO Auto-generated method stub
 
 		System.out.println("Train passed " + station.getName());
-
-		// STATION TAX:
-		// RENT IS CURRENTLY NOT IMPLEMENTED AS UI DOES NOT CURRENTLY SUPPORT
-		/*
-		if(station.getOwner() != this && station.getOwner() != null)
-		{
-			this.subGold(station.getTotalRent());
-		}
-		 */
 
 	}
 
@@ -504,13 +561,19 @@ public class Player implements RouteListener{
 		}
 	}
 
-	//Goals
+	/**
+	 * 
+	 * @return the goals of a player as an arraylist
+	 */
 	public ArrayList<Goal> getGoals()
 	{
 		return goals;
 	}
 
-	//Trains
+	/**
+	 * 
+	 * @return the trains that a player owns as an arraylist
+	 */
 	public ArrayList<Train> getTrains()
 	{
 		return trains;
