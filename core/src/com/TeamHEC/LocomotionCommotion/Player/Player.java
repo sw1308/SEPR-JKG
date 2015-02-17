@@ -85,7 +85,7 @@ public class Player implements RouteListener{
 	
 	/**
 	 * 
-	 * @param value amount to be adde to the player's score
+	 * @param value is the amount to be added to the player's score
 	 */
 	public void addScore(int value)
 	{

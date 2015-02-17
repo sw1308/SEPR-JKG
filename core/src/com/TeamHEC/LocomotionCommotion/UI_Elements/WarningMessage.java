@@ -96,7 +96,7 @@ public class WarningMessage {
 		}
 	}
 	/**
-	 * Removes the WarningWindow by removing its actors from the stage.
+	 * Removes the WarningWindow by removing its actors from the stage. Also, if the window is the end-game message, the system is closed.
 	 */
 	public static void killWarningWindow()
 	{	
