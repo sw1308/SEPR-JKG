@@ -4,7 +4,7 @@ import com.TeamHEC.LocomotionCommotion.Game.GameScreen;
 import com.TeamHEC.LocomotionCommotion.Map.Station;
 import com.TeamHEC.LocomotionCommotion.Map.StationListener;
 import com.TeamHEC.LocomotionCommotion.Player.Player;
-import com.badlogic.gdx.scenes.scene2d.ui.Label;
+import com.TeamHEC.LocomotionCommotion.UI_Elements.WarningMessage;
 
 public class Game_Map_Station extends Game_Map_MapObj implements StationListener {
 
@@ -70,18 +70,23 @@ public class Game_Map_Station extends Game_Map_MapObj implements StationListener
 	@Override
 	protected void onClicked()
 	{
-		super.onClicked();
-		Game_Map_StationBtn.selectedStation = this;
-		if(!highlighted)
-		{	
-			highlighted = true;
-			if(!Game_Map_Manager.routingModeWindow.isVisible())
-				showInfoBox(Game_Map_StationBtn.selectedStation.getStation().isFaulty());
+		if(this.station.getRepairable()){
+			super.onClicked();
+			Game_Map_StationBtn.selectedStation = this;
+			if(!highlighted)
+			{	
+				highlighted = true;
+				if(!Game_Map_Manager.routingModeWindow.isVisible())
+					showInfoBox(Game_Map_StationBtn.selectedStation.getStation().isFaulty());
+			}
+			else
+			{
+				highlighted = false;
+				hideInfoBox();
+			}
 		}
-		else
-		{
-			highlighted = false;
-			hideInfoBox();
+		else{
+			WarningMessage.fireWarningWindow("Sorry!", "This station is beyond repair.");
 		}
 	}
 

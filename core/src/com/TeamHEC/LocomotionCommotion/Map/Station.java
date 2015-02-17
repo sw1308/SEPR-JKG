@@ -1,6 +1,7 @@
 package com.TeamHEC.LocomotionCommotion.Map;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 import com.TeamHEC.LocomotionCommotion.Player.Player;
 import com.TeamHEC.LocomotionCommotion.Resource.Resource;
@@ -26,6 +27,7 @@ public class Station extends MapObj{
 	private int rentValue;
 	private int rentValueMod;
 	private boolean hasFault;
+	private boolean repairable;
 	private int stationFaultLevel; //fault level for station- between 0 and 4?
 	public double mindistance = Double.POSITIVE_INFINITY;
 	
@@ -63,6 +65,8 @@ public class Station extends MapObj{
 		this.rentValue = rentValue;
 		this.rentValueMod = 0;
 		this.stationFaultLevel = 0;
+		this.hasFault = false;
+		this.repairable = true;
 	}
 	
 	/**
@@ -260,8 +264,21 @@ public class Station extends MapObj{
 			listener.updateButton(station, player);
 		}
 	}
+	
+	/**
+	 * 
+	 * @return is the station broken?
+	 */
 	public boolean isFaulty(){
 		return hasFault;
+	}
+	/**
+	 * 
+	 * @return false if the station is beyond repair
+	 */
+	public boolean getRepairable()
+	{
+		return this.repairable;
 	}
 	public void fixFault(){
 		hasFault = false;
@@ -269,6 +286,12 @@ public class Station extends MapObj{
 	}
 	public void makeFaulty(){
 		hasFault = true;
+		
+		Random rnd = new Random();
+		if(rnd.nextInt(10) == 0){
+			this.repairable = false;
+		}
+
 		gameMapStation.updateButton(this, owner);
 	}
 	public void upgradeStation(){
