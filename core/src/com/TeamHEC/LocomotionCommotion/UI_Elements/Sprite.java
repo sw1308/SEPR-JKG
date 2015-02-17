@@ -30,6 +30,10 @@ public class Sprite extends Actor{
 		actorTexture = texture;
 	}
 	
+	/**
+	 * 
+	 * @return the "actorTexture" for that sprite
+	 */
 	public Texture getTexture()
 	{
 		return actorTexture;

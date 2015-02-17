@@ -116,6 +116,11 @@ public class WarningMessage {
 	
 	}
 	
+	/**
+	 * 
+	 * @return whether the box is visible
+	 */
+	
 	public boolean isVisible()
 	{
 		boolean visible;
