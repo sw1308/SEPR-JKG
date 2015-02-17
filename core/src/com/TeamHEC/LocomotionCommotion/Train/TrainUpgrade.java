@@ -11,7 +11,11 @@ public abstract class TrainUpgrade {
 		this.train = train;
 		this.price = price;
 	}
-			
+	
+	/**
+	 * gets the price of an upgrade
+	 * @return Int price
+	 */
 	public int getCost()
 	{
 		return price;

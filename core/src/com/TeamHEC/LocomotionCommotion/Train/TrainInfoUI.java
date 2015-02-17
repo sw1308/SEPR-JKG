@@ -85,7 +85,9 @@ public class TrainInfoUI extends Sprite{
 			//train.route.showConnectionBlips(c);
 		}
 	}
-	
+	/**
+	 * Unhighlights the connections adjacent to a train
+	 */
 	public void unhighlightAdjacent()
 	{
 		adjacent = train.route.getAdjacentConnections();
@@ -97,11 +99,18 @@ public class TrainInfoUI extends Sprite{
 		}
 	}
 	
+	/**
+	 * Gets an arraylist for the actors
+	 * @return ArrayList actors
+	 */
 	public Array<Actor> getActors()
 	{
 		return actors;
 	}
-	
+	/**
+	 * Show the info label for a train
+	 * @param train
+	 */
 	public void showLabel(Train train)
 	{
 		this.train = train;
@@ -129,6 +138,10 @@ public class TrainInfoUI extends Sprite{
 		makeVisible(true);
 	}
 	
+	/**
+	 * Sets if the train info is visible
+	 * @param Boolean visible
+	 */
 	public void makeVisible(boolean v)
 	{
 		this.setVisible(v);

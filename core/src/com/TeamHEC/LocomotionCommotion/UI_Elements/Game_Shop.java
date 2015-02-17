@@ -218,18 +218,38 @@ public class Game_Shop {
 
 
 		}
+		/**
+		 * Gets the stage start
+		 * @return Int stage start
+		 */
 		public  int getStageStart(){
 			return stageStart;
 		}
+		/**
+		 * get the stage end
+		 * @return Int stage end
+		 */
 		public  int getStageEnd(){
 			return stageEnd;
 		}
+		/**
+		 * get the stage start for the start screen
+		 * @return int stage screen stage start
+		 */
 		public int getstartScreenStageStart(){
 			return startScreenStageStart;
 		}
+		/**
+		 * get the stage end for the start screen
+		 * @return int start screen stage end
+		 */
 		public  int getstartScreenStageEnd(){
 			return startScreenStageEnd;
 		}
+		/**
+		 * refreshes the player's gold
+		 * @param i
+		 */
 		public static void refreshgold(int i){
 			String g = new Integer(i).toString();
 			Game_Shop.actorManager.goldLabel.setText(g);
@@ -237,7 +257,11 @@ public class Game_Shop {
 		}
 
 	}
-
+	/**
+	 * Converts a string builder to an integer
+	 * @param stringBuilder
+	 * @return Int
+	 */
 	public static int strToInt( StringBuilder stringBuilder ){
 		int i = 0;
 		int num = 0;
@@ -378,7 +402,9 @@ public class Game_Shop {
 			return this.actors;
 		}
 
-		//METHODS TO SWITCH BETWEEN BUY AND SELL-----------
+		/**
+		 * Seth the shop to sell mode
+		 */
 		public void  setToSell(){
 			Game_Shop.actorManager.buy=false;
 			Game_Shop.actorManager.sell=true;
@@ -409,7 +435,9 @@ public class Game_Shop {
 				Game_Shop.actorManager.nuclearitem.costLabel.setText(""+strToInt(Game_Shop.actorManager.nuclearitem.quantityLabel.getText())*Shop.nuclearPrice);
 			}
 		}
-
+		/**
+		 * Sets the shop to buy mode 
+		 */
 		public void  setToBuy(){
 			Game_Shop.actorManager.buy=true;
 			Game_Shop.actorManager.sell=false;

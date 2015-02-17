@@ -533,11 +533,17 @@ public class GameScreenUI {
 		cardQuant.setVisible(false);
 		stage.addActor(cardQuant);
 	}
-
+	/**
+	 * get the stage start for the menu objects
+	 * @return Int stage start
+	 */
 	public static int getStageStart(){
 		return menuobjectsStageStart;
 	}
-
+	/**
+	 * Get the resources stage end
+	 * @return Int stage end
+	 */
 	public static int getStageEnd(){
 		return resourcesStageEnd; // This is the end of all the actors involved in GameScreen_ActorManager
 	}
