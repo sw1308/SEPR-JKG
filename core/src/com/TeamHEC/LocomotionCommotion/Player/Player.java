@@ -85,7 +85,7 @@ public class Player implements RouteListener{
 	
 	/**
 	 * 
-	 * @param value amount to be adde to the player's score
+	 * @param value amount to be added to the player's score
 	 */
 	public void addScore(int value)
 	{
@@ -137,13 +137,17 @@ public class Player implements RouteListener{
 			GameScreenUI.refreshResources();
 	}
 
-	public void subFuel(String fuelType, int quantity)
-	{
+	public void subFuel(String fuelType, int quantity){
 		playerFuel.get(fuelType).subValue(quantity);
 		if(!Game_StartingSequence.inProgress)
 			GameScreenUI.refreshResources();
 	}
-	
+
+	/**
+	 * Adds a train of the type specified to the player's trains.
+	 * 
+	 * @param String - Train type with capital
+	 */
 	public void addTrain(String trainType) {
 		if(trainType == "Coal") {
 			CoalTrain train = new CoalTrain(0, true, new Route(stations.get(0)), this);
