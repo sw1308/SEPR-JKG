@@ -151,10 +151,10 @@ public class Goal implements RouteListener{
 	public Train getTrain()
 	{
 		return train;
-	}
+	} 
 	
 	/**
-	 * Called when the goal is successfully complete
+	 * Called when the goal is successfully complete, giving the player the appropriate amount of Gold and Score.
 	 */	
 	public void goalComplete()
 	{
