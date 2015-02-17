@@ -11,6 +11,7 @@ import com.TeamHEC.LocomotionCommotion.UI_Elements.Game_TextureManager;
 /**
  * 
  * @author Matthew Taylor <mjkt500@york.ac.uk>
+ * @author Sam Watkins <sw1308@york.ac.uk>
  * Teleports a train (currently to London should be changed and worked in with UI so it teleports to a specified location).
  */
 
@@ -27,16 +28,16 @@ public class TeleportCard extends Card{
 	
 	@Override
 	/**
-	 * Takes the owner's first train in their trains list and moves it to London.
-	 * Should be changed in Assessment 3 to teleport either random trains to random locations or a specified train to a specified location.
+	 * Takes a random train from the owner's trains list and moves it to a random station instantly.
+	 * Should be changed in Assessment 4 to teleport either a specified train to a random location or a specified train to a specified location.
 	 */
 	public void implementCard()
 	{
 		Random rnd = new Random();
-		// Need a way to choose the train:
+		// Need a way to choose the train, currently selects one at random:
 		Train train = getOwner().getTrains().get(rnd.nextInt(getOwner().getTrains().size()));
 		
-		// Need a way to choose station:
+		// Need a way to choose station, currently selects one at random:
 		MapObj chosenLocation = WorldMap.getInstance().stationsList.get(rnd.nextInt(WorldMap.getInstance().stationsList.size()));
 		
 		train.route.getRoute().clear();

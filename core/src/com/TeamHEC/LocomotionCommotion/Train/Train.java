@@ -13,7 +13,7 @@ import com.TeamHEC.LocomotionCommotion.Resource.Fuel;
 
 public abstract class Train {	
 	private String name;
-	private int baseSpeed, speedMod;
+	private int baseSpeed, speedMod, speedModBackup;
 	
 	private Fuel fuel;
 	public int fuelPerTurn;
@@ -45,6 +45,7 @@ public abstract class Train {
 		
 		this.baseSpeed = baseSpeed;
 		this.speedMod = speedMod;
+		this.speedModBackup = speedMod;
 		this.value = value;
 		this.inStation = inStation;
 		this.route = route;
@@ -177,6 +178,20 @@ public abstract class Train {
 		{
 			getActor().canMove = true;
 		}
+	}
+	
+	/**
+	 * Backs up speedMod
+	 */
+	public void backupSpeedMod() {
+		speedModBackup = speedMod;
+	}
+	
+	/**
+	 * Restores speedMod from speedModBackup
+	 */
+	public void restoreSpeedMod() {
+		speedMod = speedModBackup;
 	}
 	
 	/**

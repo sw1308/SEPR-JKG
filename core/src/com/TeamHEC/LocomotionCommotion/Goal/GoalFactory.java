@@ -9,7 +9,7 @@ import com.TeamHEC.LocomotionCommotion.Map.Station;
 import com.TeamHEC.LocomotionCommotion.Map.WorldMap;
 
 /**
- * 
+ * @author Sam Watkins <sw1308@york.ac.uk>
  * @author Sam Anderson <sa902@york.ac.uk>
  * Generates random Goals.
  */

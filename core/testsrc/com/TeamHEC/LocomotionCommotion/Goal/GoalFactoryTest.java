@@ -58,7 +58,7 @@ public class GoalFactoryTest {
 				spl = true; //The value of spl is set to true if one or more special goals are created by the method
 			}
 			
-			if (goal.specialcargo){ 
+			if (goal instanceof CargoGoal){ 
 				cspl = true; //The value of cspl is set to true if one or more special goals are created by the method
 			}	
 			if (goal instanceof ComboGoal){

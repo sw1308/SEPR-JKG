@@ -37,7 +37,7 @@ public class CargoGoalTest {
 		wm = WorldMap.getInstance();
 		GoalFactory gf = new GoalFactory(1);
 		goal = gf.CreateRandomGoal();
-		while (goal.specialcargo == false){
+		while (!(goal instanceof CargoGoal)){
 			goal = gf.CreateRandomGoal();
 		}
 		
@@ -74,8 +74,8 @@ public class CargoGoalTest {
 	
 	@Test
 	public void testSpecialCargoGoal(){
-		assertTrue(goal.specialcargo); //specialcargo Flag should be set to True on the goal's creation
-		System.out.println("CargoGoal has been successfully initialized : " + goal.specialcargo);
+		assertTrue(goal instanceof CargoGoal);
+		System.out.println("CargoGoal has been successfully initialized : " + (goal instanceof CargoGoal));
 	}
 	
 	@Test

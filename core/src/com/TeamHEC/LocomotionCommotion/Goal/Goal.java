@@ -23,7 +23,6 @@ public class Goal implements RouteListener{
 	private String cargo;
 	protected boolean special;
 	private int reward;
-	private String startDate;
 	private int startTurn;
 	private int turnLimit;
 
@@ -36,8 +35,6 @@ public class Goal implements RouteListener{
 	//Variables used to track special Goal completion
 	private boolean stationViaPassed;
 	private boolean withinTurnLimit;
-	protected boolean specialcargo;
-	protected int ospeedmod; //Used to keep track of original speedmod of train during special cargo goal
 	
 	
 	public static GoalActor goalActor;
@@ -66,13 +63,9 @@ public class Goal implements RouteListener{
 		this.reward = reward;  
 		this.cargo = cargo;
 		
-        startDate = "1"; //initialized to 1, not yet implemented.
         this.startTurn = 0;
         this.turnLimit = turnLimit;
         this.withinTurnLimit = true;
-        
-        //initialised as false
-        this.specialcargo = false ;
         		
 		// initialise goal completion variables to false
 		startStationPassed = false;
@@ -146,11 +139,11 @@ public class Goal implements RouteListener{
 		if(train.route.getStation() == sStation)
 			startStationPassed = true;
 
-		if (this.specialcargo) 
+		if (this instanceof CargoGoal) 
 		{
-			this.ospeedmod = this.train.getSpeedMod(); //keeps track of original train speed mod before the train being assigned a diamonds goal 
-			int dec = (int) ( this.train.getSpeed() / 10 ); // decrease in speed by 10% for special diamond goals 
-			this.train.decreaseSpeedMod(dec);
+			train.backupSpeedMod(); //keeps track of original train speed mod before the train being assigned a diamonds goal 
+			int dec = (int) ( train.getSpeed() / 10 ); // decrease in speed by 10% for special diamond goals 
+			train.decreaseSpeedMod(dec);
 		}
 
 	}
@@ -175,19 +168,13 @@ public class Goal implements RouteListener{
 		
 		train.getOwner().getGoals().remove(this);
 		
-		//if(goalActor != null)
-		//{
-		//	goalActor.setPlanRouteButtonVisible(false);
-		//}
-		
 		startStationPassed = false;
 		stationViaPassed = false;
 		finalStationPassed = false;
 		withinTurnLimit = true;
 		
-		if (specialcargo) {
-		specialcargo = false;
-		train.setSpeedMod(this.ospeedmod);
+		if (this instanceof CargoGoal) {
+			train.restoreSpeedMod();
 		}
 		
 	}
@@ -244,6 +231,10 @@ public class Goal implements RouteListener{
 		}
 	}
 
+	/**
+	 * Sets the special flag for the goal
+	 * @param special A boolean value for the special flag to be set to
+	 */
 	public void setSpecial(boolean special) {
 		this.special = special;
 	}
