@@ -8,13 +8,17 @@ public class FuelUpgrade extends TrainUpgrade{
 	{
 		super(train, 500);
 	}
-	
+	/**
+	 * upgrade the train
+	 */
 	@Override
 	public void addUpgrade()
 	{
 		train.decreaseFuelPerTurn(FUEL_DEC);
 	}
-	
+	/**
+	 * undo an upgrade to the train
+	 */
 	@Override
 	public void undoUpgrade()
 	{

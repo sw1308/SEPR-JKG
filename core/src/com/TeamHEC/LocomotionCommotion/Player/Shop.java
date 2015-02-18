@@ -77,6 +77,14 @@ public class Shop {
 		}
 	}
 	
+	/**
+	 * lets a player buy a train.
+	 * Reduced the player's gold by the cost of the train and then adds a train to the players list of trains
+	 * 
+	 * @param trainType - Train type with capital
+	 * @param quantity - Number of trains being bought
+	 * @param testCase - If it is a JUnit test
+	 */
 	public void buyTrain(String trainType, int quantity, boolean testCase) {
 		int trainPrice = 0;
 		
@@ -103,6 +111,13 @@ public class Shop {
 		}
 	}
 	
+	/**
+	 * Repairs a specified station.
+	 * Reduces the player's gold by the cost of the repair and then removes the station fault
+	 * 
+	 * @param station - the station to be repaired
+	 * @param testCase - If this is a JUnit test
+	 */
 	public void repairStation(Station station, boolean testCase) {
 		if(customer.getGold() >= 300) {
 			station.fixFault();
@@ -114,6 +129,13 @@ public class Shop {
 		}
 	}
 	
+	/**
+	 * Upgrades a station
+	 * Reduces the player's gold by the cost of upgrading a station and increases the station level by 1
+	 * 
+	 * @param station - the station to be upgraded
+	 * @param testCase - if this is a JUnit test
+	 */
 	public void upgradeStation(Station station, boolean testCase) {
 		if(customer.getGold() >= 400) {
 			station.upgradeStation();

@@ -2,16 +2,23 @@ package com.TeamHEC.LocomotionCommotion.MapActors;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-/*
+/**
+ * @author Oliver Binns	<ob601@york.ac.uk>
+ * 
  * Holds all the textures and file paths for all actors in StartMenu
  * This means if we need to change a file path you come here.
  */
+
 public class Game_Map_TextureManager{
 	private static Game_Map_TextureManager instance = null;
 	
 	protected Game_Map_TextureManager()
 	{}
 	
+	/**
+	 * gets an instance of the texture manager
+	 * @return instance of this class
+	 */
 	public static Game_Map_TextureManager getInstance() {
 		if(instance == null)
 			instance = new Game_Map_TextureManager();

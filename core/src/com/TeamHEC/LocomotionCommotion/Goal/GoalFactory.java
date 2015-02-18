@@ -46,6 +46,13 @@ public class GoalFactory{
 		return (int) rew; //returns reward casted to integer 
 	}
 	
+	/**
+	 * Generates the reward for a combo goal
+	 * @param start station
+	 * @param Via Station
+	 * @param Final Station
+	 * @return Int reward
+	 */
 	private int genComboReward(Station sStation, Station viaStation, Station fStation) {
 		Dijkstra d = new Dijkstra(); //implements dijkstra 
 		d.computePaths(d.lookUpNode(sStation)); //uses the lookup function to get instance of a
@@ -60,14 +67,13 @@ public class GoalFactory{
 		return (int) rew; //returns reward casted to integer
 	}
 	
-	/*
+	/**
 	 * Generates a suggested turn limit for special goals
 	 * @param fStation The start station for the goal
 	 * @param viaStation The station that must be passed through for special goals
 	 * @param fStation The final station for the goal
 	 * @return A value representing the maximum turn limit for a goal to be completed in
 	 */
-	
 	private int genTurnLimit(Station fStation, Station sStation) {
 		int minSpeed = Math.min(GameData.COAL_BASE, Math.min(GameData.ELECTRIC_BASE, Math.min(GameData.NUCLEAR_BASE, GameData.OIL_BASE)));
 		double turnLimit;
@@ -83,6 +89,13 @@ public class GoalFactory{
 		return (int) turnLimit;
 	}
 	
+	/**
+	 * Gets the goal limit for a combo goal
+	 * @param Final Station
+	 * @param Via Station
+	 * @param Start station
+	 * @return Int turn limit
+	 */
 	private int genComboTurnLimit(Station fStation, Station viaStation, Station sStation) {
 		int minSpeed = Math.min(GameData.COAL_BASE, Math.min(GameData.ELECTRIC_BASE, Math.min(GameData.NUCLEAR_BASE, GameData.OIL_BASE)));
 		double turnLimit;

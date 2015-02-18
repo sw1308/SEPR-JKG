@@ -11,7 +11,8 @@ import com.TeamHEC.LocomotionCommotion.MapActors.Game_Map_Station;
 
 /**
  * @author Matthew Taylor <mjkt500@york.ac.uk>
- * @author Elliot Bray<eb1033@york.ac.uk>
+ * @author Elliot Bray <eb1033@york.ac.uk>
+ * @author Oliver Binns <ob601@york.ac.uk>
  */
 
 public class Station extends MapObj{
@@ -77,6 +78,10 @@ public class Station extends MapObj{
 		return this;
 	}
 	
+	/**
+	 * Gets the station Actor
+	 * @return GameMapStation
+	 */
 	public Game_Map_Station getStationActor()
 	{
 		return gameMapStation;
@@ -111,14 +116,26 @@ public class Station extends MapObj{
 	{
 		return valueMod;
 	}
+	/**
+	 * Sets the value mod
+	 * @param value
+	 */
 	public void setValueMod(int value) //Currently has no affect on the game, but is ready for later implementation
 	{
 		valueMod = value;
 	}
+	/**
+	 * Adds to the value mod
+	 * @param add
+	 */
 	public void addValueMod(int add) //Currently has no affect on the game, but is ready for later implementation
 	{
 		valueMod += add;
 	}
+	/**
+	 * Subtracts from the value mod
+	 * @param sub
+	 */
 	public void subValueMod(int sub) //Currently has no affect on the game, but is ready for later implementation
 	{
 		valueMod -= sub;
@@ -158,11 +175,18 @@ public class Station extends MapObj{
 	{
 		resourceOutMod = mod;
 	}
-	
+	 /**
+	  * Adds to the value of the resource out mod
+	  * @param add
+	  */
 	public void addResourceOutMod(int add) //Not currently necessary but is here if need in later implementation
 	{
 		resourceOutMod += add;
 	}
+	/**
+	 * Subtracts from the resources out mod
+	 * @param sub
+	 */
 	public void subResourceOutMod(int sub) //Not currently necessary but is here if need in later implementation
 	{
 		resourceOutMod -= sub;
@@ -189,14 +213,26 @@ public class Station extends MapObj{
 	{
 		return rentValueMod;
 	}
+	/**
+	 * Sets the rent value modifier
+	 * @param value
+	 */
 	public void setRentValueMod(int value) //Not currently implemented but is ready if needed later
 	{
 		rentValueMod = value;
 	}
+	/**
+	 * Add to the rent value modifier
+	 * @param add
+	 */
 	public void addRentValueMod(int add) //Not currently implemented but is ready if needed later
 	{
 		rentValueMod += add;
 	}	
+	/**
+	 * Subtracts from the rent value modifier
+	 * @param sub
+	 */
 	public void subRentValueMod(int sub) //Not currently implemented but is ready if needed later
 	{
 		rentValueMod-= sub;
@@ -280,10 +316,16 @@ public class Station extends MapObj{
 	{
 		return this.repairable;
 	}
+	/**
+	 * fixes the fault on a station
+	 */
 	public void fixFault(){
 		hasFault = false;
 		gameMapStation.updateButton(this, owner);
 	}
+	/**
+	 * makes a station faulty
+	 */
 	public void makeFaulty(){
 		hasFault = true;
 		
@@ -294,6 +336,9 @@ public class Station extends MapObj{
 
 		gameMapStation.updateButton(this, owner);
 	}
+	/**
+	 * Upgrades a stations reliability
+	 */
 	public void upgradeStation(){
 		if(stationFaultLevel < 5){
 			stationFaultLevel++;
@@ -302,9 +347,17 @@ public class Station extends MapObj{
 			WarningMessage.fireWarningWindow("Sorry", "The maximum station level is 4!");
 		}
 	}
+	/**
+	 * gets the stations upgrade level
+	 * @return Int upgrade level
+	 */
 	public int getStationLevel() {
 		return stationFaultLevel;
 	}
+	/**
+	 * Gets the fault rate of a station
+	 * @return double fault rate
+	 */
 	public double getFaultRate(){
 		//returns probability of station developing a fault in a particular level-
 		return 0.1 - (stationFaultLevel / 50.0);

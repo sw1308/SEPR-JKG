@@ -30,6 +30,10 @@ public class Sprite extends Actor{
 		actorTexture = texture;
 	}
 	
+	/**
+	 * 
+	 * @return the "actorTexture" for that sprite
+	 */
 	public Texture getTexture()
 	{
 		return actorTexture;
@@ -68,42 +72,72 @@ public class Sprite extends Actor{
 	{
 		setBounds(actorX, actorY, actorTexture.getWidth(), actorTexture.getHeight());
 	}
-
+	
+	/**
+	 * Get the X coordinate for the Sprte
+	 * @return x the x-coordinate for the sprite on the screen
+	 */
 	public float getX()
 	{
 		return actorX;
 	}
-
+	
+	
+	/**
+	 * Set the X coordinate for the sprite
+	 * @param actorX the x-coordinate for the sprite on the screen
+	 */
 	public void setX(float actorX)
 	{
 		this.actorX = actorX;
 	}
-	
+	/**
+	 * Get the Y coordinate for the sprite
+	 * @return y the y-coordinate for the sprite on the screen
+	 */
 	public float getY()
 	{
 		return actorY;
 	}
-
+	/**
+	 * Set the Y coordinate for the sprite
+	 * @param actorY the y-coordinate for the sprite on the screen
+	 */
 	public void setY(float actorY)
 	{
 		this.actorY = actorY;
 	}
 	
+	/**
+	 * Increase the y coordinate
+	 * @param amount
+	 */
 	public void increaseY(float amount)
 	{
 		actorY += amount;
 	}
-	
+	/**
+	 * Increase the x coordinate
+	 * @param amount
+	 */
 	public void increaseX(float amount)
 	{
 		actorX += amount;
 	}
-	
+	/**
+	 * get a vector for the x and y coords
+	 * @return vector(x, y)
+	 */
 	public Vector2 getPosition()
 	{
 		return new Vector2(actorX, actorY);
 	}
 	
+	/**
+	 * set the position of the sprite
+	 * @param x the x-coordinate for the sprite on the screen
+	 * @param y the y-coordinate for the sprite on the screen
+	 */
 	public void setPosition(float x, float y)
 	{
 		actorX = x;

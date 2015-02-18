@@ -81,7 +81,9 @@ public class Game_StartingSequence {
 		}
 
 	}
-
+	/**
+	 * Starts the game
+	 */
 	public static void startGame(){
 
 		for(int i=GameScreenUI.getStageStart(); i<=GameScreenUI.getStageEnd();i++)	
@@ -111,7 +113,10 @@ public class Game_StartingSequence {
 		PlayerGoals.changePlayer(GameScreen.game.getPlayerTurn());
 		fillGoalScreen();
 	}
-
+	
+	/**
+	 * Fills the goal screen
+	 */
 	public static void fillGoalScreen(){
 		ArrayList<Goal> goals = new ArrayList<Goal>();
 		GoalFactory factory = new GoalFactory(1);
@@ -121,6 +126,9 @@ public class Game_StartingSequence {
 		}
 		GoalMenu.AddGoalToScreen(goals);
 	}
+	/**
+	 * resets the starting sequence
+	 */
 	public static void reset(){
 		actors.clear();
 		stagestart =0;

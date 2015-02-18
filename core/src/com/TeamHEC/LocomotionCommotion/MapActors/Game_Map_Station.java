@@ -6,6 +6,14 @@ import com.TeamHEC.LocomotionCommotion.Map.StationListener;
 import com.TeamHEC.LocomotionCommotion.Player.Player;
 import com.TeamHEC.LocomotionCommotion.UI_Elements.WarningMessage;
 
+/**
+ * 
+ * This class is the UI View for stations on the map.
+ * 
+ * @author Oliver Binns <ob601@york.ac.uk>
+ *
+ */
+
 public class Game_Map_Station extends Game_Map_MapObj implements StationListener {
 
 	public boolean owned;
@@ -20,12 +28,18 @@ public class Game_Map_Station extends Game_Map_MapObj implements StationListener
 		this.owned = false;
 		station.register(this);
 	}
-
+	
+	/**
+	 * Returns the station
+	 * @return Station
+	 */
 	public Station getStation()
 	{
 		return station;
 	}
-	
+	/**
+	 * Update the button texture according to owner and faults
+	 */
 	@Override
 	public void updateButton(Station station, Player player)
 	{
@@ -66,7 +80,38 @@ public class Game_Map_Station extends Game_Map_MapObj implements StationListener
 			}
 		}
 	}
+	
+	/**
+	 * @deprecated please use update button method instead
+	 */
+	@Override
+	public void ownerChanged(Station station, Player player)
+	{
+		if(player == null)
+		{
+			texture = Game_Map_TextureManager.getInstance().station;
+			toggleTexture1 = Game_Map_TextureManager.getInstance().station;
+			toggleTexture2 = Game_Map_TextureManager.getInstance().stationx2;
+		}
 
+		else if(player.isPlayer1)
+		{
+			texture = Game_Map_TextureManager.getInstance().p1Station;
+			toggleTexture1 = Game_Map_TextureManager.getInstance().p1Station;
+			toggleTexture2 = Game_Map_TextureManager.getInstance().p1Stationx2;
+		}
+		else
+		{
+			texture = Game_Map_TextureManager.getInstance().p2Station;
+			toggleTexture1 = Game_Map_TextureManager.getInstance().p2Station;
+			toggleTexture2 = Game_Map_TextureManager.getInstance().p2Stationx2;
+		}
+	}
+
+	/**
+	 * function is run when the button for the instance of the class is clicked
+	 * if the station is not permanently damaged, this opens up an info box on the screen with relevant controls
+	 */
 	@Override
 	protected void onClicked()
 	{
@@ -89,7 +134,10 @@ public class Game_Map_Station extends Game_Map_MapObj implements StationListener
 			WarningMessage.fireWarningWindow("Sorry!", "This station is beyond repair.");
 		}
 	}
-
+	/**
+	 * show the info box for a selected station
+	 * @param faulty
+	 */
 	public void showInfoBox(boolean faulty)
 	{
 		for(int i = Game_Map_Manager.stagestart;i <= Game_Map_Manager.stagestart + Game_Map_Manager.mapActors-1; i++)	
@@ -110,6 +158,9 @@ public class Game_Map_Station extends Game_Map_MapObj implements StationListener
 
 
 	}
+	/**
+	 * hides the info box for a station
+	 */
 	public void hideInfoBox(){
 		for(int i=Game_Map_Manager.stagestart; i<=Game_Map_Manager.stagestart +Game_Map_Manager.mapActors-1;i++)	
 		{ 	
@@ -121,7 +172,11 @@ public class Game_Map_Station extends Game_Map_MapObj implements StationListener
 			}
 		}		
 	}
-
+	
+	/**
+	 * sets if a station is owned
+	 * @param b set true if this station is owned
+	 */
 	public void setOwned(Boolean b)
 	{
 		this.owned =b;

@@ -10,6 +10,12 @@ import com.TeamHEC.LocomotionCommotion.UI_Elements.SpriteButton;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 
+/**
+ * 
+ * @author Oliver Binns <ob601@york.ac.uk>
+ * 
+ */
+
 public class Game_Map_StationBtn extends SpriteButton {
 
 	public boolean exit = false;

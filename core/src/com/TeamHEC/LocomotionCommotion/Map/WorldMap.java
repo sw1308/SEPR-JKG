@@ -7,6 +7,7 @@ import com.TeamHEC.LocomotionCommotion.Resource.*;
 
 /**
  * @author Matthew Taylor <mjkt500@york.ac.uk>
+ * @author Oliver Binns <ob601@york.ac.uk>
  */
 
 public class WorldMap {
@@ -111,7 +112,9 @@ public class WorldMap {
 		}
 	}
 	
-	//GENERATE FAULTS
+	/**
+	 * GENERATE FAULTS
+	 */
 	public void generateFaults(){
 		for(int i = 0; i < stationsList.size(); i++){
 			Random random = new Random();

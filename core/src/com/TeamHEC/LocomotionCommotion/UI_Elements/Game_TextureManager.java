@@ -16,7 +16,10 @@ public class Game_TextureManager {
 	
 	protected Game_TextureManager()
 	{}
-	
+	/**
+	 * Gets an instance of the texture manager
+	 * @return Game_TextureManager
+	 */
 	public static Game_TextureManager getInstance() {
 		if(instance == null)
 			instance = new Game_TextureManager();

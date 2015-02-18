@@ -40,14 +40,12 @@ public class Goal implements RouteListener{
 	public static GoalActor goalActor;
 	
 	/**
-	 * Initialises the goal.
+	 * Initialises a standard goal.
 	 * @param startStation The Station the goal starts from
 	 * @param finalStation The Station the goal ends at
 	 * @param stationVia The Station the goal wants you to travel via
 	 * @param cargo The type of cargo the train is carrying
 	 * @param reward The reward (currently Gold) you get for completing the Goal
-	 * @param startTurn The turn number that the goal is started on
-	 * @param turnLimit The number of turns allowed to complete the goal
 	 */
 	
 	//Overloaded constructor to allow instantiation of goals without turnLimits.
@@ -55,6 +53,15 @@ public class Goal implements RouteListener{
 		this(startStation, finalStation, stationVia, cargo, reward, 0);
 	}
 
+	/**
+	 * Initialises a turn-limited goal.
+	 * @param startStation The Station the goal starts from
+	 * @param finalStation The Station the goal ends at
+	 * @param stationVia The Station the goal wants you to travel via
+	 * @param cargo The type of cargo the train is carrying
+	 * @param reward The reward (currently Gold) you get for completing the Goal
+	 * @param turnLimit The number of turns allowed to complete the goal
+	 */
 	public Goal(Station startStation, Station finalStation, Station stationVia, String cargo, int reward, int turnLimit) {
 		this.sStation = startStation;
 		this.fStation = finalStation;
@@ -75,35 +82,63 @@ public class Goal implements RouteListener{
 		stationViaPassed = false;
 		finalStationPassed = false;
 	}
-
+	
+	/**
+	 * Gets if the goal is a special goal
+	 * @return Boolean special
+	 */
 	public boolean isSpecial()
 	{
 		return special;
 	}
-
+	
+	/**
+	 * Gets the start station
+	 * @return Station
+	 */
 	public String getSStation()
 	{
 		return this.sStation.getName();
 	}
 	
+	/**
+	 * Gets the finish station for the goal
+	 * @return Station
+	 */
 	public String getFStation()
 	{
 		return this.fStation.getName();
 	}
-
+	
+	/**
+	 * Gets the reward for the goal
+	 * @return Int reward
+	 */
 	public int getReward()
 	{
 		return reward;
 	}
 	
+	/**
+	 * Gets the start turn for the station
+	 * @return	Int start turn
+	 */
 	public int getStartTurn() {
 		return startTurn;
 	}
 	
+	/**
+	 * Gets the turn limit for the goal
+	 * @return turnLimit
+	 */
 	public int getTurnLimit() {
 		return turnLimit;
 	}
 	
+	/**
+	 * Sets the goal actor for the goal
+	 * @param actor the actor for this goal
+	 */
 	public void setActor(GoalActor actor)
 	{
 		goalActor = actor;
@@ -147,14 +182,18 @@ public class Goal implements RouteListener{
 		}
 
 	}
-
+	
+	/**
+	 * Gets the train assigned to the goal
+	 * @return Train
+	 */
 	public Train getTrain()
 	{
 		return train;
-	}
+	} 
 	
 	/**
-	 * Called when the goal is successfully complete
+	 * Called when the goal is successfully complete, giving the player the appropriate amount of Gold and Score.
 	 */	
 	public void goalComplete()
 	{

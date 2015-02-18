@@ -93,6 +93,11 @@ public class GameScreen implements Screen {
 		warningMessage.create(getStage());
 	}
 	
+	/**
+	 * Creates an instance of the core game
+	 * @param p1Station
+	 * @param p2Station
+	 */
 	public static void createCoreGame(Station p1Station, Station p2Station)
 	{
 		game = new CoreGame(LocomotionCommotion.player1name, LocomotionCommotion.player2name, p1Station, p2Station, LocomotionCommotion.turnChoice);
@@ -149,11 +154,19 @@ public class GameScreen implements Screen {
 		getStage().dispose();
 		getStage().getActors().clear();
 	}
-
+	
+	/**
+	 * Gets the stage for the game
+	 * @return Stage
+	 */
 	public static Stage getStage() {
 		return stage;
 	}
-
+	
+	/**
+	 * Sets the current stage for the core game
+	 * @param stage
+	 */
 	public static void setStage(Stage stage) {
 		GameScreen.stage = stage;
 	}

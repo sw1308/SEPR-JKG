@@ -141,7 +141,7 @@ public class Connection{
 	}
 	/**
 	 * @param connection to be compared
-	 * @returntrue if two connections are the same but reversed
+	 * @return true if two connections are the same but reversed
 	 */
 	public boolean isReverseOf(Connection connection)
 	{

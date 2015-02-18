@@ -220,26 +220,50 @@ public class CoreGame {
 		return dict;
 	}
 	
+	/**
+	 * Gets the world map
+	 * @return WorldMap
+	 */
 	public WorldMap getGameMap() {
 		return gameMap;
 	}
 
+	/**
+	 * Gets player one
+	 * @return Player
+	 */
 	public Player getPlayer1() {
 		return player1;
 	}
-
+	
+	/**
+	 * Gets player two
+	 * @return Player
+	 */
 	public Player getPlayer2() {
 		return player2;
 	}
-
+	
+	/**
+	 * Gets the current turn count
+	 * @return Int turn count
+	 */
 	public int getTurnCount() {
 		return GameData.turnCount;
 	}
-
+	
+	/**
+	 * Gets the turn limit for the game
+	 * @return Int turn limit
+	 */
 	public int getTurnLimit() {
 		return turnLimit;
 	}
-
+	
+	/**
+	 * Gets the player who's turn it is
+	 * @return Player
+	 */
 	public Player getPlayerTurn() {
 		return playerTurn;
 	}

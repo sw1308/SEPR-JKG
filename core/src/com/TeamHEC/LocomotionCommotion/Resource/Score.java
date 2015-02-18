@@ -3,7 +3,7 @@ package com.TeamHEC.LocomotionCommotion.Resource;
 /**
  * 
  * @author Richard Brierley <RB1038@york.ac.uk>
- * 	The object representing Score
+ * 	The object representing Score, it is a extension of resource to allow easier access.
  *
  */
 public class Score extends Resource

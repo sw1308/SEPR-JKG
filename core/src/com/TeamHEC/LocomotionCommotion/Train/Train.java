@@ -70,17 +70,27 @@ public abstract class Train {
 	{
 		return trainActor;
 	}
-	
+	/**
+	 * Get the train's name
+	 * @return String name
+	 */
 	public String getName()
 	{
 		return name;
 	}
-	
+	/**
+	 * Get the value of the train
+	 * @return Int value
+	 */
 	public int getValue()
 	{
 		return value;
 	}
 	
+	/**
+	 * Get the owner of a train
+	 * @return Player
+	 */
 	public Player getOwner()
 	{
 		return owner;
@@ -93,11 +103,19 @@ public abstract class Train {
 		return baseSpeed + speedMod;
 	}
 	
+	/**
+	 * Get the speed modifier of a train
+	 * @return Int speed modifier
+	 */
 	public int getSpeedMod()
 	{
 		return speedMod;
 	}
 	
+	/**
+	 * Get the fuel per turn of a train
+	 * @return Int fuel per turn
+	 */
 	public int getFuelPerTurn()
 	{
 		return fuelPerTurn;
@@ -119,51 +137,75 @@ public abstract class Train {
 		return Math.round((float)(fuel.cost * fuelPerTurn * (length*0.0002)));
 	}
 	/**
-	 * @return A string of the fuel used by a train:
+	 * @return a string detailing the fuel type used by a train:
 	 */
 	public String getFuelType()
 	{
 		return fuel.getType();				
 	}
-	
+	/**
+	 * Get the route of a train
+	 * @return Route
+	 */
 	public Route getRoute()
 	{
 		return route;
 	}
 	
 	// =========== Setters ===========
-	
+	/**
+	 * Set the speed modifier of a train
+	 * @param speedMod
+	 */
 	public void setSpeedMod(int speedMod)
 	{
 		this.speedMod = speedMod;
 	}
-	
+	/**
+	 * set the fuel per turn of a train
+	 * @param fuelPerTurn
+	 */
 	public void setFuelPerTurn(int fuelPerTurn)
 	{
 		this.fuelPerTurn = fuelPerTurn;
 	}
-		
+	/**
+	 * Increase a train's speed modifier
+	 * @param by
+	 */
 	public void increaseSpeedMod(int by)
 	{
 		speedMod += by;
 	}
-	
+	/**
+	 * decrease a train's speed modifier
+	 * @param by
+	 */
 	public void decreaseSpeedMod(int by) {
 		speedMod -= by;
 	}
-	
+	/**
+	 * decrease the fuel per turn of a train
+	 * @param by
+	 */
 	public void decreaseFuelPerTurn(int by)
 	{
 		fuelPerTurn -= by;
 	}
-	
+	/**
+	 * sets if a train is in a station
+	 * @param inStation true if a the train is currently in a station
+	 */
 	public void setInStation(boolean inStation)
 	{
 		this.inStation = inStation;
 	}
 	
 	// =========== Train Operations ===========
-	
+	/**
+	 * Gets if a train is in a station
+	 * @return Boolean in station
+	 */
 	public boolean isInStation()
 	{
 		return inStation;

@@ -90,9 +90,17 @@ public class TrainDepotUI {
 
 
 		}
+		/**
+		 * get the start of the stage
+		 * @return In stage start
+		 */
 		public  int getStageStart(){
 			return stageStart;
 		}
+		/**
+		 * Get the end of the stage
+		 * @return Int stage end
+		 */
 		public  int getStageEnd(){
 			return stageEnd;
 		}

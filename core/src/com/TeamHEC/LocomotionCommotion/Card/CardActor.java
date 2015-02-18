@@ -102,52 +102,90 @@ public class CardActor extends Actor {
 			}
 		}
 
-
-		//Getter and Setter for Expanded
+		/**
+		 * Gets if the card is expanded
+		 * @return expanded
+		 */
 		public boolean isExpanded() {
 			return expanded;
 		}
-		public boolean setexpanded(boolean open) {
+		
+		/**
+		 * Setter for if the card is expanded
+		 * @param open
+		 */
+		public void setexpanded(boolean open) {
 			this.expanded = open;
-			return open;
 		}
 
-		//Getter and Setter for Card
+		/**
+		 * returns the selected card
+		 * @return Card
+		 */
 		public Card getCard(){
 			return this.card;
 		}
+		
+		/**
+		 * Sets the selected card
+		 * @param card
+		 */
 		public void setCard(Card card){
 			this.card = card;
 		}
 
-		//Getter and Setter for Texture
+		/**
+		 * Sets the texture for the card
+		 * @param texture
+		 */
 		public void setTexture(Texture texture){
 			this.texture = texture;
 		}
+		
+		/**
+		 * Returns the texture of the card
+		 * @return Texture
+		 */
 		public Texture getTexture(){
 			return texture;
 		}
 
-		//Getter and Setter for Slot
+		/**
+		 * Returns the slot the card is in
+		 * @return Slot
+		 */
 		public int getSlot(){
 			return this.slot;
 		}
+		
+		/**
+		 * Set the slot the card is in
+		 * @param slot
+		 */
 		public void setSlot(int slot) {
 			this.slot= slot;
 		}
 
-		//Setter for ActorY
+		/**
+		 * Set the y coordinate of the card
+		 * @param y
+		 */
 		public void setActorY(float y){
 			this.actorY=y;
 			setBounds(actorX,actorY,texture.getWidth(),texture.getHeight());				
 		}
 
-		//Setter for Empty
+		/**
+		 * Sets if the slot is empty
+		 * @param b
+		 */
 		public void setEmpty(boolean b) {
 			this.empty=b;
 		}
 
-		//cardExpand- Calls Organize deck, moves the card up, updates the expanded boolean, and refreshes bounds.
+		/**
+		 * cardExpand- Calls Organize deck, moves the card up, updates the expanded boolean, and refreshes bounds.
+		 */
 		public void cardExpand(){
 			Game_CardHand.actorManager.organiseHand();
 			this.actorY+=200;
@@ -155,8 +193,10 @@ public class CardActor extends Actor {
 			setBounds(this.actorX,this.actorY,this.texture.getWidth(),this.texture.getHeight());
 		}
 
-		/*cardCollapse- if the card is expanded: resets the height of the card depending on whether or not the resource bar is expanded
-			sets the expanded boolean, refreshes the action area and calls organiseDeck OR just resets the height when the resource bar changes.*/
+		/**
+		 * cardCollapse- if the card is expanded: resets the height of the card depending on whether or not the resource bar is expanded
+		 *	sets the expanded boolean, refreshes the action area and calls organiseDeck OR just resets the height when the resource bar changes.
+		 */
 		public void cardCollapse(){
 			if (expanded){
 				if (GameScreenUI.resourcebarexpanded)

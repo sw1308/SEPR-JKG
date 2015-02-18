@@ -117,10 +117,17 @@ public class Game_PauseMenu {
 
 
 		}
-
+		/**
+		 * get the stage start
+		 * @return int stage start
+		 */
 		public int getStageStart(){
 			return stagestart;
 		}
+		/**
+		 * Get the stage end
+		 * @return Int stage end
+		 */
 		public int getStageEnd(){
 			return stageend;
 		}

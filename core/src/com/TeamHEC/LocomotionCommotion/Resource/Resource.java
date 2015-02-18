@@ -22,16 +22,28 @@ public abstract class Resource {
 		this.type = type;
 	}
 	
+	/**
+	 * 
+	 * @return the amount of the resource
+	 */
 	public int getValue()
 	{
 		return value;
 	}
 	
+	/**
+	 * 
+	 * @return the type of that resource
+	 */
 	public String getType()
 	{
 		return type;
 	}
 	
+	/**
+	 * 
+	 * @param value the new value that the resource will be set to
+	 */
 	public void setValue(int value)
 	{
 		this.value = value;
@@ -48,7 +60,7 @@ public abstract class Resource {
 	
 	/**
 	 * Subtracts from value using another Resource object.
-	 * @param subVal A Resource object whose value is subtracted from this object's value.
+	 * @param subResource A Resource object whose value is subtracted from this object's value.
 	 */
 	public void subValue(Resource subResource)
 	{

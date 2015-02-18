@@ -49,6 +49,10 @@ public class Game_Map_Train extends Actor{
 		});
 	}
 	
+	/**
+	 * Creates the map blip for a train
+	 * @param train
+	 */
 	public void createBlip(Train train)
 	{
 		this.train = train;
@@ -67,6 +71,9 @@ public class Game_Map_Train extends Actor{
 		texture = toggleTexture1;
 	}
 	
+	/**
+	 * deals with being able to select a station under a train
+	 */
 	public void clickedTrain()
 	{
 		if(clickCount == 0)
@@ -110,6 +117,10 @@ public class Game_Map_Train extends Actor{
 		}
 	}
 	
+	/**
+	 * toggles the texture when a train is highlighted.
+	 * @param highlighted
+	 */
 	public void toggleHighlight(boolean highlighted)
 	{
 		if(highlighted)

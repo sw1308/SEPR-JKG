@@ -55,28 +55,45 @@ public class Game_Map_MapObj extends Actor{
 	public void showInfoBox(){}
 	public void hideInfoBox(){}
 	
+	/**
+	 * get if the route is availible
+	 * @return Boolean availible
+	 */
 	public boolean routeAvailable()
 	{
 		return routeAvailable;
 	}
-	
+	/**
+	 * Sets if the route is availible
+	 * @param available
+	 */
 	public void setRouteAvailable(boolean available)
 	{
 		routeAvailable = available;
 	}
-	
+	/**
+	 * sets the route and of the route is availible
+	 * @param train
+	 * @param connection
+	 */
 	public void setRouteAvailable(Train train, Connection connection)
 	{
 		routeAvailable = true;
 		routeTrain = train;
 		routeConnection = connection;
 	}
-	
+	/**
+	 * gets the train on the route
+	 * @return Train route train
+	 */
 	public Train getRouteTrain()
 	{
 		return routeTrain;
 	}
-	
+	/**
+	 * Gets the route connection
+	 * @return Connection route connection
+	 */
 	public Connection getRouteConnection()
 	{
 		return routeConnection;
@@ -89,7 +106,10 @@ public class Game_Map_MapObj extends Actor{
 			getRouteTrain().route.addConnection(getRouteConnection());			
 		}
 	}
-	
+	/**
+	 * toggles if an onject is highlighted
+	 * @param highlighted
+	 */
 	public void toggleHighlight(boolean highlighted)
 	{
 		if(highlighted)

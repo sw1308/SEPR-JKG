@@ -99,7 +99,7 @@ public class Route{
 	}
 	/**
 	 * Can be used to change the position of the train within the route
-	 * @param The position of the train in the current connection
+	 * @param travelled The position of the train in the current connection
 	 */
 	public void setConnectionTravelled(float travelled)
 	{
