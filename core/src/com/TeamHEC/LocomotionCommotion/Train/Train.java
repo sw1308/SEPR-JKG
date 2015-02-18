@@ -137,7 +137,7 @@ public abstract class Train {
 		return Math.round((float)(fuel.cost * fuelPerTurn * (length*0.0002)));
 	}
 	/**
-	 * @return A string of the fuel used by a train:
+	 * @return a string detailing the fuel type used by a train:
 	 */
 	public String getFuelType()
 	{
@@ -194,7 +194,7 @@ public abstract class Train {
 	}
 	/**
 	 * sets if a train is in a station
-	 * @param Boolean inStation
+	 * @param inStation true if a the train is currently in a station
 	 */
 	public void setInStation(boolean inStation)
 	{

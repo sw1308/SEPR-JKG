@@ -180,7 +180,7 @@ public class Player implements RouteListener{
 	/**
 	 * Adds a train of the type specified to the player's trains.
 	 * 
-	 * @param String - Train type with capital
+	 * @param trainType fuel type for the train
 	 */
 	public void addTrain(String trainType) {
 		if(trainType == "Coal") {
@@ -231,7 +231,7 @@ public class Player implements RouteListener{
 
 	/**
 	 * 
-	 * @param card: an object of type Card to add the the player's stockpile
+	 * @param card an object of type Card to add the the player's stockpile
 	 */
 	public void addCard(Card card)
 	{

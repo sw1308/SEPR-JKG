@@ -175,7 +175,7 @@ public class Game_Map_Station extends Game_Map_MapObj implements StationListener
 	
 	/**
 	 * sets if a station is owned
-	 * @param Boolean owned
+	 * @param b set true if this station is owned
 	 */
 	public void setOwned(Boolean b)
 	{

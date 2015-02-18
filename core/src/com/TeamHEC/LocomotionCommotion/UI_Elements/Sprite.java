@@ -75,7 +75,7 @@ public class Sprite extends Actor{
 	
 	/**
 	 * Get the X coordinate for the Sprte
-	 * @return float x
+	 * @return x the x-coordinate for the sprite on the screen
 	 */
 	public float getX()
 	{
@@ -85,7 +85,7 @@ public class Sprite extends Actor{
 	
 	/**
 	 * Set the X coordinate for the sprite
-	 * @param float x
+	 * @param actorX the x-coordinate for the sprite on the screen
 	 */
 	public void setX(float actorX)
 	{
@@ -93,7 +93,7 @@ public class Sprite extends Actor{
 	}
 	/**
 	 * Get the Y coordinate for the sprite
-	 * @return float y
+	 * @return y the y-coordinate for the sprite on the screen
 	 */
 	public float getY()
 	{
@@ -101,7 +101,7 @@ public class Sprite extends Actor{
 	}
 	/**
 	 * Set the Y coordinate for the sprite
-	 * @param float y
+	 * @param actorY the y-coordinate for the sprite on the screen
 	 */
 	public void setY(float actorY)
 	{
@@ -135,8 +135,8 @@ public class Sprite extends Actor{
 	
 	/**
 	 * set the position of the sprite
-	 * @param float x
-	 * @param float y
+	 * @param x the x-coordinate for the sprite on the screen
+	 * @param y the y-coordinate for the sprite on the screen
 	 */
 	public void setPosition(float x, float y)
 	{

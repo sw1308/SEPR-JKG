@@ -30,7 +30,7 @@ public abstract class Card {
 	
 	/**
 	 * Returns the player that owns that card
-	 * @return Player
+	 * @return the player of the card
 	 */
 	public Player getOwner()
 	{
@@ -39,7 +39,7 @@ public abstract class Card {
 	
 	/**
 	 * Sets the owner of the card
-	 * @param Player owner
+	 * @param owner this is the owner of the card
 	 */
 	public void setOwner(Player owner)
 	{

@@ -13,29 +13,31 @@ import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.Touchable;
 import com.badlogic.gdx.utils.Array;
 
+/**
+ * @author Robert Precious <rp825@york.ac.uk>
+ * @author Oliver Binns <ob601@york.ac.uk>
+ * 
+ * This class is a Manager, I use Managers in the UI to handed groups of actors. It means I can hide or show a major group of action from one action.
+ * The Manager handles the creation of the cards in the hand, 
+ * the adding of cards and removing from cards from the players hand.
+ * 
+ * actors			Array of actors used to add to stage in one loop
+ * cardactors		Array of cards  used for global use
+ * currentHand		ArrayList of card_Card that represents the currentHand
+ * newcards			ArrayList of card_Card from the HandCreator
+ * open				Boolean for if the cards are visible or not
+ * card1-7			card_Card actors for the cards
+ * stagestart		int that records the position of the first card_Card actor
+ * cardActors		int of the number of card_Card actors
+ * height			int records the height for the cards on screen
+ * selectedCard		Holds the selected card slot number
+ * numberofcards	Holds the number of cards from the HandCreator
+ * usecardbtn		Actor for the use card button
+ *
+ */
 public class Game_CardHand {
 	public static Game_CardHandManager actorManager;
-	/**
-	 * @author Robert Precious <rp825@york.ac.uk>
-	 * 
-	 * This class is a Manager, I use Managers in the UI to handed groups of actors. It means I can hide or show a major group of action from one action.
-	 * The Manager handles the creation of the cards in the hand, 
-	 * the adding of cards and removing from cards from the players hand.
-	 * 
-	 * @param actors		Array of actors used to add to stage in one loop
-	 * @param cardactors	Array of cards  used for global use
-	 * @param currentHand	ArrayList of card_Card that represents the currentHand
-	 * @param newcards		ArrayList of card_Card from the HandCreator
-	 * @param open			Boolean for if the cards are visible or not
-	 * @param card1-7		card_Card actors for the cards
-	 * @param stagestart	int that records the position of the first card_Card actor
-	 * @param cardActors	int of the number of card_Card actors
-	 * @param height		int records the height for the cards on screen
-	 * @param selectedCard	Holds the selected card slot number
-	 * @param numberofcards	Holds the number of cards from the HandCreator
-	 * @param usecardbtn	Actor for the use card button
-	 *
-	 */
+	
 	public void create(Stage stage){
 		actorManager = new Game_CardHandManager();
 		actorManager.create(stage);

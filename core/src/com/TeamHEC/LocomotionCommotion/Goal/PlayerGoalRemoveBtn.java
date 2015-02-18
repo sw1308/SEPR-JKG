@@ -56,7 +56,7 @@ public class PlayerGoalRemoveBtn extends SpriteButton {
 	
 	/**
 	 * Sets if you can undo selecting the goal
-	 * @param boolean undo
+	 * @param b true if selecting the goal can be undone
 	 */
 	public void setUndo(boolean b){
 		this.undo=b;

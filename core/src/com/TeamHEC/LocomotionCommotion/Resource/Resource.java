@@ -60,7 +60,7 @@ public abstract class Resource {
 	
 	/**
 	 * Subtracts from value using another Resource object.
-	 * @param subVal A Resource object whose value is subtracted from this object's value.
+	 * @param subResource A Resource object whose value is subtracted from this object's value.
 	 */
 	public void subValue(Resource subResource)
 	{

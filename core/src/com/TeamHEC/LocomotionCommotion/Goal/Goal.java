@@ -40,14 +40,12 @@ public class Goal implements RouteListener{
 	public static GoalActor goalActor;
 	
 	/**
-	 * Initialises the goal.
+	 * Initialises a standard goal.
 	 * @param startStation The Station the goal starts from
 	 * @param finalStation The Station the goal ends at
 	 * @param stationVia The Station the goal wants you to travel via
 	 * @param cargo The type of cargo the train is carrying
 	 * @param reward The reward (currently Gold) you get for completing the Goal
-	 * @param startTurn The turn number that the goal is started on
-	 * @param turnLimit The number of turns allowed to complete the goal
 	 */
 	
 	//Overloaded constructor to allow instantiation of goals without turnLimits.
@@ -55,6 +53,15 @@ public class Goal implements RouteListener{
 		this(startStation, finalStation, stationVia, cargo, reward, 0);
 	}
 
+	/**
+	 * Initialises a turn-limited goal.
+	 * @param startStation The Station the goal starts from
+	 * @param finalStation The Station the goal ends at
+	 * @param stationVia The Station the goal wants you to travel via
+	 * @param cargo The type of cargo the train is carrying
+	 * @param reward The reward (currently Gold) you get for completing the Goal
+	 * @param turnLimit The number of turns allowed to complete the goal
+	 */
 	public Goal(Station startStation, Station finalStation, Station stationVia, String cargo, int reward, int turnLimit) {
 		this.sStation = startStation;
 		this.fStation = finalStation;
@@ -122,7 +129,7 @@ public class Goal implements RouteListener{
 	
 	/**
 	 * Gets the turn limit for the goal
-	 * @return Int turn limit
+	 * @return turnLimit
 	 */
 	public int getTurnLimit() {
 		return turnLimit;
@@ -130,7 +137,7 @@ public class Goal implements RouteListener{
 	
 	/**
 	 * Sets the goal actor for the goal
-	 * @param GoalActor actor
+	 * @param actor the actor for this goal
 	 */
 	public void setActor(GoalActor actor)
 	{

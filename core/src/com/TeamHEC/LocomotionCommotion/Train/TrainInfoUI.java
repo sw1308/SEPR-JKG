@@ -140,7 +140,7 @@ public class TrainInfoUI extends Sprite{
 	
 	/**
 	 * Sets if the train info is visible
-	 * @param Boolean visible
+	 * @param v true if the train info is to be visible
 	 */
 	public void makeVisible(boolean v)
 	{

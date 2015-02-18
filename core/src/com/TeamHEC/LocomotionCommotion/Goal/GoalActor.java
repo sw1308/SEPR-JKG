@@ -198,7 +198,7 @@ public class GoalActor extends Actor {
 	
 	 /**
 	  * Sets the X coordinate of the actor
-	  * @param Float
+	  * @param x the x-coordinate of the goal actor on the screen
 	  */
 	public void setX(float x){
 		this.actorX = x;
@@ -206,7 +206,7 @@ public class GoalActor extends Actor {
 	
 	/**
 	 * Sets the Y coordinate of the goal actor
-	 * @param Float
+	 * @param y the y-coordinate of the goal actor on the screen
 	 */
 	public void setY(float y){
 		this.actorY = y;
@@ -214,7 +214,7 @@ public class GoalActor extends Actor {
 	
 	/**
 	 * Gets the X coordinated of the actor
-	 * @return Float X
+	 * @return the x-coordinate of the goal actor on the screen
 	 */
 	public float getX(){
 		return this.actorX;
@@ -222,7 +222,7 @@ public class GoalActor extends Actor {
 	
 	/**
 	 * Gets the Y coordinate for the actor
-	 * @return Float
+	 * @return the y-coordinate of the goal actor on the screen
 	 */
 	public float getY(){
 		return this.actorY;
