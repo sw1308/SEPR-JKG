@@ -7,6 +7,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.TeamHEC.LocomotionCommotion.Goal.GoalFactory;
+import com.TeamHEC.LocomotionCommotion.Map.Station;
 import com.TeamHEC.LocomotionCommotion.Map.WorldMap;
 import com.TeamHEC.LocomotionCommotion.Mocking.GdxTestRunner;
 
@@ -29,6 +30,26 @@ public class GoalFactoryTest {
 		boolean combog = false;
 		boolean routeg = false;
 		boolean timedg = false;
+		boolean faultyPresent = false;
+		
+		//Station used to track a permanently broken station
+		Station faultyStation = WorldMap.getInstance().stationsList.get(0);
+		
+		/*
+		 * Force creation of permanently broken Station
+		 */
+		while(faultyPresent == false) {
+			for(int i=0; i<WorldMap.getInstance().stationsList.size(); i++) {
+				if(WorldMap.getInstance().stationsList.get(i).getRepairable()) {
+					WorldMap.getInstance().generateFaults();
+				} else {
+					faultyPresent = true;
+					faultyStation = WorldMap.getInstance().stationsList.get(i);
+				}
+			}
+		}
+		
+		faultyPresent = false;
 		
 		for(int i = 0; i < 500; i ++)
 		{			
@@ -42,7 +63,7 @@ public class GoalFactoryTest {
 					checkExistence(goal.getFStation()));
 			assertTrue(
 					"GoalFactory's goal did not have a valid cargo, iteration: " + i,
-					goal.getCargo() == "Passenger" || goal.getCargo() == "Cargo" || goal.getCargo() == "Diamonds" );
+					goal.getCargo() == "Any" || goal.getCargo() == "Diamonds" );
 			assertTrue(
 					"GoalFactory's reward was not set correctly, iteration: " + i,
 					goal.getReward() > 0);
@@ -50,12 +71,14 @@ public class GoalFactoryTest {
 					"GoalFactory did not have a valid via station, iteration: " + i,
 					goal.stationVia == null || checkExistence(goal.stationVia.getName()));
 			
-			if (goal.isSpecial() == false) {
+			if (goal.isSpecial()){ 
+				spl = true; //The value of spl is set to true if one or more special goals are created by the method
+			} else {
 				nor = true; //The value of nor is set to true if one or more non-special goals are created by the method
 			}
 			
-			if (goal.isSpecial()){ 
-				spl = true; //The value of spl is set to true if one or more special goals are created by the method
+			if(goal.fStation.getName() == faultyStation.getName()) {
+				faultyPresent = true;
 			}
 			
 			if (goal instanceof CargoGoal){ 
@@ -72,20 +95,14 @@ public class GoalFactoryTest {
 			}
 		}
 		
-		assertTrue("GoalFactory successsfully created one or more normal/non-special goals", cspl);
-		assertTrue("GoalFactory successsfully created one or more special goals", spl);
-		assertTrue("GoalFactory successsfully created one or more special Cargo goals", nor);
-		assertTrue("GoalFactory successsfully created one or more special Route goals", routeg);
-		assertTrue("GoalFactory successsfully created one or more special Combo goals", combog);
-		assertTrue("GoalFactory successsfully created one or more special Combo goals", timedg);
+		assertTrue("GoalFactory successfully created one or more normal/non-special goals", nor);
+		assertTrue("GoalFactory successfully created one or more special goals", spl);
+		assertFalse("GoalFactory successfully avoided creating a goal that makes use of a broken station", faultyPresent);
+		assertTrue("GoalFactory successfully created one or more special Cargo goals", cspl);
+		assertTrue("GoalFactory successfully created one or more special Route goals", routeg);
+		assertTrue("GoalFactory successfully created one or more special Combo goals", combog);
+		assertTrue("GoalFactory successfully created one or more special Combo goals", timedg);
 	}
-	
-	//@Test
-	//public void testSplGoalCreation(){
-	//	assertTrue( "GoalFactory did not have a valid via station, iteration: ", spl);
-	//
-	//System.out.println(goal.getCargo() + ", Goal is special? " + goal.isSpecial() + ", Value of IsCargoSpecial: " + goal.specialcargo);
-// }
 	
 	private boolean checkExistence(String stationName) {
 		for(int i = 0; i < WorldMap.getInstance().stationsList.size(); i++)

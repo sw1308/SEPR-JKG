@@ -18,18 +18,19 @@ public class GoalFactory{
 	private WorldMap map;                // creating world map 
 	private ArrayList<Station> stations;
 	private Random random;
-	@SuppressWarnings("unused")
-	private int turnCount;
 	
 	/**
 	 * Initialises the GoalFactory
 	 */
 	public GoalFactory(int turnCount){   
+		this();
+	}
+	
+	public GoalFactory() {
 		map = WorldMap.getInstance(); 
 		stations = map.stationsList;  //get all the stations 
 		random = new Random(); //initializes random, used throughout
-		this.turnCount = turnCount;
-	}	
+	}
 	
 	/**
 	 * Uses Dijkstra to calculate the appropriate reward value for achieving the Goal we generate
@@ -119,20 +120,25 @@ public class GoalFactory{
 		Station sStation = newStation();
 		Station fStation = newStation();		
 
-		while (sStation.getName() == fStation.getName())
+		while (!(stationValid(new Station[] {sStation, fStation}))) {
+			sStation = newStation();
 			fStation = newStation();
+		}
 		
-		String cargo;
-		if(random.nextInt(2) == 0)
-			cargo = "Passenger"; //change this to add more cargo stations
+		String cargo = "Any";
+		
+		//This section is unnecessary as train cargo is not checked against
+		/*if(random.nextInt(2) == 0)
+			cargo = "Passenger";
 		else
-			cargo = "Cargo";
+			cargo = "Cargo";*/
 		
 		//random 1/4 chance of getting special goals
+		
 		if(random.nextInt(3) == 0) {
 			Station viaStation = newStation();
 			
-			while (sStation.getName() == viaStation.getName() || fStation.getName() == viaStation.getName()) {
+			while (!(stationValid(new Station[] {sStation, viaStation, fStation}))) {
 				viaStation = newStation();
 			}
 			
@@ -164,6 +170,24 @@ public class GoalFactory{
 		return newGoal;
 	}
 
+	/**
+	 * 
+	 * @param stations An array of all stations to be tested for validity
+	 * @return True if all stations are valid, false otherwise.
+	 */
+	private boolean stationValid(Station stations[]) {
+		for(int i=0; i<stations.length; i++) {
+			for(int j=i+1; j<stations.length; j++) {
+				if(stations[i].getName() == stations[j].getName()) {
+					return false;
+				}
+			}
+			if(!(stations[i].getRepairable())) {
+				return false;
+			}
+		}
+		return true;
+	}
 }
 
 

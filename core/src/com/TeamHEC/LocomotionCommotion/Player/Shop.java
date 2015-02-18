@@ -168,7 +168,8 @@ public class Shop {
 		{			
 			// Sets the owner to the card and subtract gold from player
 			customer.addCard(cardFactory.createAnyCard());
-			customer.subGold(1000);		
+			customer.subGold(1000);
+			WarningMessage.fireWarningWindow("Card purchased", "Have a look at the card menu to find your new card!");
 		}
 		else
 		{
