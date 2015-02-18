@@ -115,7 +115,7 @@ public class Game_Map_Station extends Game_Map_MapObj implements StationListener
 	@Override
 	protected void onClicked()
 	{
-		if(this.station.getRepairable()){
+		if(this.station.isRepairable()){
 			super.onClicked();
 			Game_Map_StationBtn.selectedStation = this;
 			if(!highlighted)

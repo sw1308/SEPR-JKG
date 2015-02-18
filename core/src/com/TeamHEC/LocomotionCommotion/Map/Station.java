@@ -303,7 +303,7 @@ public class Station extends MapObj{
 	
 	/**
 	 * 
-	 * @return is the station broken?
+	 * @return true if the station is broken
 	 */
 	public boolean isFaulty(){
 		return hasFault;
@@ -312,7 +312,7 @@ public class Station extends MapObj{
 	 * 
 	 * @return false if the station is beyond repair
 	 */
-	public boolean getRepairable()
+	public boolean isRepairable()
 	{
 		return this.repairable;
 	}
@@ -349,7 +349,7 @@ public class Station extends MapObj{
 	}
 	/**
 	 * gets the stations upgrade level
-	 * @return Int upgrade level
+	 * @return the current level of the station
 	 */
 	public int getStationLevel() {
 		return stationFaultLevel;
