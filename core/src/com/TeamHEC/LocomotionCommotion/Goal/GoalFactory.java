@@ -195,7 +195,7 @@ public class GoalFactory{
 					return false;
 				}
 			}
-			if(!(stations[i].getRepairable())) {
+			if(!(stations[i].isRepairable())) {
 				return false;
 			}
 		}
