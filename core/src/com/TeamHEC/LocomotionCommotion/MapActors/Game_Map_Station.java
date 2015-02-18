@@ -82,30 +82,14 @@ public class Game_Map_Station extends Game_Map_MapObj implements StationListener
 	}
 	
 	/**
-	 * @deprecated please use update button method instead
+	 * @deprecated please use updateButton() method instead
+	 * This method has been replaced in the project by the updateButton() method. The method itself has been kept for this version to ensure backward compatibility.
+	 * However, it will likely be removed in a near-future update.
 	 */
 	@Override
 	public void ownerChanged(Station station, Player player)
 	{
-		if(player == null)
-		{
-			texture = Game_Map_TextureManager.getInstance().station;
-			toggleTexture1 = Game_Map_TextureManager.getInstance().station;
-			toggleTexture2 = Game_Map_TextureManager.getInstance().stationx2;
-		}
-
-		else if(player.isPlayer1)
-		{
-			texture = Game_Map_TextureManager.getInstance().p1Station;
-			toggleTexture1 = Game_Map_TextureManager.getInstance().p1Station;
-			toggleTexture2 = Game_Map_TextureManager.getInstance().p1Stationx2;
-		}
-		else
-		{
-			texture = Game_Map_TextureManager.getInstance().p2Station;
-			toggleTexture1 = Game_Map_TextureManager.getInstance().p2Station;
-			toggleTexture2 = Game_Map_TextureManager.getInstance().p2Stationx2;
-		}
+		updateButton(station, player);
 	}
 
 	/**
