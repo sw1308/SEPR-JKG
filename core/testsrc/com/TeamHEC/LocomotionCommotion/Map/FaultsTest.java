@@ -35,6 +35,7 @@ public class FaultsTest {
 	@Test //test isFaulty(), makeFaulty(), fixFault()
 	public void makeFaultyTest(){
 		assertFalse("Station initialises as not-faulty", testStation.isFaulty());
+		assertTrue("Station initialises as repairable", testStation.isRepairable());
 		testStation.makeFaulty();
 		assertTrue("Station can be made faulty", testStation.isFaulty());
 		if(testStation.isRepairable()){
@@ -42,6 +43,12 @@ public class FaultsTest {
 			assertFalse("Station can be successfully fixed", testStation.isFaulty());
 		}
 
+	}
+	
+	@Test //test upgradeStation()
+	public void upgradeStationTest(){
+		assertTrue("Station initialises as Level 0", testStation.getStationLevel() == 0);
+		assertTrue("Station fault rate is initially 1%", testStation.getFaultRate() == 1);
 	}
 	
 	@Test //test generateFaults()
