@@ -32,6 +32,18 @@ public class FaultsTest {
 		testStation = WorldMap.getInstance().stationsList.get(0);
 	}
 	
+	@Test //test upgradeStation()
+	public void upgradeStationTest(){
+		assertTrue("Station initialises as Level 0", testStation.getStationLevel() == 0);
+		assertTrue("Station fault rate is initially 0.1%", testStation.getFaultRate() == 0.1);
+		for(int i = 1; i < 5; i++){
+			testStation.upgradeStation();
+			assertTrue("Station can be upgraded", testStation.getStationLevel() == i);
+			System.out.println(testStation.getFaultRate());
+			assertTrue("Station fault rate decreases when upgraded", testStation.getFaultRate() <= 0.1);
+		}
+	}
+	
 	@Test //test isFaulty(), makeFaulty(), fixFault()
 	public void makeFaultyTest(){
 		assertFalse("Station initialises as not-faulty", testStation.isFaulty());
@@ -43,12 +55,6 @@ public class FaultsTest {
 			assertFalse("Station can be successfully fixed", testStation.isFaulty());
 		}
 
-	}
-	
-	@Test //test upgradeStation()
-	public void upgradeStationTest(){
-		assertTrue("Station initialises as Level 0", testStation.getStationLevel() == 0);
-		assertTrue("Station fault rate is initially 1%", testStation.getFaultRate() == 1);
 	}
 	
 	@Test //test generateFaults()
