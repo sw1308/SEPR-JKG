@@ -6,6 +6,14 @@ import com.TeamHEC.LocomotionCommotion.Map.StationListener;
 import com.TeamHEC.LocomotionCommotion.Player.Player;
 import com.TeamHEC.LocomotionCommotion.UI_Elements.WarningMessage;
 
+/**
+ * 
+ * This class is the UI View for stations on the map.
+ * 
+ * @author Oliver Binns <ob601@york.ac.uk>
+ *
+ */
+
 public class Game_Map_Station extends Game_Map_MapObj implements StationListener {
 
 	public boolean owned;
@@ -72,7 +80,38 @@ public class Game_Map_Station extends Game_Map_MapObj implements StationListener
 			}
 		}
 	}
+	
+	/**
+	 * @deprecated please use update button method instead
+	 */
+	@Override
+	public void ownerChanged(Station station, Player player)
+	{
+		if(player == null)
+		{
+			texture = Game_Map_TextureManager.getInstance().station;
+			toggleTexture1 = Game_Map_TextureManager.getInstance().station;
+			toggleTexture2 = Game_Map_TextureManager.getInstance().stationx2;
+		}
 
+		else if(player.isPlayer1)
+		{
+			texture = Game_Map_TextureManager.getInstance().p1Station;
+			toggleTexture1 = Game_Map_TextureManager.getInstance().p1Station;
+			toggleTexture2 = Game_Map_TextureManager.getInstance().p1Stationx2;
+		}
+		else
+		{
+			texture = Game_Map_TextureManager.getInstance().p2Station;
+			toggleTexture1 = Game_Map_TextureManager.getInstance().p2Station;
+			toggleTexture2 = Game_Map_TextureManager.getInstance().p2Stationx2;
+		}
+	}
+
+	/**
+	 * function is run when the button for the instance of the class is clicked
+	 * if the station is not permanently damaged, this opens up an info box on the screen with relevant controls
+	 */
 	@Override
 	protected void onClicked()
 	{

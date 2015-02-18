@@ -11,7 +11,8 @@ import com.TeamHEC.LocomotionCommotion.MapActors.Game_Map_Station;
 
 /**
  * @author Matthew Taylor <mjkt500@york.ac.uk>
- * @author Elliot Bray<eb1033@york.ac.uk>
+ * @author Elliot Bray <eb1033@york.ac.uk>
+ * @author Oliver Binns <ob601@york.ac.uk>
  */
 
 public class Station extends MapObj{
