@@ -467,6 +467,7 @@ public class Route{
 					path.clear();
 					routeIndex = 0;
 					isComplete = true;
+					WarningMessage.fireWarningWindow("Sorry", "The station is faulty. You must repair it to continue!");
 					return;
 				}
 			}
