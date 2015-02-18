@@ -63,11 +63,10 @@ public class CardFactory{
 	 */
 	public Card createAnyCard()
 	{
-		//ArrayList<Card> cardList = new ArrayList<Card>(magicCardList);
-		//cardList.addAll(resourceCardList);
+		ArrayList<Card> cardList = new ArrayList<Card>(magicCardList);
+		cardList.addAll(resourceCardList);
 		
-		//return cardList.get(random.nextInt(cardList.size()));
-		return teleport;
+		return cardList.get(random.nextInt(cardList.size()));
 	}
 	
 	/**
