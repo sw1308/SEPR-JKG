@@ -28,7 +28,7 @@ import com.badlogic.gdx.graphics.Texture;
 @RunWith(GdxTestRunner.class)
 public class TeleportCardTest {
 
-	TeleportCard card;
+	TeleportCard cards[];
 	Player player;
 	String cardName;
 	Texture cardTexture;
@@ -52,7 +52,12 @@ public class TeleportCardTest {
 		cardName = "Teleport";
 		cardTexture = Game_TextureManager.getInstance().game_card_teleportcard;	
 		player.getTrains().add(new CoalTrain(0, true, new Route(WorldMap.getInstance().AMSTERDAM), player));
-		card = new TeleportCard(player);
+		
+		cards = new TeleportCard[5];
+		
+		for(int i=0; i<5; i++) {
+			cards[i] = new TeleportCard(player);
+		}
 	}
 
 	@After
@@ -61,17 +66,35 @@ public class TeleportCardTest {
 
 	@Test
 	public void testImplementCard() {
-		card.implementCard();
-		assertTrue("Train route index was not set correctly", player.getTrains().get(0).getRoute().getRouteIndex() == 0);
-		assertTrue("Train connection travelled was not set correctly", player.getTrains().get(0).getRoute().getConnectionTravelled() == 0);
-		assertTrue("Train currentMapObj was not set correctly", player.getTrains().get(0).getRoute().getStation() == WorldMap.getInstance().stationsList.get(0));
+		int indices[] = new int[5]; 		
+		boolean moved = false;
+		
+		for(int i=0; i<5; i++) {
+			cards[i].implementCard();
+			assertTrue("Train route index was not set correctly", player.getTrains().get(0).getRoute().getRouteIndex() == 0);
+			assertTrue("Train connection travelled was not set correctly", player.getTrains().get(0).getRoute().getConnectionTravelled() == 0);
+			
+			for(int j=0; j<WorldMap.getInstance().stationsList.size(); j++) {
+				if(player.getTrains().get(0).getRoute().getStation() == WorldMap.getInstance().stationsList.get(j)) {
+					indices[i] = j;
+				}
+			}
+		}
+		
+		for(int i=0; i<4; i++) {
+			if(indices[i] != indices[i+1]) {
+				moved = true;
+			}
+		}
+		
+		assertTrue("Train currentMapObj was not set correctly", moved);
 	}
 
 	@Test
 	public void testTeleportCard() {
-		assertTrue("TeleportCard's owner was not set correctly", card.getOwner() == player);
-		assertTrue("TeleportCard's texutre was not set correctly", card.getImage() == cardTexture);
-		assertTrue("TeleportCard's name was not set correctly", card.getName() == cardName);
+		assertTrue("TeleportCard's owner was not set correctly", cards[0].getOwner() == player);
+		assertTrue("TeleportCard's texutre was not set correctly", cards[0].getImage() == cardTexture);
+		assertTrue("TeleportCard's name was not set correctly", cards[0].getName() == cardName);
 	}
 
 }
