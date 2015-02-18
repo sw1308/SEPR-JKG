@@ -40,7 +40,7 @@ public class GoalFactoryTest {
 		 */
 		while(faultyPresent == false) {
 			for(int i=0; i<WorldMap.getInstance().stationsList.size(); i++) {
-				if(WorldMap.getInstance().stationsList.get(i).getRepairable()) {
+				if(WorldMap.getInstance().stationsList.get(i).isRepairable()) {
 					WorldMap.getInstance().generateFaults();
 				} else {
 					faultyPresent = true;
